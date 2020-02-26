@@ -1,15 +1,16 @@
 package pokemongoeggs;
 
-/**<h1>10 Kilometer Egg</h1>
+/**
+ * <h1>10 Kilometer Egg</h1>
  * 
  * @author audra
  *
  */
-public class Egg10KM extends Egg{	
+public class Egg10KM extends Egg {
 	private int eggWalkingDistance = 10;
 	boolean isIncubating = false;
 	double distanceWalked = 0.0;
-	
+
 	public int getEggWalkingDistance() {
 		return eggWalkingDistance;
 	}
@@ -29,5 +30,5 @@ public class Egg10KM extends Egg{
 	public void setDistanceWalked(double distanceWalked) {
 		this.distanceWalked = distanceWalked;
 	}
-	
+
 }

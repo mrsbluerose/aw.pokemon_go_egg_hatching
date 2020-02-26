@@ -100,8 +100,9 @@ public class Main {
 			inventory.setIncubatorSuperQty(input.nextInt());
 
 		} else if (hasIncubators && someIncubating) {
-			//TODO: code getting too verbose with scanner input. Need to incorporate user interface to calculate custom distances.
-			
+			// TODO: code getting too verbose with scanner input. Need to incorporate user
+			// interface to calculate custom distances.
+
 		} else {
 			inventory.setIncubatorRegularQty(0);
 			inventory.setIncubatorSuperQty(0);
@@ -146,11 +147,11 @@ public class Main {
 			break;
 
 		case 3:
-			System.out.println("Feature coming soon"); //GUI
+			System.out.println("Feature coming soon"); // GUI
 			break;
 
 		case 4:
-			System.out.println("Feature coming soon"); //GUI
+			System.out.println("Feature coming soon"); // GUI
 			break;
 		}
 	}

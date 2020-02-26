@@ -1,22 +1,21 @@
 package pokemongoeggs;
 
 /**
- * <h1>Charted Plan for Hatching</h1>
- * **In Progress**
+ * <h1>Charted Plan for Hatching</h1> **In Progress**
  * 
- * Based on the user's inventory and choices, print the best plan for hatching all eggs at once.
- * Offer most efficient plan with the given choices
+ * Based on the user's inventory and choices, print the best plan for hatching
+ * all eggs at once. Offer most efficient plan with the given choices
  * 
  * @author audra
  *
  */
 public class ChartedPlan {
 	Inventory inventory;
-	
+
 	public ChartedPlan(Inventory inventory) {
 		this.inventory = inventory;
 	}
-	
+
 //	public void getPlan() {
 //		if(inventory.getQuantity7KMEggs()>0) {
 //			//System.out.println("Place 10 km eggs in SUPER incubators to start.");
@@ -35,7 +34,7 @@ public class ChartedPlan {
 //		}	
 //		
 //	}
-	
+
 	void formatNumbers(double number) {
 		if ((number * 10) % 5 == 0) {
 			System.out.print((int) number);
@@ -45,47 +44,45 @@ public class ChartedPlan {
 			System.out.print(" km");
 		}
 	}
-	
+
 	public void printPlan() {
-		// TODO use calculated table to determine most efficient plan 
+		// TODO use calculated table to determine most efficient plan
 		EggHatchingTable standardTable = new EggHatchingTable();
 		double[] eggsArray = standardTable.buildEggArray(1);
 		double[][] eggIncubateDistances = standardTable.buildDistanceArray(eggsArray);
-		
+
 		double egg10KMDistance;
 		double egg7KMDistance;
 		double egg5KMDistance;
 		double egg2KMDistance;
-		
+
 		System.out.println("The fastest hatching plan is: ");
-		if (inventory.getEgg7KMQty()>0) {
+		if (inventory.getEgg7KMQty() > 0) {
 			egg10KMDistance = eggIncubateDistances[4][1];
 			egg5KMDistance = eggIncubateDistances[6][1];
 			egg2KMDistance = eggIncubateDistances[7][1];
-			
+
 			System.out.println("1 - Place 7 km eggs in REGUALR incubators.");
 			System.out.println("2 - Place 10 km eggs in SUPER incubators when 7 km is at: ");
 			formatNumbers(egg10KMDistance);
 			System.out.println("3 - Place 5 km eggs in REGULAR incubators when 7 km is at: ");
-			formatNumbers(egg5KMDistance);;
+			formatNumbers(egg5KMDistance);
+			;
 			System.out.println("4 - Place 2 km eggs in REGULAR incubators when 7 km is at: ");
 			formatNumbers(egg2KMDistance);
-			
+
 		} else {
 			egg5KMDistance = eggIncubateDistances[2][4];
 			egg2KMDistance = eggIncubateDistances[3][4];
-			
+
 			System.out.println("1 - Place 10 km eggs in SUPER incubators.");
 			System.out.println("2 - Place 5 km eggs in REGULAR incubators when 10 km is at: ");
-			formatNumbers(egg5KMDistance);;
+			formatNumbers(egg5KMDistance);
+			;
 			System.out.println("3 - Place 2 km eggs in REGULAR incubators when 7 km is at: ");
 			formatNumbers(egg2KMDistance);
 		}
-		
-		
-		
-		
-		
+
 		//////////////////////
 //		int index10Reg = 0;
 //		int index10Sup = 4;
@@ -119,8 +116,7 @@ public class ChartedPlan {
 //			//System.out.println("Place 2 km eggs in REGULAR incubators when 10 km eggs are at 4.7 km.");
 //			egg2 = true;
 //		}	
-//		
-//		
+
 //		if(egg10 = true) {
 //			//System.out.println("Place 10 km eggs in SUPER incubators to start.");
 //		} else if(egg7 = true) {
@@ -133,12 +129,9 @@ public class ChartedPlan {
 //			//System.out.println("Place 2 km eggs in REGULAR incubators when 10 km eggs are at 4.7 km.");
 //		}
 //		
-		
 
 	}
-	
 
-	
 //	public void printInventory() {
 //		System.out.println("\n");
 //		System.out.println("Your Inventory:");
@@ -149,9 +142,5 @@ public class ChartedPlan {
 //		System.out.println("Regular Incubators: " + inventory.getQuantityIncubatorsRegular());
 //		System.out.println("Super Incubators: " + inventory.getQuantityIncubatorsSuper());
 //	}
-
-
-
-
 
 }

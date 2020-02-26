@@ -74,7 +74,7 @@ public class EggHatchingTable {
 			System.out.printf("%.1f", number);
 		}
 	}
- 
+
 	// print everything in table format
 	public void printTable(double eventMultiplier) {
 		double[] eggsArray = buildEggArray(eventMultiplier);
