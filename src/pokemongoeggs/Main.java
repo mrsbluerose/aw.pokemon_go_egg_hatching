@@ -1,8 +1,5 @@
 package pokemongoeggs;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -46,7 +43,7 @@ public class Main {
 		return multiplier;
 	}
 
-	private static void getEggIncubatorEvent(Scanner input) {
+	private static void getEggIncubatorEventTypes(Scanner input) {
 		double egg;
 		String incubator;
 		double incubatorMultiplier = 1;
@@ -56,11 +53,17 @@ public class Main {
 		egg = input.nextDouble();
 		System.out.println("What incubator do you want to use? REGULAR or SUPER? ");
 		incubator = input.next().trim().toUpperCase();
+		
 		if (incubator.equals("SUPER")) {
 			incubatorMultiplier = 0.666667;
 		}
+		
 		System.out.println("Is there an event happening? Y/N");
-		if (input.next().contentEquals("y") || input.next().contentEquals("Y")) { // will this work, or need variable to
+		
+		/**
+		 * TODO: test whether this returns correct data
+		 */
+		if (input.next().contentEquals("y") || input.next().contentEquals("Y")) { ///// will this work, or need variable to
 																					// hold answer
 			eventMultiplier = getEventMultiplier(input);
 		} else {
@@ -70,14 +73,6 @@ public class Main {
 		System.out.print("The egg will hatch at: ");
 		formatNumbers(egg * incubatorMultiplier * eventMultiplier);
 		System.out.print(" km");
-	}
-
-	static void formatNumbers(double number) {
-		if ((number * 10) % 5 == 0) {
-			System.out.print((int) number);
-		} else {
-			System.out.printf("%.1f", number);
-		}
 	}
 
 	private static Inventory getUserInventory(Scanner input, boolean hasIncubators, boolean someIncubating) {
@@ -100,8 +95,9 @@ public class Main {
 			inventory.setIncubatorSuperQty(input.nextInt());
 
 		} else if (hasIncubators && someIncubating) {
-			// TODO: code getting too verbose with scanner input. Need to incorporate user
-			// interface to calculate custom distances.
+			/** TODO: code getting too verbose with scanner input. Need to incorporate user
+			 *  interface to calculate custom distances.
+			 */ 
 
 		} else {
 			inventory.setIncubatorRegularQty(0);
@@ -132,57 +128,79 @@ public class Main {
 		choice = input.nextInt();
 
 		switch (choice) {
-		case 1:
-			hasIncubators = true;
-			someIncubating = false;
-			ChartedPlan plan1 = new ChartedPlan(getUserInventory(input, hasIncubators, someIncubating));
-			plan1.printPlan();
-			break;
+			case 1:
+				hasIncubators = true;
+				someIncubating = false;
+				ChartedPlan plan1 = new ChartedPlan(getUserInventory(input, hasIncubators, someIncubating));
+				plan1.printPlan();
+				break;
 
-		case 2:
-			hasIncubators = false;
-			someIncubating = false;
-			ChartedPlan plan2 = new ChartedPlan(getUserInventory(input, hasIncubators, someIncubating));
-			plan2.printPlan();
-			break;
+			case 2:
+				hasIncubators = false;
+				someIncubating = false;
+				ChartedPlan plan2 = new ChartedPlan(getUserInventory(input, hasIncubators, someIncubating));
+				plan2.printPlan();
+				break;
 
-		case 3:
-			System.out.println("Feature coming soon"); // GUI
-			break;
+			case 3:
+				System.out.println("Feature coming soon"); // GUI
+				break;
 
-		case 4:
-			System.out.println("Feature coming soon"); // GUI
-			break;
+			case 4:
+				System.out.println("Feature coming soon"); // GUI
+				break;
 		}
 	}
-
+	
+	/**
+	 * Format numbers to one decimal space for printing
+	 */
+	
+	static void formatNumbers(double number) {
+		if ((number * 10) % 5 == 0) {
+			System.out.print((int) number);
+		} else {
+			System.out.printf("%.1f", number);
+		}
+	}
+	
+	/**
+	 * Main Method
+	 * Creates an input scanner that is passed to each method, based on the user's choices.
+	 * All user input is kept in the Main class.
+	 * 
+	 */
 	public static void main(String[] args) {
+		
 		Scanner input = new Scanner(System.in);
 		int userSelectionMenuAnswer = 0;
 
+		//loop through user selection menu until the user selects to quit
 		while (userSelectionMenuAnswer != 9) {
+			
 			userSelectionMenuAnswer = printUserSelectionMenu(input);
+			
 			switch (userSelectionMenuAnswer) {
-			case 1: // Display the Egg Hatching Reference Table
-				EggHatchingTable standardTable = new EggHatchingTable();
-				standardTable.printTable(1); // send no event multiplier of "1"
-				break;
-			case 2: // Show how events affect egg hatch times
-				EggHatchingTable eventTable = new EggHatchingTable();
-				eventTable.printTable(getEventMultiplier(input));
-				break;
-			case 3: // When will this egg hatch
-				getEggIncubatorEvent(input);
-				break;
-			case 4: // Chart out a plan for my eggs and incubators
-				getPlanChoice(input);
-				break;
-			case 9: // quit
-				System.out.println("Goodbye!");
-				break;
-			default:
-				System.out.println("Input not recognized. Please try again.");
-				break;
+				case 1: // Display the Egg Hatching Reference Table
+					EggHatchingTable standardTable = new EggHatchingTable();
+					standardTable.printTable(1); // send no event multiplier of "1"
+					break;
+				case 2: // Collect user input and show how an event affects egg hatch times in reference table
+					EggHatchingTable eventTable = new EggHatchingTable();
+					eventTable.printTable(getEventMultiplier(input));
+					break;
+				case 3: // Collect user input and display when a specified egg will hatch
+					getEggIncubatorEventTypes(input);
+					break;
+				case 4: // Collect user input and print out a recommend incubating plan
+					getPlanChoice(input);
+					break;
+				case 9: // quit
+					System.out.println("Goodbye!");
+					break;
+				default:
+					System.out.println("Input not recognized. Please try again.");
+					break;
 			}
 		}
 		input.close();
