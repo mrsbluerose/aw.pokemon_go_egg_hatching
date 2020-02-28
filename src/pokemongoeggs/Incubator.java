@@ -9,6 +9,7 @@ package pokemongoeggs;
  */
 public abstract class Incubator {
 	double incubatorMultiplier;
+	int incubatorKey; // may use for table reference
 
 	public abstract double getIncubatorMultiplier();
 }
