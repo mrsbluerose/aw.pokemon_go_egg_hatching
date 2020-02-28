@@ -48,6 +48,7 @@ public class Main {
 		String incubator;
 		double incubatorMultiplier = 1;
 		double eventMultiplier;
+		String eventAnswer;
 
 		System.out.println("What egg do you have? (enter distance) ");
 		egg = input.nextDouble();
@@ -59,14 +60,13 @@ public class Main {
 		}
 		
 		System.out.println("Is there an event happening? Y/N");
-		
-		/**
-		 * TODO: test whether this returns correct data
-		 */
-		if (input.next().contentEquals("y") || input.next().contentEquals("Y")) { ///// will this work, or need variable to
-																					// hold answer
+		eventAnswer = input.next().toUpperCase().trim();
+
+		if (eventAnswer.contentEquals("Y")) { 
 			eventMultiplier = getEventMultiplier(input);
-		} else {
+		} else if (eventAnswer.contentEquals("N")) {
+			eventMultiplier = 1;
+		} else { // TODO: clean up with data validation
 			eventMultiplier = 1;
 		}
 
