@@ -1,6 +1,11 @@
 <<<<<<< HEAD
 /bin/
 =======
+# Eclipse
+.classpath
+.project
+.settings/
+
 # Compiled class file
 *.class
 
