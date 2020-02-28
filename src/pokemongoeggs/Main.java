@@ -71,7 +71,7 @@ public class Main {
 		}
 
 		System.out.print("The egg will hatch at: ");
-		formatNumbers(egg * incubatorMultiplier * eventMultiplier);
+		PrintFormatter.formatNumbers(egg * incubatorMultiplier * eventMultiplier);
 		System.out.print(" km");
 	}
 
@@ -149,18 +149,6 @@ public class Main {
 			case 4:
 				System.out.println("Feature coming soon"); // GUI
 				break;
-		}
-	}
-	
-	/**
-	 * Format numbers to one decimal space for printing
-	 */
-	
-	static void formatNumbers(double number) {
-		if ((number * 10) % 5 == 0) {
-			System.out.print((int) number);
-		} else {
-			System.out.printf("%.1f", number);
 		}
 	}
 	

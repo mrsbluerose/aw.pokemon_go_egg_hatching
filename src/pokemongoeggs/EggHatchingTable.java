@@ -60,21 +60,6 @@ public class EggHatchingTable {
 		return eggIncubateDistances;
 	}
 
-	/**
-	 * Format numbers for printing Mimics the game's math by subtracting before
-	 * rounding
-	 * 
-	 * @param number
-	 * @return
-	 */
-	void formatNumbers(double number) {
-		if ((number * 10) % 5 == 0) {
-			System.out.print((int) number);
-		} else {
-			System.out.printf("%.1f", number);
-		}
-	}
-
 	// print everything in table format
 	public void printTable(double eventMultiplier) {
 		double[] eggsArray = buildEggArray(eventMultiplier);
@@ -101,24 +86,25 @@ public class EggHatchingTable {
 			System.out.println("****************************************************************"
 					+ "****************************************************************");
 		}
+		
 		// print header row of egg types
 		System.out.print("\t");
 		for (int i = 0; i < eggsArray.length; i++) {
-			formatNumbers(eggsArray[i]);
+			PrintFormatter.formatNumbers(eggsArray[i]);
 			System.out.print(" km\t\t");
 		}
 
 		// print egg type as first entry in each row
 		for (int i = 0; i < eggsArray.length; i++) {
 			System.out.println("");
-			formatNumbers(eggsArray[i]);
+			PrintFormatter.formatNumbers(eggsArray[i]); //uses static method in Main
 			System.out.print(" km\t");
 
 			// print distances for each egg type in each incubator column. For "0", print
 			// "same". For negative, print "***"
 			for (int j = 0; j < eggsArray.length; j++) {
 				if (eggIncubateDistances[i][j] > 0) {
-					formatNumbers(eggIncubateDistances[i][j]);
+					PrintFormatter.formatNumbers(eggIncubateDistances[i][j]);
 					System.out.print("\t\t");
 				} else if (eggIncubateDistances[i][j] == 0) {
 					System.out.print("same\t\t");
