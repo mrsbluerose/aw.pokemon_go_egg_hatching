@@ -77,41 +77,58 @@ public class Main {
 
 	private static Inventory getUserInventory(Scanner input, double eventMultiplier, boolean someIncubating) {
 
-		Inventory inventory = new Inventory();
+		Inventory inventory = new Inventory();  // do we need this?
+		
+		Egg egg1;
+		Egg egg2;
+		Egg egg3;
+		Egg egg4;
+		Egg egg5;
+		Egg egg6;
+		Egg egg7;
+		Egg egg8;	
+		Egg egg9;
+
+		int incubatorRegularQty;
+		int incubatorSuperQty;	
 		
 		
 		if (someIncubating) {
-			for (int i=0; i<9; i++) {
-				
-			}
+			// set each egg
+			// assign incubators
+			
 		} else {
-			System.out.println("How many 10km eggs do you have? ");
-			inventory.setEgg10KMQty(input.nextInt());
-			System.out.println("How many 7km eggs do you have? ");
-			inventory.setEgg7KMQty(input.nextInt());
-			System.out.println("How many 5km eggs do you have? ");
-			inventory.setEgg5KMQty(input.nextInt());
-			System.out.println("How many 2km eggs do you have? ");
-			inventory.setEgg2KMQty(input.nextInt());
+			// get quantities and set each egg
+			// assign incubators
 		}
-		
-		if (hasIncubators && !someIncubating) {
-			System.out.println("How many regular incubators do you have? ");
-			inventory.setIncubatorRegularQty(input.nextInt());
-			System.out.println("How many super incubators do you have? ");
-			inventory.setIncubatorSuperQty(input.nextInt());
-
-		} else if (hasIncubators && someIncubating) {
-			/** TODO: code getting too verbose with scanner input. Need to incorporate user
-			 *  interface to calculate custom distances.
-			 */ 
-
-		} else {
-			inventory.setIncubatorRegularQty(0);
-			inventory.setIncubatorSuperQty(0);
-		}
-
-		return inventory;
+			
+//		System.out.println("How many 10km eggs do you have? ");
+//		inventory.setEgg10KMQty(input.nextInt());
+//		System.out.println("How many 7km eggs do you have? ");
+//		inventory.setEgg7KMQty(input.nextInt());
+//		System.out.println("How many 5km eggs do you have? ");
+//		inventory.setEgg5KMQty(input.nextInt());
+//		System.out.println("How many 2km eggs do you have? ");
+//		inventory.setEgg2KMQty(input.nextInt());
+//
+//		
+//		if (hasIncubators && !someIncubating) {
+//			System.out.println("How many regular incubators do you have? ");
+//			inventory.setIncubatorRegularQty(input.nextInt());
+//			System.out.println("How many super incubators do you have? ");
+//			inventory.setIncubatorSuperQty(input.nextInt());
+//
+//		} else if (hasIncubators && someIncubating) {
+//			/** TODO: code getting too verbose with scanner input. Need to incorporate user
+//			 *  interface to calculate custom distances.
+//			 */ 
+//
+//		} else {
+//			inventory.setIncubatorRegularQty(0);
+//			inventory.setIncubatorSuperQty(0);
+//		}
+//
+//		return inventory;
 	}
 
 	/**
