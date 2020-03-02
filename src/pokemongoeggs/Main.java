@@ -47,7 +47,7 @@ public class Main {
 		double egg;
 		String incubator;
 		double incubatorMultiplier = 1;
-		double eventMultiplier;
+		double eventMultiplier = 1;
 		String eventAnswer;
 
 		System.out.println("What egg do you have? (enter distance) ");
@@ -66,7 +66,7 @@ public class Main {
 			eventMultiplier = getEventMultiplier(input);
 		} else if (eventAnswer.contentEquals("N")) {
 			eventMultiplier = 1;
-		} else { // TODO: clean up with data validation
+		} else { 
 			eventMultiplier = 1;
 		}
 
@@ -171,7 +171,7 @@ public class Main {
 			switch (userSelectionMenuAnswer) {
 				case 1: // Display the Egg Hatching Reference Table
 					EggHatchingTable standardTable = new EggHatchingTable();
-					standardTable.printTable(1); // send no event multiplier of "1"
+					standardTable.printTable(1); // send no-event multiplier of "1"
 					break;
 				case 2: // Collect user input and show how an event affects egg hatch times in reference table
 					EggHatchingTable eventTable = new EggHatchingTable();
