@@ -7,12 +7,12 @@ package pokemongoeggs;
  *
  */
 public abstract class Egg {
-	int eggWalkingDistance;
+	double eggWalkingDistance;
 	int key; //may use for table references
 
 	boolean isIncubating;
 	double distanceWalked;
 
-	public abstract int getEggWalkingDistance();
+	public abstract double getEggWalkingDistance();
 
 }

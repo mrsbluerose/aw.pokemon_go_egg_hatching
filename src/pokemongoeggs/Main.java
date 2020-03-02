@@ -75,19 +75,26 @@ public class Main {
 		//System.out.print(" km");
 	}
 
-	private static Inventory getUserInventory(Scanner input, boolean hasIncubators, boolean someIncubating) {
+	private static Inventory getUserInventory(Scanner input, double eventMultiplier, boolean someIncubating) {
 
 		Inventory inventory = new Inventory();
-
-		System.out.println("How many 10km eggs do you have? ");
-		inventory.setEgg10KMQty(input.nextInt());
-		System.out.println("How many 7km eggs do you have? ");
-		inventory.setEgg7KMQty(input.nextInt());
-		System.out.println("How many 5km eggs do you have? ");
-		inventory.setEgg5KMQty(input.nextInt());
-		System.out.println("How many 2km eggs do you have? ");
-		inventory.setEgg2KMQty(input.nextInt());
-
+		
+		
+		if (someIncubating) {
+			for (int i=0; i<9; i++) {
+				
+			}
+		} else {
+			System.out.println("How many 10km eggs do you have? ");
+			inventory.setEgg10KMQty(input.nextInt());
+			System.out.println("How many 7km eggs do you have? ");
+			inventory.setEgg7KMQty(input.nextInt());
+			System.out.println("How many 5km eggs do you have? ");
+			inventory.setEgg5KMQty(input.nextInt());
+			System.out.println("How many 2km eggs do you have? ");
+			inventory.setEgg2KMQty(input.nextInt());
+		}
+		
 		if (hasIncubators && !someIncubating) {
 			System.out.println("How many regular incubators do you have? ");
 			inventory.setIncubatorRegularQty(input.nextInt());
@@ -112,44 +119,63 @@ public class Main {
 	 */
 	private static void getPlanChoice(Scanner input) {
 
-		int choice;
-		boolean hasIncubators;
-		boolean someIncubating;
-
-		System.out.println("\n");
-		System.out.println("****************************************************************");
-		System.out.println("\t\t\tChoose what best describes your inventory:\n");
-		System.out.println("\t1 - Eggs: non-incubating. Incubators: have enough for current eggs.\n");
-		System.out.println("\t2 - Eggs: non-incubating. Incubators: plan to purchase what is needed.\n");
-		System.out.println("\t3 - Eggs: some already incubating. Incubators: have enough for current eggs.\n");
-		System.out.println("\t4 - Eggs: already incubating. Incubators: plan to purchase what is needed.\n");
-		System.out.println("****************************************************************");
-		System.out.print("Enter the number for your inventory:\n");
-		choice = input.nextInt();
-
-		switch (choice) {
-			case 1:
-				hasIncubators = true;
-				someIncubating = false;
-				ChartedPlan plan1 = new ChartedPlan(getUserInventory(input, hasIncubators, someIncubating));
-				plan1.printPlan();
-				break;
-
-			case 2:
-				hasIncubators = false;
-				someIncubating = false;
-				ChartedPlan plan2 = new ChartedPlan(getUserInventory(input, hasIncubators, someIncubating));
-				plan2.printPlan();
-				break;
-
-			case 3:
-				System.out.println("Feature coming soon"); // GUI
-				break;
-
-			case 4:
-				System.out.println("Feature coming soon"); // GUI
-				break;
+//		int choice;
+//		boolean hasIncubators;
+//		boolean someIncubating;
+//
+//		System.out.println("\n");
+//		System.out.println("****************************************************************");
+//		System.out.println("\t\t\tChoose what best describes your inventory:\n");
+//		System.out.println("\t1 - Eggs: non-incubating. Incubators: have enough for current eggs.\n");
+//		System.out.println("\t2 - Eggs: non-incubating. Incubators: plan to purchase what is needed.\n");
+//		System.out.println("\t3 - Eggs: some already incubating. Incubators: have enough for current eggs.\n");
+//		System.out.println("\t4 - Eggs: already incubating. Incubators: plan to purchase what is needed.\n");
+//		System.out.println("****************************************************************");
+//		System.out.print("Enter the number for your inventory:\n");
+//		choice = input.nextInt();
+//
+//		switch (choice) {
+//			case 1:
+//				hasIncubators = true;
+//				someIncubating = false;
+//				ChartedPlan plan1 = new ChartedPlan(getUserInventory(input, hasIncubators, someIncubating));
+//				plan1.printPlan();
+//				break;
+//
+//			case 2:
+//				hasIncubators = false;
+//				someIncubating = false;
+//				ChartedPlan plan2 = new ChartedPlan(getUserInventory(input, hasIncubators, someIncubating));
+//				plan2.printPlan();
+//				break;
+//
+//			case 3:
+//				System.out.println("Feature coming soon"); // GUI
+//				break;
+//
+//			case 4:
+//				System.out.println("Feature coming soon"); // GUI
+//				break;
+//		}
+		
+		String eventAnswer = "N";
+		double eventMultiplier = 1;
+		String incubatingAnswer;
+		
+		System.out.println("Is there an event happening? Y/N " );
+		eventAnswer = input.next().toUpperCase().trim();
+		if (eventAnswer.contentEquals("Y")) {
+			eventMultiplier = getEventMultiplier(input);
 		}
+		System.out.println("Are any of your eggs already incubating? Y/N ");
+		incubatingAnswer = input.next().toUpperCase().trim();
+		
+		if (incubatingAnswer.contentEquals("Y")) {
+			getUserInventory(input, eventMultiplier, true);
+		} else {
+			getUserInventory(input, eventMultiplier, false);
+		}
+		
 	}
 	
 	/**
