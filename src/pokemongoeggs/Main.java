@@ -22,9 +22,9 @@ public class Main {
 		System.out.println("****************************************************************");
 		System.out.println("\t\t\tMENU\n");
 		System.out.println("\t1 - Display the Egg Hatching Reference Table\n");
-		System.out.println("\t2 - Show how events affect egg hatch times\n");
-		System.out.println("\t3 - When will this egg hatch?\n");
-		System.out.println("\t4 - Chart out a plan for my eggs and incubators\n");
+		System.out.println("\t2 - Display an Event Hatching Table\n");
+		System.out.println("\t3 - Calculate when an egg will hatch\n");
+		System.out.println("\t4 - Create a plan for 9 eggs and incubators\n");
 		System.out.println("\t9 - to quit\n");
 		System.out.println("****************************************************************");
 		System.out.print("Enter the number for what you want to do:\n");
