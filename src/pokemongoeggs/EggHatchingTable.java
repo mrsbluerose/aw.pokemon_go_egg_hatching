@@ -90,21 +90,21 @@ public class EggHatchingTable {
 		// print header row of egg types
 		System.out.print("\t");
 		for (int i = 0; i < eggsArray.length; i++) {
-			PrintFormatter.formatNumbers(eggsArray[i]);
-			System.out.print(" km\t\t");
+			PrintFormatter.formatNumbers(eggsArray[i], true);
+			System.out.print("\t\t");
 		}
 
 		// print egg type as first entry in each row
 		for (int i = 0; i < eggsArray.length; i++) {
 			System.out.println("");
-			PrintFormatter.formatNumbers(eggsArray[i]); //uses static method in Main
-			System.out.print(" km\t");
+			PrintFormatter.formatNumbers(eggsArray[i], true); //uses static method in Main
+			System.out.print("\t");
 
 			// print distances for each egg type in each incubator column. For "0", print
 			// "same". For negative, print "***"
 			for (int j = 0; j < eggsArray.length; j++) {
 				if (eggIncubateDistances[i][j] > 0) {
-					PrintFormatter.formatNumbers(eggIncubateDistances[i][j]);
+					PrintFormatter.formatNumbers(eggIncubateDistances[i][j], false);
 					System.out.print("\t\t");
 				} else if (eggIncubateDistances[i][j] == 0) {
 					System.out.print("same\t\t");

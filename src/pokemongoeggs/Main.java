@@ -71,8 +71,8 @@ public class Main {
 		}
 
 		System.out.print("The egg will hatch at: ");
-		PrintFormatter.formatNumbers(egg * incubatorMultiplier * eventMultiplier);
-		System.out.print(" km");
+		PrintFormatter.formatNumbers((egg * incubatorMultiplier * eventMultiplier), true);
+		//System.out.print(" km");
 	}
 
 	private static Inventory getUserInventory(Scanner input, boolean hasIncubators, boolean someIncubating) {

@@ -55,12 +55,12 @@ public class ChartedPlan {
 
 			System.out.println("1 - Place 7 km eggs in REGUALR incubators.");
 			System.out.println("2 - Place 10 km eggs in SUPER incubators when 7 km is at: ");
-			PrintFormatter.formatNumbers(egg10KMDistance);
+			PrintFormatter.formatNumbers(egg10KMDistance, false);
 			System.out.println("3 - Place 5 km eggs in REGULAR incubators when 7 km is at: ");
-			PrintFormatter.formatNumbers(egg5KMDistance);
+			PrintFormatter.formatNumbers(egg5KMDistance, false);
 			;
 			System.out.println("4 - Place 2 km eggs in REGULAR incubators when 7 km is at: ");
-			PrintFormatter.formatNumbers(egg2KMDistance);
+			PrintFormatter.formatNumbers(egg2KMDistance, false);
 
 		} else {
 			egg5KMDistance = eggIncubateDistances[2][4];
@@ -68,10 +68,10 @@ public class ChartedPlan {
 
 			System.out.println("1 - Place 10 km eggs in SUPER incubators.");
 			System.out.println("2 - Place 5 km eggs in REGULAR incubators when 10 km is at: ");
-			PrintFormatter.formatNumbers(egg5KMDistance);
+			PrintFormatter.formatNumbers(egg5KMDistance, false);
 			;
 			System.out.println("3 - Place 2 km eggs in REGULAR incubators when 7 km is at: ");
-			PrintFormatter.formatNumbers(egg2KMDistance);
+			PrintFormatter.formatNumbers(egg2KMDistance, false);
 		}
 
 		//////////////////////
