@@ -89,6 +89,10 @@ public class Main {
 		Egg egg8;	
 		Egg egg9;
 
+		int egg10KMQty;
+		int egg7KMQty;
+		int egg5KMQty;
+		int egg2KMQty;
 		int incubatorRegularQty;
 		int incubatorSuperQty;	
 		
@@ -98,7 +102,14 @@ public class Main {
 			// assign incubators
 			
 		} else {
-			// get quantities and set each egg
+			System.out.println("How many 10km eggs do you have? ");
+			inventory.setEgg10KMQty(input.nextInt());
+			System.out.println("How many 7km eggs do you have? ");
+			inventory.setEgg7KMQty(input.nextInt());
+			System.out.println("How many 5km eggs do you have? ");
+			inventory.setEgg5KMQty(input.nextInt());
+			System.out.println("How many 2km eggs do you have? ");
+			inventory.setEgg2KMQty(input.nextInt());
 			// assign incubators
 		}
 			
