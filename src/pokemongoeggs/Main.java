@@ -44,19 +44,37 @@ public class Main {
 	}
 
 	private static void getEggIncubatorEventTypes(Scanner input) {
-		double egg;
-		String incubator;
+		int eggType;
+		String incubatorType;
 		double incubatorMultiplier = 1;
 		double eventMultiplier = 1;
 		String eventAnswer;
+		Egg egg = null;
+		Incubator incubator;
 
-		System.out.println("What egg do you have? (enter distance) ");
-		egg = input.nextDouble();
+		System.out.println("What egg do you have?  10 = 10k, 7 = 7k, 5 = 5k, 2 = 2k");
+		eggType = input.nextInt();
 		System.out.println("What incubator do you want to use? REGULAR or SUPER? ");
-		incubator = input.next().trim().toUpperCase();
+		incubatorType = input.next().trim().toUpperCase();
 		
-		if (incubator.equals("SUPER")) {
-			incubatorMultiplier = 0.666667;
+		switch (eggType) {
+		case 10:
+			egg = new Egg10KM();
+		case 7:
+			egg = new Egg7KM();
+		case 5:
+			egg = new Egg5KM();
+		case 2:
+			egg = new Egg2KM();
+		default:
+			System.out.println("Invalid egg");
+		}
+		
+		if (incubatorType.equals("SUPER")) {
+			incubator = new IncubatorSuper();
+			//incubatorMultiplier = incubator.getIncubatorMultiplier();
+		} else {
+			incubator = new IncubatorRegular();
 		}
 		
 		System.out.println("Is there an event happening? Y/N");
@@ -71,7 +89,7 @@ public class Main {
 		}
 
 		System.out.print("The egg will hatch at: ");
-		PrintFormatter.formatNumbers((egg * incubatorMultiplier * eventMultiplier), true);
+		PrintFormatter.formatNumbers((egg.getEggWalkingDistance() * incubator.incubatorMultiplier * eventMultiplier), true);
 		//System.out.print(" km");
 	}
 
@@ -79,15 +97,7 @@ public class Main {
 
 		Inventory inventory = new Inventory();  // do we need this?
 		
-		Egg egg1;
-		Egg egg2;
-		Egg egg3;
-		Egg egg4;
-		Egg egg5;
-		Egg egg6;
-		Egg egg7;
-		Egg egg8;	
-		Egg egg9;
+		Egg egg;
 
 		int egg10KMQty;
 		int egg7KMQty;
@@ -96,99 +106,59 @@ public class Main {
 		int incubatorRegularQty;
 		int incubatorSuperQty;	
 		
+		int eggType = 0;
+		double distanceWalked = 0;
+		boolean isIncubating = false;
+		String plannedIncubator = "regular";
+		double currentEventMultiplier = 1;
+		int answer = 0;
+		
 		
 		if (someIncubating) {
-			// set each egg
-			// assign incubators
+			System.out.println("For each egg, please enter the following information seperated by spaces: \n"
+					+ "Egg type (10, 7, 5, 2) \n"
+					+ "Distance walked (if zero, enter 0) \n"
+					+ "If incubating: \"true\" or \"false\" \n"
+					+ "Planned incubator: \"regular\" or \"super\""
+					+ "Event multiplier (if none, enter \"1\"");
+			
+			for (int i=0; i<9; i++) {
+				System.out.print("For each egg, please enter the following information seperated by spaces:");
+				//TODO: get input and build eggs
+				switch (answer) {
+				case 10;
+				case 7;
+				case 5;
+				case 2;
+				}
+			}
 			
 		} else {
 			System.out.println("How many 10km eggs do you have? ");
-			inventory.setEgg10KMQty(input.nextInt());
+			egg10KMQty = input.nextInt();
 			System.out.println("How many 7km eggs do you have? ");
-			inventory.setEgg7KMQty(input.nextInt());
+			egg7KMQty = input.nextInt();
 			System.out.println("How many 5km eggs do you have? ");
-			inventory.setEgg5KMQty(input.nextInt());
+			egg5KMQty = input.nextInt();
 			System.out.println("How many 2km eggs do you have? ");
-			inventory.setEgg2KMQty(input.nextInt());
-			// assign incubators
+			egg2KMQty = input.nextInt();
+			System.out.println("How many regular incubators do you have? ");
+			incubatorRegularQty = input.nextInt();
+			System.out.println("How many super incubators do you have? ");
+			incubatorSuperQty = input.nextInt();
 		}
 			
-//		System.out.println("How many 10km eggs do you have? ");
-//		inventory.setEgg10KMQty(input.nextInt());
-//		System.out.println("How many 7km eggs do you have? ");
-//		inventory.setEgg7KMQty(input.nextInt());
-//		System.out.println("How many 5km eggs do you have? ");
-//		inventory.setEgg5KMQty(input.nextInt());
-//		System.out.println("How many 2km eggs do you have? ");
-//		inventory.setEgg2KMQty(input.nextInt());
-//
-//		
-//		if (hasIncubators && !someIncubating) {
-//			System.out.println("How many regular incubators do you have? ");
-//			inventory.setIncubatorRegularQty(input.nextInt());
-//			System.out.println("How many super incubators do you have? ");
-//			inventory.setIncubatorSuperQty(input.nextInt());
-//
-//		} else if (hasIncubators && someIncubating) {
-//			/** TODO: code getting too verbose with scanner input. Need to incorporate user
-//			 *  interface to calculate custom distances.
-//			 */ 
-//
-//		} else {
-//			inventory.setIncubatorRegularQty(0);
-//			inventory.setIncubatorSuperQty(0);
-//		}
-//
-//		return inventory;
 	}
 
 	/**
 	 * TODO: complete options in ChartedPlan
 	 */
-	private static void getPlanChoice(Scanner input) {
-
-//		int choice;
-//		boolean hasIncubators;
-//		boolean someIncubating;
-//
-//		System.out.println("\n");
-//		System.out.println("****************************************************************");
-//		System.out.println("\t\t\tChoose what best describes your inventory:\n");
-//		System.out.println("\t1 - Eggs: non-incubating. Incubators: have enough for current eggs.\n");
-//		System.out.println("\t2 - Eggs: non-incubating. Incubators: plan to purchase what is needed.\n");
-//		System.out.println("\t3 - Eggs: some already incubating. Incubators: have enough for current eggs.\n");
-//		System.out.println("\t4 - Eggs: already incubating. Incubators: plan to purchase what is needed.\n");
-//		System.out.println("****************************************************************");
-//		System.out.print("Enter the number for your inventory:\n");
-//		choice = input.nextInt();
-//
-//		switch (choice) {
-//			case 1:
-//				hasIncubators = true;
-//				someIncubating = false;
-//				ChartedPlan plan1 = new ChartedPlan(getUserInventory(input, hasIncubators, someIncubating));
-//				plan1.printPlan();
-//				break;
-//
-//			case 2:
-//				hasIncubators = false;
-//				someIncubating = false;
-//				ChartedPlan plan2 = new ChartedPlan(getUserInventory(input, hasIncubators, someIncubating));
-//				plan2.printPlan();
-//				break;
-//
-//			case 3:
-//				System.out.println("Feature coming soon"); // GUI
-//				break;
-//
-//			case 4:
-//				System.out.println("Feature coming soon"); // GUI
-//				break;
-//		}
+	private static Inventory getPlanChoice(Scanner input) {
 		
 		String eventAnswer = "N";
 		double eventMultiplier = 1;
 		String incubatingAnswer;
+		Inventory inventory;
 		
 		System.out.println("Is there an event happening? Y/N " );
 		eventAnswer = input.next().toUpperCase().trim();
@@ -199,10 +169,12 @@ public class Main {
 		incubatingAnswer = input.next().toUpperCase().trim();
 		
 		if (incubatingAnswer.contentEquals("Y")) {
-			getUserInventory(input, eventMultiplier, true);
+			inventory = getUserInventory(input, eventMultiplier, true);
 		} else {
-			getUserInventory(input, eventMultiplier, false);
+			inventory = getUserInventory(input, eventMultiplier, false);
 		}
+		
+		return inventory;
 		
 	}
 	
@@ -235,7 +207,7 @@ public class Main {
 					getEggIncubatorEventTypes(input);
 					break;
 				case 4: // Collect user input and print out a recommend incubating plan
-					getPlanChoice(input);
+					ChartedPlan plan = new ChartedPlan(getPlanChoice(input));
 					break;
 				case 9: // quit
 					System.out.println("Goodbye!");
