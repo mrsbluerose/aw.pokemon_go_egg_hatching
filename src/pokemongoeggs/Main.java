@@ -90,14 +90,14 @@ public class Main {
 
 		System.out.print("The egg will hatch at: ");
 		PrintFormatter.formatNumbers((egg.getEggWalkingDistance() * incubator.incubatorMultiplier * eventMultiplier), true);
-		//System.out.print(" km");
+
 	}
 
 	private static Inventory getUserInventory(Scanner input, double eventMultiplier, boolean someIncubating) {
 
 		Inventory inventory = new Inventory();  // do we need this?
 		
-		Egg egg;
+		Egg egg = null;
 
 		int egg10KMQty;
 		int egg7KMQty;
@@ -146,8 +146,7 @@ public class Main {
 			incubatorRegularQty = input.nextInt();
 			System.out.println("How many super incubators do you have? ");
 			incubatorSuperQty = input.nextInt();
-		}
-			
+		}	
 	}
 
 	/**

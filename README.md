@@ -5,31 +5,42 @@ Currently, this project is meant for personal use and is serving as a demonstrat
 
 ## Status
 In the works: Charted Plan class calculations (determining whether to use data structures or classes)
+
+Problem: Current user input (scanner input) results in several user prompts (impractical and verbose). The original plan was to complete each version of the program and move on to the next (demonstrating basic input, Swing GUI, File I/O and LAMP). I may branch off the basic input now and incorporate the Swing interface to avoid wasted coding on user prompts.
+
 Future expansion: Incorporating Swing interface to reduce user prompts and improve data validation
+
 
 ##Getting Started
 These options will help you set up the program in your local environment. Currently, this only runs in an IDE.
 
+
 ###Prerequisites
 No prerequisites other than having an IDE set for Java
+
 
 ###Installing
 1. Create a project called pokemon_go_egg_hatching
 2. Import the src/pokemongoeggs file 
 
+
 ##Running Tests
 No incorporated testing at this time (other than print statements)
 User input errors not handled. Will be incorporating Swing GUI to enforce data validation.
 
+
 ##Contributing
 No outside contributing at this time.
+
 
 ##Versioning
 Original version in progress.
 Future expansion: incorporate Swing GUI
 
+
 ##Authors
 @Audra
+
 
 ##Acknowledgments
 
