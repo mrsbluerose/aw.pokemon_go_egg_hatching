@@ -38,7 +38,7 @@ Original version in progress.
 Future expansion: incorporate Swing GUI
 
 
-## Authors
+## Authors 
 @Audra
 
 
