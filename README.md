@@ -11,36 +11,36 @@ Problem: Current user input (scanner input) results in several user prompts (imp
 Future expansion: Incorporating Swing interface to reduce user prompts and improve data validation
 
 
-##Getting Started
+## Getting Started
 These options will help you set up the program in your local environment. Currently, this only runs in an IDE.
 
 
-###Prerequisites
+### Prerequisites
 No prerequisites other than having an IDE set for Java
 
 
-###Installing
+### Installing
 1. Create a project called pokemon_go_egg_hatching
 2. Import the src/pokemongoeggs file 
 
 
-##Running Tests
+## Running Tests
 No incorporated testing at this time (other than print statements)
 User input errors not handled. Will be incorporating Swing GUI to enforce data validation.
 
 
-##Contributing
+## Contributing
 No outside contributing at this time.
 
 
-##Versioning
+## Versioning
 Original version in progress.
 Future expansion: incorporate Swing GUI
 
 
-##Authors
+## Authors
 @Audra
 
 
-##Acknowledgments
+## Acknowledgments
 
