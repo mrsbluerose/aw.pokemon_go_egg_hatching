@@ -23,10 +23,10 @@ public class Inventory {
 	private Egg egg8;	
 	private Egg egg9;
 
-	int egg10KMQty;
-	int egg7KMQty;
-	int egg5KMQty;
-	int egg2KMQty;
+	private int egg10KMQty;
+	private int egg7KMQty;
+	private int egg5KMQty;
+	private int egg2KMQty;
 	private int incubatorRegularQty;
 	private int incubatorSuperQty;
 	
