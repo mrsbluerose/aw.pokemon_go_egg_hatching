@@ -7,12 +7,10 @@ package pokemongoeggs;
  *
  */
 public abstract class Egg {
-	private double eggWalkingDistance;
+	double eggWalkingDistance;
 	boolean isIncubating;
 	double distanceWalked;
 	double eventMultiplier;
 	double incubatorMultiplier;
-
-	public abstract double getEggWalkingDistance();
 
 }
