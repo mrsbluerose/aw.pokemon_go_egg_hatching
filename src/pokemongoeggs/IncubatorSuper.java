@@ -8,7 +8,7 @@ package pokemongoeggs;
  */
 public class IncubatorSuper extends Incubator {
 
-	double incubatorMultiplier = 0.666667;
+	private double incubatorMultiplier = 0.666667;
 
 	public double getIncubatorMultiplier() {
 		return incubatorMultiplier;
