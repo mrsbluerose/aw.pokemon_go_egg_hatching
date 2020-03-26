@@ -6,6 +6,8 @@ Currently, this project is meant for personal use and is serving as a demonstrat
 ## UML
 See the UML in Lucid Charts: https://www.lucidchart.com/documents/view/def855a9-35b9-4e39-be51-bd205437b060/0_0
 
+<div style="width: 640px; height: 480px; margin: 10px; position: relative;"><iframe allowfullscreen frameborder="0" style="width:640px; height:480px" src="https://www.lucidchart.com/documents/embeddedchart/def855a9-35b9-4e39-be51-bd205437b060" id="3O_JNmxDZuVW"></iframe></div>
+
 ## Status
 In the works: Charted Plan class calculations (determining whether to use data structures or classes)
 
