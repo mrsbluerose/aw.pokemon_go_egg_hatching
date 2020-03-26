@@ -8,7 +8,7 @@ package pokemongoeggs;
  */
 public class Egg5KM extends Egg {
 
-	private double eggWalkingDistance = 5;
+	private int eggWalkingDistance = 5;
 	private boolean isIncubating = false;
 	private double distanceWalked = 0.0;
 	private double eventMultiplier = 1;
