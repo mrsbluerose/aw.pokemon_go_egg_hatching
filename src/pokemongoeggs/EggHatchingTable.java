@@ -18,10 +18,10 @@ public class EggHatchingTable {
 	 * @return
 	 */
 	double[] buildEggArray(double eventMultiplier) {
-		Egg ten = new Egg10KM();
-		Egg seven = new Egg7KM();
-		Egg five = new Egg5KM();
-		Egg two = new Egg2KM();
+		Egg10KM ten = new Egg10KM();
+		Egg7KM seven = new Egg7KM();
+		Egg5KM five = new Egg5KM();
+		Egg2KM two = new Egg2KM();
 		Incubator regularIncubator = new IncubatorRegular();
 		Incubator superIncubator = new IncubatorSuper();
 
