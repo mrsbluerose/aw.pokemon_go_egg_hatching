@@ -6,10 +6,12 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import java.awt.BorderLayout;
 import javax.swing.JRadioButton;
+import javax.swing.ButtonGroup;
 
 public class PokemonGoEggsGUI {
 
 	private JFrame frame;
+	private final ButtonGroup buttonGroupMenu = new ButtonGroup();
 
 	/**
 	 * Launch the application.
@@ -43,20 +45,23 @@ public class PokemonGoEggsGUI {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
-		JLabel lblNewLabel = new JLabel("Menu");
-		lblNewLabel.setBounds(12, 12, 265, 15);
-		frame.getContentPane().add(lblNewLabel);
+		JLabel lblMenu = new JLabel("Menu");
+		lblMenu.setBounds(12, 12, 265, 15);
+		frame.getContentPane().add(lblMenu);
 		
-		JRadioButton rdbtnDisplayEggHatching = new JRadioButton("Display egg hatching table");
-		rdbtnDisplayEggHatching.setBounds(12, 35, 307, 23);
-		frame.getContentPane().add(rdbtnDisplayEggHatching);
+		JRadioButton rdbtnDisplayTable = new JRadioButton("Display egg hatching table");
+		buttonGroupMenu.add(rdbtnDisplayTable);
+		rdbtnDisplayTable.setBounds(12, 35, 307, 23);
+		frame.getContentPane().add(rdbtnDisplayTable);
 		
-		JRadioButton rdbtnNewRadioButton = new JRadioButton("Calculate when an egg will hatch");
-		rdbtnNewRadioButton.setBounds(12, 62, 307, 23);
-		frame.getContentPane().add(rdbtnNewRadioButton);
+		JRadioButton rdbtnCalculateEgg = new JRadioButton("Calculate when an egg will hatch");
+		buttonGroupMenu.add(rdbtnCalculateEgg);
+		rdbtnCalculateEgg.setBounds(12, 62, 307, 23);
+		frame.getContentPane().add(rdbtnCalculateEgg);
 		
-		JRadioButton rdbtnNewRadioButton_1 = new JRadioButton("Create a plan for 9 eggs and incubators");
-		rdbtnNewRadioButton_1.setBounds(12, 89, 307, 23);
-		frame.getContentPane().add(rdbtnNewRadioButton_1);
+		JRadioButton rdbtnCreatePlan = new JRadioButton("Create a plan for 9 eggs and incubators");
+		buttonGroupMenu.add(rdbtnCreatePlan);
+		rdbtnCreatePlan.setBounds(12, 89, 307, 23);
+		frame.getContentPane().add(rdbtnCreatePlan);
 	}
 }
