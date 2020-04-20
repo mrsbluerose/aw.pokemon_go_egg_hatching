@@ -1,12 +1,16 @@
 package pokemongoeggs;
 
 import java.awt.EventQueue;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import java.awt.BorderLayout;
 import javax.swing.JRadioButton;
 import javax.swing.ButtonGroup;
+import javax.swing.JMenu;
+import javax.swing.JMenuItem;
 
 public class PokemonGoEggsGUI {
 
@@ -49,8 +53,25 @@ public class PokemonGoEggsGUI {
 		lblMenu.setBounds(12, 12, 265, 15);
 		frame.getContentPane().add(lblMenu);
 		
+		JMenu mnEventMenu = new JMenu("What is the current walking multiplier?");
+		mnEventMenu.setBounds(12, 139, 307, 19);
+		frame.getContentPane().add(mnEventMenu);
+		mnEventMenu.setVisible(false);
+		
+		JMenuItem mntmQuarter = new JMenuItem("1/4");
+		mnEventMenu.add(mntmQuarter);
+		
+		JMenuItem menuHalf = new JMenuItem("1/2");
+		mnEventMenu.add(menuHalf);
+		
 		JRadioButton rdbtnDisplayTable = new JRadioButton("Display egg hatching table");
 		buttonGroupMenu.add(rdbtnDisplayTable);
+		rdbtnDisplayTable.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				mnEventMenu.setVisible(true);
+			}
+		});
 		rdbtnDisplayTable.setBounds(12, 35, 307, 23);
 		frame.getContentPane().add(rdbtnDisplayTable);
 		
@@ -63,5 +84,7 @@ public class PokemonGoEggsGUI {
 		buttonGroupMenu.add(rdbtnCreatePlan);
 		rdbtnCreatePlan.setBounds(12, 89, 307, 23);
 		frame.getContentPane().add(rdbtnCreatePlan);
+		
+
 	}
 }
