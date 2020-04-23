@@ -48,11 +48,8 @@ public class PokemonGoEggsGUI {
 		frame.setBounds(100, 100, 450, 300);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
-		
-		JLabel lblMenu = new JLabel("Menu");
-		lblMenu.setBounds(12, 12, 265, 15);
-		frame.getContentPane().add(lblMenu);
-		
+				
+		// Display Table options
 		JMenu mnEventMenu = new JMenu("What is the current walking multiplier?");
 		mnEventMenu.setBounds(12, 139, 307, 19);
 		frame.getContentPane().add(mnEventMenu);
@@ -63,6 +60,11 @@ public class PokemonGoEggsGUI {
 		
 		JMenuItem menuHalf = new JMenuItem("1/2");
 		mnEventMenu.add(menuHalf);
+		
+		//main menu
+		JLabel lblMenu = new JLabel("Menu");
+		lblMenu.setBounds(12, 12, 265, 15);
+		frame.getContentPane().add(lblMenu);
 		
 		JRadioButton rdbtnDisplayTable = new JRadioButton("Display egg hatching table");
 		buttonGroupMenu.add(rdbtnDisplayTable);
