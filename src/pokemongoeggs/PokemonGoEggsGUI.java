@@ -11,6 +11,7 @@ import javax.swing.JRadioButton;
 import javax.swing.ButtonGroup;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
+import javax.swing.JList;
 
 public class PokemonGoEggsGUI {
 
@@ -77,18 +78,22 @@ public class PokemonGoEggsGUI {
 		frame.getContentPane().add(rdbtnCreatePlan);
 		
 		JLabel lblGetEvent = new JLabel("What is the event walking distance?");
-		lblGetEvent.setBounds(12, 133, 265, 15);
+		lblGetEvent.setBounds(12, 133, 290, 15);
 		frame.getContentPane().add(lblGetEvent);
 		
 		JRadioButton rdbtnOneQuarter = new JRadioButton("1/4");
 		buttonGroupEvent.add(rdbtnOneQuarter);
-		rdbtnOneQuarter.setBounds(291, 129, 61, 23);
+		rdbtnOneQuarter.setBounds(316, 129, 61, 23);
 		frame.getContentPane().add(rdbtnOneQuarter);
 		
 		JRadioButton rdbtnOneHalf = new JRadioButton("1/2");
 		buttonGroupEvent.add(rdbtnOneHalf);
-		rdbtnOneHalf.setBounds(361, 129, 61, 23);
+		rdbtnOneHalf.setBounds(381, 129, 61, 23);
 		frame.getContentPane().add(rdbtnOneHalf);
+		
+		JLabel lblIncubatorType = new JLabel("Use regular incubators, super or both?");
+		lblIncubatorType.setBounds(12, 161, 286, 15);
+		frame.getContentPane().add(lblIncubatorType);
 		
 
 	}
