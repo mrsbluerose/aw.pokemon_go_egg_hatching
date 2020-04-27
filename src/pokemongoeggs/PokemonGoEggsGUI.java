@@ -16,6 +16,7 @@ public class PokemonGoEggsGUI {
 
 	private JFrame frame;
 	private final ButtonGroup buttonGroupMenu = new ButtonGroup();
+	private final ButtonGroup buttonGroupEvent = new ButtonGroup();
 
 	/**
 	 * Launch the application.
@@ -45,21 +46,9 @@ public class PokemonGoEggsGUI {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 450, 300);
+		frame.setBounds(100, 100, 450, 438);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
-				
-		// Display Table options
-		JMenu mnEventMenu = new JMenu("What is the current walking multiplier?");
-		mnEventMenu.setBounds(12, 139, 307, 19);
-		frame.getContentPane().add(mnEventMenu);
-		mnEventMenu.setVisible(false);
-		
-		JMenuItem mntmQuarter = new JMenuItem("1/4");
-		mnEventMenu.add(mntmQuarter);
-		
-		JMenuItem menuHalf = new JMenuItem("1/2");
-		mnEventMenu.add(menuHalf);
 		
 		//main menu
 		JLabel lblMenu = new JLabel("Menu");
@@ -86,6 +75,20 @@ public class PokemonGoEggsGUI {
 		buttonGroupMenu.add(rdbtnCreatePlan);
 		rdbtnCreatePlan.setBounds(12, 89, 307, 23);
 		frame.getContentPane().add(rdbtnCreatePlan);
+		
+		JLabel lblGetEvent = new JLabel("What is the event walking distance?");
+		lblGetEvent.setBounds(12, 133, 265, 15);
+		frame.getContentPane().add(lblGetEvent);
+		
+		JRadioButton rdbtnOneQuarter = new JRadioButton("1/4");
+		buttonGroupEvent.add(rdbtnOneQuarter);
+		rdbtnOneQuarter.setBounds(291, 129, 61, 23);
+		frame.getContentPane().add(rdbtnOneQuarter);
+		
+		JRadioButton rdbtnOneHalf = new JRadioButton("1/2");
+		buttonGroupEvent.add(rdbtnOneHalf);
+		rdbtnOneHalf.setBounds(361, 129, 61, 23);
+		frame.getContentPane().add(rdbtnOneHalf);
 		
 
 	}
