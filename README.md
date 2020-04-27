@@ -11,8 +11,11 @@ In the works: Charted Plan class calculations (determining whether to use data s
 
 Problem: Current user input (scanner input) results in several user prompts (impractical and verbose). The original plan was to complete each version of the program and move on to the next (demonstrating basic input, Swing GUI, File I/O and LAMP). I may branch off the basic input now and incorporate the Swing interface to avoid wasted coding on user prompts.
 
-Future expansion: Incorporating Swing interface to reduce user prompts and improve data validation
-
+Future expansion: Incorporate Swing interface to reduce user prompts and improve data validation
+Expansion progress:
+*Added initial menu
+*Added display menu options: get event multiplier and incubator preference
+*4/27 - determined the code needs refactoring to create a current list of egg and incubator types. This would eliminate the need for separate classes for each egg and incubator type and allow for easier, more centralized updating as the game adds new options. Plan to refactor code to work with this new format before proceeding with the GUI.
 
 ## Getting Started
 These options will help you set up the program in your local environment. Currently, this only runs in an IDE.
