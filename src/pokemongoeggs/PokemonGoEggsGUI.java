@@ -18,13 +18,20 @@ import java.awt.Component;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.JLayeredPane;
+import javax.swing.JCheckBoxMenuItem;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
+import javax.swing.JPanel;
+import java.awt.FlowLayout;
+import java.awt.GridLayout;
+import javax.swing.BoxLayout;
 
 public class PokemonGoEggsGUI {
 
 	private JFrame frame;
 	private final ButtonGroup buttonGroupMenu = new ButtonGroup();
 	private final ButtonGroup buttonGroupEvent = new ButtonGroup();
-	private final ButtonGroup buttonGroupIncubator = new ButtonGroup();
+	private JTextField textField;
 	
 
 	/**
@@ -90,43 +97,210 @@ public class PokemonGoEggsGUI {
 		
 		//Get event information
 		JLabel lblGetEvent = new JLabel("What is the event walking distance?");
-		lblGetEvent.setBounds(12, 133, 290, 15);
+		lblGetEvent.setBounds(12, 202, 290, 15);
 		frame.getContentPane().add(lblGetEvent);
 		
 		JRadioButton rdbtnOneQuarter = new JRadioButton("1/4");
 		buttonGroupEvent.add(rdbtnOneQuarter);
-		rdbtnOneQuarter.setBounds(46, 156, 61, 23);
+		rdbtnOneQuarter.setBounds(46, 225, 61, 23);
 		frame.getContentPane().add(rdbtnOneQuarter);
 		
 		JRadioButton rdbtnOneHalf = new JRadioButton("1/2");
 		buttonGroupEvent.add(rdbtnOneHalf);
-		rdbtnOneHalf.setBounds(159, 156, 61, 23);
+		rdbtnOneHalf.setBounds(159, 225, 61, 23);
 		frame.getContentPane().add(rdbtnOneHalf);
 		
 		JRadioButton rdbtnNoEvent = new JRadioButton("no event");
-		rdbtnNoEvent.setBounds(262, 156, 149, 23);
+		rdbtnNoEvent.setBounds(262, 225, 149, 23);
 		frame.getContentPane().add(rdbtnNoEvent);
 		
-
-		//Get incubator information
-		JLabel lblIncubatorType = new JLabel("Use regular incubators, super or both?");
-		lblIncubatorType.setBounds(12, 198, 286, 15);
-		frame.getContentPane().add(lblIncubatorType);
+		JTextArea textArea = new JTextArea();
+		textArea.setBounds(46, 120, 369, 70);
+		frame.getContentPane().add(textArea);
 		
-		JRadioButton rdbtnRegular = new JRadioButton("regular");
-		buttonGroupIncubator.add(rdbtnRegular);
-		rdbtnRegular.setBounds(46, 221, 101, 23);
-		frame.getContentPane().add(rdbtnRegular);
+		JLabel lblEgg = new JLabel("Egg");
+		lblEgg.setBounds(107, 256, 70, 15);
+		frame.getContentPane().add(lblEgg);
 		
-		JRadioButton rdbtnSuper = new JRadioButton("super");
-		buttonGroupIncubator.add(rdbtnSuper);
-		rdbtnSuper.setBounds(159, 221, 101, 23);
-		frame.getContentPane().add(rdbtnSuper);
+		JLabel lblIncubator = new JLabel("Incubator");
+		lblIncubator.setBounds(181, 257, 70, 15);
+		frame.getContentPane().add(lblIncubator);
 		
-		JRadioButton rdbtnBoth = new JRadioButton("both");
-		buttonGroupIncubator.add(rdbtnBoth);
-		rdbtnBoth.setBounds(262, 221, 149, 23);
-		frame.getContentPane().add(rdbtnBoth);
+		JLabel lblDistanceWalked = new JLabel("Distance walked");
+		lblDistanceWalked.setBounds(272, 256, 124, 15);
+		frame.getContentPane().add(lblDistanceWalked);
+		
+		JPanel eggOptionsPanel = new JPanel();
+		eggOptionsPanel.setBounds(46, 306, 331, 194);
+		frame.getContentPane().add(eggOptionsPanel);
+		eggOptionsPanel.setLayout(new GridLayout(9, 5, 5, 5));
+		
+		JLabel lblEgg_1 = new JLabel("#1");
+		eggOptionsPanel.add(lblEgg_1);
+		
+		JMenu mnEggType = new JMenu("");
+		eggOptionsPanel.add(mnEggType);
+		
+		JCheckBoxMenuItem chckbxmntmKm = new JCheckBoxMenuItem("2 KM");
+		mnEggType.add(chckbxmntmKm);
+		
+		JCheckBoxMenuItem chckbxmntmKm_1 = new JCheckBoxMenuItem("5 KM");
+		mnEggType.add(chckbxmntmKm_1);
+		
+		JCheckBoxMenuItem chckbxmntmKm_2 = new JCheckBoxMenuItem("7 KM");
+		mnEggType.add(chckbxmntmKm_2);
+		
+		JCheckBoxMenuItem chckbxmntmKm_3 = new JCheckBoxMenuItem("10 KM");
+		mnEggType.add(chckbxmntmKm_3);
+		
+		JLabel lblEgg_1_1 = new JLabel("#2");
+		eggOptionsPanel.add(lblEgg_1_1);
+		
+		JMenu mnEggType_1 = new JMenu("");
+		eggOptionsPanel.add(mnEggType_1);
+		
+		JCheckBoxMenuItem chckbxmntmKm_4 = new JCheckBoxMenuItem("2 KM");
+		mnEggType_1.add(chckbxmntmKm_4);
+		
+		JCheckBoxMenuItem chckbxmntmKm_1_1 = new JCheckBoxMenuItem("5 KM");
+		mnEggType_1.add(chckbxmntmKm_1_1);
+		
+		JCheckBoxMenuItem chckbxmntmKm_2_1 = new JCheckBoxMenuItem("7 KM");
+		mnEggType_1.add(chckbxmntmKm_2_1);
+		
+		JCheckBoxMenuItem chckbxmntmKm_3_1 = new JCheckBoxMenuItem("10 KM");
+		mnEggType_1.add(chckbxmntmKm_3_1);
+		
+		JLabel lblEgg_1_2 = new JLabel("#3");
+		eggOptionsPanel.add(lblEgg_1_2);
+		
+		JMenu mnEggType_1_1 = new JMenu("");
+		eggOptionsPanel.add(mnEggType_1_1);
+		
+		JCheckBoxMenuItem chckbxmntmKm_4_1 = new JCheckBoxMenuItem("2 KM");
+		mnEggType_1_1.add(chckbxmntmKm_4_1);
+		
+		JCheckBoxMenuItem chckbxmntmKm_1_1_1 = new JCheckBoxMenuItem("5 KM");
+		mnEggType_1_1.add(chckbxmntmKm_1_1_1);
+		
+		JCheckBoxMenuItem chckbxmntmKm_2_1_1 = new JCheckBoxMenuItem("7 KM");
+		mnEggType_1_1.add(chckbxmntmKm_2_1_1);
+		
+		JCheckBoxMenuItem chckbxmntmKm_3_1_1 = new JCheckBoxMenuItem("10 KM");
+		mnEggType_1_1.add(chckbxmntmKm_3_1_1);
+		
+		JLabel lblNewLabel = new JLabel("#4");
+		eggOptionsPanel.add(lblNewLabel);
+		
+		JMenu mnEggType_1_1_1 = new JMenu("");
+		eggOptionsPanel.add(mnEggType_1_1_1);
+		
+		JCheckBoxMenuItem chckbxmntmKm_4_1_1 = new JCheckBoxMenuItem("2 KM");
+		mnEggType_1_1_1.add(chckbxmntmKm_4_1_1);
+		
+		JCheckBoxMenuItem chckbxmntmKm_1_1_1_1 = new JCheckBoxMenuItem("5 KM");
+		mnEggType_1_1_1.add(chckbxmntmKm_1_1_1_1);
+		
+		JCheckBoxMenuItem chckbxmntmKm_2_1_1_1 = new JCheckBoxMenuItem("7 KM");
+		mnEggType_1_1_1.add(chckbxmntmKm_2_1_1_1);
+		
+		JCheckBoxMenuItem chckbxmntmKm_3_1_1_1 = new JCheckBoxMenuItem("10 KM");
+		mnEggType_1_1_1.add(chckbxmntmKm_3_1_1_1);
+		
+		JLabel lblNewLabel_1 = new JLabel("#5");
+		eggOptionsPanel.add(lblNewLabel_1);
+		
+		JMenu mnEggType_1_1_2 = new JMenu("");
+		eggOptionsPanel.add(mnEggType_1_1_2);
+		
+		JCheckBoxMenuItem chckbxmntmKm_4_1_2 = new JCheckBoxMenuItem("2 KM");
+		mnEggType_1_1_2.add(chckbxmntmKm_4_1_2);
+		
+		JCheckBoxMenuItem chckbxmntmKm_1_1_1_2 = new JCheckBoxMenuItem("5 KM");
+		mnEggType_1_1_2.add(chckbxmntmKm_1_1_1_2);
+		
+		JCheckBoxMenuItem chckbxmntmKm_2_1_1_2 = new JCheckBoxMenuItem("7 KM");
+		mnEggType_1_1_2.add(chckbxmntmKm_2_1_1_2);
+		
+		JCheckBoxMenuItem chckbxmntmKm_3_1_1_2 = new JCheckBoxMenuItem("10 KM");
+		mnEggType_1_1_2.add(chckbxmntmKm_3_1_1_2);
+		
+		JLabel lblNewLabel_2 = new JLabel("#6");
+		eggOptionsPanel.add(lblNewLabel_2);
+		
+		JMenu mnEggType_1_1_3 = new JMenu("");
+		eggOptionsPanel.add(mnEggType_1_1_3);
+		
+		JCheckBoxMenuItem chckbxmntmKm_4_1_3 = new JCheckBoxMenuItem("2 KM");
+		mnEggType_1_1_3.add(chckbxmntmKm_4_1_3);
+		
+		JCheckBoxMenuItem chckbxmntmKm_1_1_1_3 = new JCheckBoxMenuItem("5 KM");
+		mnEggType_1_1_3.add(chckbxmntmKm_1_1_1_3);
+		
+		JCheckBoxMenuItem chckbxmntmKm_2_1_1_3 = new JCheckBoxMenuItem("7 KM");
+		mnEggType_1_1_3.add(chckbxmntmKm_2_1_1_3);
+		
+		JCheckBoxMenuItem chckbxmntmKm_3_1_1_3 = new JCheckBoxMenuItem("10 KM");
+		mnEggType_1_1_3.add(chckbxmntmKm_3_1_1_3);
+		
+		JLabel lblNewLabel_1_1 = new JLabel("#7");
+		eggOptionsPanel.add(lblNewLabel_1_1);
+		
+		JMenu mnEggType_1_1_4 = new JMenu("");
+		eggOptionsPanel.add(mnEggType_1_1_4);
+		
+		JCheckBoxMenuItem chckbxmntmKm_4_1_4 = new JCheckBoxMenuItem("2 KM");
+		mnEggType_1_1_4.add(chckbxmntmKm_4_1_4);
+		
+		JCheckBoxMenuItem chckbxmntmKm_1_1_1_4 = new JCheckBoxMenuItem("5 KM");
+		mnEggType_1_1_4.add(chckbxmntmKm_1_1_1_4);
+		
+		JCheckBoxMenuItem chckbxmntmKm_2_1_1_4 = new JCheckBoxMenuItem("7 KM");
+		mnEggType_1_1_4.add(chckbxmntmKm_2_1_1_4);
+		
+		JCheckBoxMenuItem chckbxmntmKm_3_1_1_4 = new JCheckBoxMenuItem("10 KM");
+		mnEggType_1_1_4.add(chckbxmntmKm_3_1_1_4);
+		
+		JLabel lblNewLabel_1_1_1 = new JLabel("#8");
+		eggOptionsPanel.add(lblNewLabel_1_1_1);
+		
+		JMenu mnEggType_1_1_5 = new JMenu("");
+		eggOptionsPanel.add(mnEggType_1_1_5);
+		
+		JCheckBoxMenuItem chckbxmntmKm_4_1_5 = new JCheckBoxMenuItem("2 KM");
+		mnEggType_1_1_5.add(chckbxmntmKm_4_1_5);
+		
+		JCheckBoxMenuItem chckbxmntmKm_1_1_1_5 = new JCheckBoxMenuItem("5 KM");
+		mnEggType_1_1_5.add(chckbxmntmKm_1_1_1_5);
+		
+		JCheckBoxMenuItem chckbxmntmKm_2_1_1_5 = new JCheckBoxMenuItem("7 KM");
+		mnEggType_1_1_5.add(chckbxmntmKm_2_1_1_5);
+		
+		JCheckBoxMenuItem chckbxmntmKm_3_1_1_5 = new JCheckBoxMenuItem("10 KM");
+		mnEggType_1_1_5.add(chckbxmntmKm_3_1_1_5);
+		
+		JLabel lblNewLabel_1_1_1_1 = new JLabel("#9");
+		eggOptionsPanel.add(lblNewLabel_1_1_1_1);
+		
+		JMenu mnEggType_1_1_5_1 = new JMenu("");
+		eggOptionsPanel.add(mnEggType_1_1_5_1);
+		
+		JCheckBoxMenuItem chckbxmntmKm_4_1_5_1 = new JCheckBoxMenuItem("2 KM");
+		mnEggType_1_1_5_1.add(chckbxmntmKm_4_1_5_1);
+		
+		JCheckBoxMenuItem chckbxmntmKm_1_1_1_5_1 = new JCheckBoxMenuItem("5 KM");
+		mnEggType_1_1_5_1.add(chckbxmntmKm_1_1_1_5_1);
+		
+		JCheckBoxMenuItem chckbxmntmKm_2_1_1_5_1 = new JCheckBoxMenuItem("7 KM");
+		mnEggType_1_1_5_1.add(chckbxmntmKm_2_1_1_5_1);
+		
+		JCheckBoxMenuItem chckbxmntmKm_3_1_1_5_1 = new JCheckBoxMenuItem("10 KM");
+		mnEggType_1_1_5_1.add(chckbxmntmKm_3_1_1_5_1);
+		
+		textField = new JTextField();
+		textField.setBounds(282, 279, 114, 19);
+		frame.getContentPane().add(textField);
+		textField.setColumns(10);
 	
 
 		
