@@ -137,20 +137,24 @@ public class PokemonGoEggsGUI {
 		
 		String[] eggTypes = { " ", "2 KM", "5 KM", "7 KM", "10 KM"};
 		JComboBox comboBoxEggType = new JComboBox(eggTypes);
+		comboBoxEggType.setBackground(Color.WHITE);
 		comboBoxEggType.setBounds(149, 1, 98, 24);
 		eggOptionsPanel.add(comboBoxEggType);
 		
 		String[] incubatorTypes = { "regular", "super"};
 		JComboBox comboBoxIncubatorType = new JComboBox(incubatorTypes);
+		comboBoxIncubatorType.setBackground(Color.WHITE);
 		comboBoxIncubatorType.setBounds(149, 28, 98, 24);
 		eggOptionsPanel.add(comboBoxIncubatorType);
 		
 		String[] distanceNumbers = { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9"};
 		JComboBox comboBoxDistanceWalkedNumber = new JComboBox(distanceNumbers);
+		comboBoxDistanceWalkedNumber.setBackground(Color.WHITE);
 		comboBoxDistanceWalkedNumber.setBounds(149, 55, 40, 24);
 		eggOptionsPanel.add(comboBoxDistanceWalkedNumber);
 		
 		JComboBox comboBoxDistanceWalkedDecimal = new JComboBox(distanceNumbers);
+		comboBoxDistanceWalkedDecimal.setBackground(Color.WHITE);
 		comboBoxDistanceWalkedDecimal.setBounds(207, 55, 40, 24);
 		eggOptionsPanel.add(comboBoxDistanceWalkedDecimal);
 		
@@ -168,6 +172,7 @@ public class PokemonGoEggsGUI {
 		
 		String[] eventDistanceArray = {"no event", "1/4", "1/2"};
 		JComboBox comboBoxEventWalkingDistance = new JComboBox(eventDistanceArray);
+		comboBoxEventWalkingDistance.setBackground(Color.WHITE);
 		comboBoxEventWalkingDistance.setBounds(348, 205, 90, 24);
 		frame.getContentPane().add(comboBoxEventWalkingDistance);
 		
