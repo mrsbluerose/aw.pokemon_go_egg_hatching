@@ -96,9 +96,9 @@ public class PokemonGoEggsGUI {
 		rdbtnCreatePlan.setBounds(22, 97, 307, 23);
 		frame.getContentPane().add(rdbtnCreatePlan);
 		
-		JTextArea textArea = new JTextArea();
-		textArea.setBounds(12, 132, 426, 70);
-		frame.getContentPane().add(textArea);
+		JTextArea textAreaInstructions = new JTextArea();
+		textAreaInstructions.setBounds(12, 132, 426, 70);
+		frame.getContentPane().add(textAreaInstructions);
 		
 		JPanel eggOptionsPanel = new JPanel();
 		eggOptionsPanel.setBounds(15, 241, 423, 91);
@@ -108,16 +108,16 @@ public class PokemonGoEggsGUI {
 		JLabel label = new JLabel(".");
 		label.setHorizontalAlignment(SwingConstants.CENTER);
 		label.setVerticalAlignment(SwingConstants.BOTTOM);
-		label.setBounds(196, 60, 11, 26);
+		label.setBounds(189, 60, 18, 19);
 		eggOptionsPanel.add(label);
 		
 		JButton btnNextEgg = new JButton("Enter another egg");
 		btnNextEgg.setBounds(259, 28, 164, 25);
 		eggOptionsPanel.add(btnNextEgg);
 		
-		JButton btnDone = new JButton("Display Results");
-		btnDone.setBounds(259, 66, 164, 25);
-		eggOptionsPanel.add(btnDone);
+		JButton btnDisplayResults = new JButton("Display Results");
+		btnDisplayResults.setBounds(259, 66, 164, 25);
+		eggOptionsPanel.add(btnDisplayResults);
 		
 		JLabel lblEggType = new JLabel("Egg Type");
 		lblEggType.setHorizontalAlignment(SwingConstants.LEFT);
@@ -136,23 +136,23 @@ public class PokemonGoEggsGUI {
 		eggOptionsPanel.add(lblDistanceWalked);
 		
 		String[] eggTypes = { " ", "2 KM", "5 KM", "7 KM", "10 KM"};
-		JComboBox comboBox = new JComboBox(eggTypes);
-		comboBox.setBounds(149, 1, 98, 24);
-		eggOptionsPanel.add(comboBox);
+		JComboBox comboBoxEggType = new JComboBox(eggTypes);
+		comboBoxEggType.setBounds(149, 1, 98, 24);
+		eggOptionsPanel.add(comboBoxEggType);
 		
 		String[] incubatorTypes = { "regular", "super"};
-		JComboBox comboBox_1 = new JComboBox(incubatorTypes);
-		comboBox_1.setBounds(149, 28, 98, 24);
-		eggOptionsPanel.add(comboBox_1);
+		JComboBox comboBoxIncubatorType = new JComboBox(incubatorTypes);
+		comboBoxIncubatorType.setBounds(149, 28, 98, 24);
+		eggOptionsPanel.add(comboBoxIncubatorType);
 		
 		String[] distanceNumbers = { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9"};
-		JComboBox comboBox_2 = new JComboBox(distanceNumbers);
-		comboBox_2.setBounds(149, 55, 40, 24);
-		eggOptionsPanel.add(comboBox_2);
+		JComboBox comboBoxDistanceWalkedNumber = new JComboBox(distanceNumbers);
+		comboBoxDistanceWalkedNumber.setBounds(149, 55, 40, 24);
+		eggOptionsPanel.add(comboBoxDistanceWalkedNumber);
 		
-		JComboBox comboBox_3 = new JComboBox(distanceNumbers);
-		comboBox_3.setBounds(207, 55, 40, 24);
-		eggOptionsPanel.add(comboBox_3);
+		JComboBox comboBoxDistanceWalkedDecimal = new JComboBox(distanceNumbers);
+		comboBoxDistanceWalkedDecimal.setBounds(207, 55, 40, 24);
+		eggOptionsPanel.add(comboBoxDistanceWalkedDecimal);
 		
 		JButton btnReset = new JButton("Reset");
 		btnReset.setBounds(199, 524, 117, 25);
@@ -162,18 +162,18 @@ public class PokemonGoEggsGUI {
 		btnExit.setBounds(321, 524, 117, 25);
 		frame.getContentPane().add(btnExit);
 		
-		JTextArea textArea_1 = new JTextArea();
-		textArea_1.setBounds(12, 344, 426, 176);
-		frame.getContentPane().add(textArea_1);
+		JTextArea textAreaResults = new JTextArea();
+		textAreaResults.setBounds(12, 344, 426, 176);
+		frame.getContentPane().add(textAreaResults);
 		
 		String[] eventDistanceArray = {"no event", "1/4", "1/2"};
-		JComboBox comboBox_4 = new JComboBox(eventDistanceArray);
-		comboBox_4.setBounds(348, 205, 90, 24);
-		frame.getContentPane().add(comboBox_4);
+		JComboBox comboBoxEventWalkingDistance = new JComboBox(eventDistanceArray);
+		comboBoxEventWalkingDistance.setBounds(348, 205, 90, 24);
+		frame.getContentPane().add(comboBoxEventWalkingDistance);
 		
-		JLabel lblWhatIsThe = new JLabel("What is the event walking distance multiplier?");
-		lblWhatIsThe.setBounds(12, 205, 341, 24);
-		frame.getContentPane().add(lblWhatIsThe);
+		JLabel lblEventWalkingDistance = new JLabel("What is the event walking distance multiplier?");
+		lblEventWalkingDistance.setBounds(12, 205, 341, 24);
+		frame.getContentPane().add(lblEventWalkingDistance);
 	
 
 		
