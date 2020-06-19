@@ -154,21 +154,6 @@ public class PokemonGoEggsGUI {
 		comboBox_3.setBounds(207, 55, 40, 24);
 		eggOptionsPanel.add(comboBox_3);
 		
-	
-		
-		JMenu mnWhatIsThe = new JMenu("What is the current event walking distance?     ");
-		mnWhatIsThe.setBounds(12, 214, 344, 19);
-		frame.getContentPane().add(mnWhatIsThe);
-		
-		JRadioButtonMenuItem rdbtnmntmNoEvent = new JRadioButtonMenuItem("no event");
-		mnWhatIsThe.add(rdbtnmntmNoEvent);
-		
-		JRadioButtonMenuItem rdbtnmntmDistance = new JRadioButtonMenuItem("1/4 distance");
-		mnWhatIsThe.add(rdbtnmntmDistance);
-		
-		JRadioButtonMenuItem rdbtnmntmDistance_1 = new JRadioButtonMenuItem("1/2 distance");
-		mnWhatIsThe.add(rdbtnmntmDistance_1);
-		
 		JButton btnReset = new JButton("Reset");
 		btnReset.setBounds(199, 524, 117, 25);
 		frame.getContentPane().add(btnReset);
@@ -180,6 +165,15 @@ public class PokemonGoEggsGUI {
 		JTextArea textArea_1 = new JTextArea();
 		textArea_1.setBounds(12, 344, 426, 176);
 		frame.getContentPane().add(textArea_1);
+		
+		String[] eventDistanceArray = {"no event", "1/4", "1/2"};
+		JComboBox comboBox_4 = new JComboBox(eventDistanceArray);
+		comboBox_4.setBounds(348, 205, 90, 24);
+		frame.getContentPane().add(comboBox_4);
+		
+		JLabel lblWhatIsThe = new JLabel("What is the event walking distance multiplier?");
+		lblWhatIsThe.setBounds(12, 205, 341, 24);
+		frame.getContentPane().add(lblWhatIsThe);
 	
 
 		
