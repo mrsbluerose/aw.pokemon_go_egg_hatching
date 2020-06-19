@@ -34,7 +34,6 @@ public class PokemonGoEggsGUI {
 
 	private JFrame frame;
 	private final ButtonGroup buttonGroupMenu = new ButtonGroup();
-	private final ButtonGroup buttonGroupEvent = new ButtonGroup();
 	
 
 	/**
@@ -106,102 +105,11 @@ public class PokemonGoEggsGUI {
 		frame.getContentPane().add(eggOptionsPanel);
 		eggOptionsPanel.setLayout(null);
 		
-		JMenu mnNewMenu = new JMenu("");
-		mnNewMenu.setBounds(149, 0, 14, 26);
-		eggOptionsPanel.add(mnNewMenu);
-		
-		JRadioButtonMenuItem rdbtnmntmKm = new JRadioButtonMenuItem("2 KM");
-		mnNewMenu.add(rdbtnmntmKm);
-		
-		JRadioButtonMenuItem rdbtnmntmKm_1 = new JRadioButtonMenuItem("5 KM");
-		mnNewMenu.add(rdbtnmntmKm_1);
-		
-		JRadioButtonMenuItem rdbtnmntmKm_2 = new JRadioButtonMenuItem("7 KM");
-		mnNewMenu.add(rdbtnmntmKm_2);
-		
-		JRadioButtonMenuItem rdbtnmntmKm_3 = new JRadioButtonMenuItem("10 KM");
-		mnNewMenu.add(rdbtnmntmKm_3);
-		
-		JMenu mnNewMenu_1 = new JMenu("");
-		mnNewMenu_1.setBounds(149, 27, 14, 26);
-		eggOptionsPanel.add(mnNewMenu_1);
-		
-		JRadioButtonMenuItem rdbtnmntmRegular = new JRadioButtonMenuItem("Regular");
-		mnNewMenu_1.add(rdbtnmntmRegular);
-		
-		JRadioButtonMenuItem rdbtnmntmSuper = new JRadioButtonMenuItem("Super");
-		mnNewMenu_1.add(rdbtnmntmSuper);
-		
-		JMenu mnNewMenu_2 = new JMenu("");
-		mnNewMenu_2.setBackground(Color.WHITE);
-		mnNewMenu_2.setHorizontalAlignment(SwingConstants.LEFT);
-		mnNewMenu_2.setBounds(149, 55, 14, 26);
-		eggOptionsPanel.add(mnNewMenu_2);
-		
-		JRadioButtonMenuItem radioButtonMenuItem = new JRadioButtonMenuItem("1");
-		mnNewMenu_2.add(radioButtonMenuItem);
-		
-		JRadioButtonMenuItem radioButtonMenuItem_1 = new JRadioButtonMenuItem("2");
-		mnNewMenu_2.add(radioButtonMenuItem_1);
-		
-		JRadioButtonMenuItem radioButtonMenuItem_2 = new JRadioButtonMenuItem("3");
-		mnNewMenu_2.add(radioButtonMenuItem_2);
-		
-		JRadioButtonMenuItem radioButtonMenuItem_3 = new JRadioButtonMenuItem("4");
-		mnNewMenu_2.add(radioButtonMenuItem_3);
-		
-		JRadioButtonMenuItem radioButtonMenuItem_4 = new JRadioButtonMenuItem("5");
-		mnNewMenu_2.add(radioButtonMenuItem_4);
-		
-		JRadioButtonMenuItem radioButtonMenuItem_5 = new JRadioButtonMenuItem("6");
-		mnNewMenu_2.add(radioButtonMenuItem_5);
-		
-		JRadioButtonMenuItem radioButtonMenuItem_6 = new JRadioButtonMenuItem("7");
-		mnNewMenu_2.add(radioButtonMenuItem_6);
-		
-		JRadioButtonMenuItem radioButtonMenuItem_7 = new JRadioButtonMenuItem("8");
-		mnNewMenu_2.add(radioButtonMenuItem_7);
-		
-		JRadioButtonMenuItem radioButtonMenuItem_8 = new JRadioButtonMenuItem("9");
-		mnNewMenu_2.add(radioButtonMenuItem_8);
-		
 		JLabel label = new JLabel(".");
 		label.setHorizontalAlignment(SwingConstants.CENTER);
 		label.setVerticalAlignment(SwingConstants.BOTTOM);
-		label.setBounds(182, 55, 23, 26);
+		label.setBounds(196, 60, 11, 26);
 		eggOptionsPanel.add(label);
-		
-		JMenu menu = new JMenu("");
-		menu.setBackground(Color.WHITE);
-		menu.setBounds(198, 55, 14, 24);
-		eggOptionsPanel.add(menu);
-		
-		JRadioButtonMenuItem radioButtonMenuItem_9 = new JRadioButtonMenuItem("1");
-		menu.add(radioButtonMenuItem_9);
-		
-		JRadioButtonMenuItem radioButtonMenuItem_10 = new JRadioButtonMenuItem("2");
-		menu.add(radioButtonMenuItem_10);
-		
-		JRadioButtonMenuItem radioButtonMenuItem_11 = new JRadioButtonMenuItem("3");
-		menu.add(radioButtonMenuItem_11);
-		
-		JRadioButtonMenuItem radioButtonMenuItem_12 = new JRadioButtonMenuItem("4");
-		menu.add(radioButtonMenuItem_12);
-		
-		JRadioButtonMenuItem radioButtonMenuItem_13 = new JRadioButtonMenuItem("5");
-		menu.add(radioButtonMenuItem_13);
-		
-		JRadioButtonMenuItem radioButtonMenuItem_14 = new JRadioButtonMenuItem("6");
-		menu.add(radioButtonMenuItem_14);
-		
-		JRadioButtonMenuItem radioButtonMenuItem_15 = new JRadioButtonMenuItem("7");
-		menu.add(radioButtonMenuItem_15);
-		
-		JRadioButtonMenuItem radioButtonMenuItem_16 = new JRadioButtonMenuItem("8");
-		menu.add(radioButtonMenuItem_16);
-		
-		JRadioButtonMenuItem radioButtonMenuItem_17 = new JRadioButtonMenuItem("9");
-		menu.add(radioButtonMenuItem_17);
 		
 		JButton btnNextEgg = new JButton("Enter another egg");
 		btnNextEgg.setBounds(259, 28, 164, 25);
@@ -226,6 +134,27 @@ public class PokemonGoEggsGUI {
 		lblDistanceWalked.setBackground(Color.WHITE);
 		lblDistanceWalked.setBounds(12, 55, 128, 26);
 		eggOptionsPanel.add(lblDistanceWalked);
+		
+		String[] eggTypes = { " ", "2 KM", "5 KM", "7 KM", "10 KM"};
+		JComboBox comboBox = new JComboBox(eggTypes);
+		comboBox.setBounds(149, 1, 98, 24);
+		eggOptionsPanel.add(comboBox);
+		
+		String[] incubatorTypes = { "regular", "super"};
+		JComboBox comboBox_1 = new JComboBox(incubatorTypes);
+		comboBox_1.setBounds(149, 28, 98, 24);
+		eggOptionsPanel.add(comboBox_1);
+		
+		String[] distanceNumbers = { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9"};
+		JComboBox comboBox_2 = new JComboBox(distanceNumbers);
+		comboBox_2.setBounds(149, 55, 40, 24);
+		eggOptionsPanel.add(comboBox_2);
+		
+		JComboBox comboBox_3 = new JComboBox(distanceNumbers);
+		comboBox_3.setBounds(207, 55, 40, 24);
+		eggOptionsPanel.add(comboBox_3);
+		
+	
 		
 		JMenu mnWhatIsThe = new JMenu("What is the current event walking distance?     ");
 		mnWhatIsThe.setBounds(12, 214, 344, 19);
