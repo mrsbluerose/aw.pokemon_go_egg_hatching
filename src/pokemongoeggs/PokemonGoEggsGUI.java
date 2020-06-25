@@ -53,38 +53,25 @@ public class PokemonGoEggsGUI {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
+		//Create Event Panel
+//		TODO: get event types from class instead of array
+		String[] eventDistanceArray = {"no event", "1/4", "1/2"};
 		
-		//main menu
-		JLabel lblMenu = new JLabel("Menu");
-		lblMenu.setHorizontalAlignment(SwingConstants.CENTER);
-		lblMenu.setBounds(12, 12, 426, 23);
-		frame.getContentPane().add(lblMenu);
+		JPanel panelEvent = new JPanel();
+		panelEvent.setBounds(12, 205, 426, 24);
+		frame.getContentPane().add(panelEvent);
+		panelEvent.setLayout(null);
+		JComboBox comboBoxEventWalkingDistance = new JComboBox(eventDistanceArray);
+		comboBoxEventWalkingDistance.setBounds(336, 0, 90, 24);
+		panelEvent.add(comboBoxEventWalkingDistance);
+		comboBoxEventWalkingDistance.setBackground(Color.WHITE);
+		panelEvent.setVisible(false);
 		
-		JRadioButton rdbtnDisplayTable = new JRadioButton("Display egg hatching table");
-		buttonGroupMenu.add(rdbtnDisplayTable);
-		rdbtnDisplayTable.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				//mnEventMenu.setVisible(true);
-			}
-		});
-		rdbtnDisplayTable.setBounds(22, 43, 307, 23);
-		frame.getContentPane().add(rdbtnDisplayTable);
+		JLabel lblEventWalkingDistance = new JLabel("What is the event walking distance multiplier?");
+		lblEventWalkingDistance.setBounds(0, 0, 341, 24);
+		panelEvent.add(lblEventWalkingDistance);
 		
-		JRadioButton rdbtnCalculateEgg = new JRadioButton("Calculate when an egg will hatch");
-		buttonGroupMenu.add(rdbtnCalculateEgg);
-		rdbtnCalculateEgg.setBounds(22, 70, 307, 23);
-		frame.getContentPane().add(rdbtnCalculateEgg);
-		
-		JRadioButton rdbtnCreatePlan = new JRadioButton("Create a plan for 9 eggs and incubators");
-		buttonGroupMenu.add(rdbtnCreatePlan);
-		rdbtnCreatePlan.setBounds(22, 97, 307, 23);
-		frame.getContentPane().add(rdbtnCreatePlan);
-		
-		JTextArea textAreaInstructions = new JTextArea();
-		textAreaInstructions.setBounds(12, 132, 426, 70);
-		frame.getContentPane().add(textAreaInstructions);
-		
+		//Creates Egg information panel
 		JPanel panelEggOptions = new JPanel();
 		panelEggOptions.setBounds(15, 241, 423, 91);
 		frame.getContentPane().add(panelEggOptions);
@@ -121,18 +108,21 @@ public class PokemonGoEggsGUI {
 		lblDistanceWalked.setBounds(12, 55, 128, 26);
 		panelEggOptions.add(lblDistanceWalked);
 		
+//		TODO: get egg types from class instead of array		
 		String[] eggTypes = { " ", "2 KM", "5 KM", "7 KM", "10 KM"};
 		JComboBox comboBoxEggType = new JComboBox(eggTypes);
 		comboBoxEggType.setBackground(Color.WHITE);
 		comboBoxEggType.setBounds(149, 1, 98, 24);
 		panelEggOptions.add(comboBoxEggType);
 		
+//		TODO: get incubator types from class instead of array		
 		String[] incubatorTypes = { "regular", "super"};
 		JComboBox comboBoxIncubatorType = new JComboBox(incubatorTypes);
 		comboBoxIncubatorType.setBackground(Color.WHITE);
 		comboBoxIncubatorType.setBounds(149, 28, 98, 24);
 		panelEggOptions.add(comboBoxIncubatorType);
 		
+//		TODO: get distance from class instead of array	
 		String[] distanceNumbers = { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9"};
 		JComboBox comboBoxDistanceWalkedNumber = new JComboBox(distanceNumbers);
 		comboBoxDistanceWalkedNumber.setBackground(Color.WHITE);
@@ -144,39 +134,81 @@ public class PokemonGoEggsGUI {
 		comboBoxDistanceWalkedDecimal.setBounds(207, 55, 40, 24);
 		panelEggOptions.add(comboBoxDistanceWalkedDecimal);
 		
-		JButton btnReset = new JButton("Reset");
-		btnReset.setBounds(199, 524, 117, 25);
-		frame.getContentPane().add(btnReset);
+		//Creates main menu
+		JLabel lblMenu = new JLabel("Menu");
+		lblMenu.setHorizontalAlignment(SwingConstants.CENTER);
+		lblMenu.setBounds(12, 12, 426, 23);
+		frame.getContentPane().add(lblMenu);
 		
-		JButton btnExit = new JButton("Exit");
-		btnExit.setBounds(321, 524, 117, 25);
-		frame.getContentPane().add(btnExit);
+		JRadioButton rdbtnDisplayTable = new JRadioButton("Display egg hatching reference table");
+		buttonGroupMenu.add(rdbtnDisplayTable);
+		rdbtnDisplayTable.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				panelEvent.setVisible(true);
+			}
+		});
+		rdbtnDisplayTable.setBounds(22, 43, 307, 23);
+		frame.getContentPane().add(rdbtnDisplayTable);
+		
+		JRadioButton rdbtnCalculateEgg = new JRadioButton("Calculate when an egg will hatch");
+		buttonGroupMenu.add(rdbtnCalculateEgg);
+		rdbtnCalculateEgg.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				panelEvent.setVisible(true);
+				panelEggOptions.setVisible(true);
+			}
+		});
+		rdbtnCalculateEgg.setBounds(22, 70, 307, 23);
+		frame.getContentPane().add(rdbtnCalculateEgg);
+		
+		JRadioButton rdbtnCreatePlan = new JRadioButton("Create a plan for up to 9 eggs and incubators");
+		buttonGroupMenu.add(rdbtnCreatePlan);
+		rdbtnCreatePlan.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				panelEvent.setVisible(true);
+				panelEggOptions.setVisible(true);
+			}
+		});
+		rdbtnCreatePlan.setBounds(22, 97, 355, 23);
+		frame.getContentPane().add(rdbtnCreatePlan);
+		
+		//Creates text areas
+		JTextArea textAreaInstructions = new JTextArea();
+		textAreaInstructions.setBounds(12, 132, 426, 70);
+		frame.getContentPane().add(textAreaInstructions);
 		
 		JTextArea textAreaResults = new JTextArea();
 		textAreaResults.setBounds(12, 344, 426, 176);
 		frame.getContentPane().add(textAreaResults);
 		
-		String[] eventDistanceArray = {"no event", "1/4", "1/2"};
+		//Creates reset and exit buttons
+		JButton btnReset = new JButton("Reset");
+		btnReset.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				panelEvent.setVisible(false);
+				panelEggOptions.setVisible(false);
+				buttonGroupMenu.clearSelection();
+				textAreaInstructions.setText(null);
+				textAreaResults.setText(null);
+//				TODO: clear egg option fields
+			}
+		});
+		btnReset.setBounds(199, 524, 117, 25);
+		frame.getContentPane().add(btnReset);
 		
-		JPanel panelEvent = new JPanel();
-		panelEvent.setBounds(12, 205, 426, 24);
-		frame.getContentPane().add(panelEvent);
-		panelEvent.setLayout(null);
-		JComboBox comboBoxEventWalkingDistance = new JComboBox(eventDistanceArray);
-		comboBoxEventWalkingDistance.setBounds(336, 0, 90, 24);
-		panelEvent.add(comboBoxEventWalkingDistance);
-		comboBoxEventWalkingDistance.setBackground(Color.WHITE);
-		panelEvent.setVisible(false);
-		
-		JLabel lblEventWalkingDistance = new JLabel("What is the event walking distance multiplier?");
-		lblEventWalkingDistance.setBounds(0, 0, 341, 24);
-		panelEvent.add(lblEventWalkingDistance);
-	
-
-		
-
-		
-		
-
+		JButton btnExit = new JButton("Exit");
+		btnExit.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				frame.dispose();
+			}
+		});
+		btnExit.setBounds(321, 524, 117, 25);
+		frame.getContentPane().add(btnExit);
 	}
+	
 }
