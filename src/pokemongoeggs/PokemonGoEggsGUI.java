@@ -73,7 +73,7 @@ public class PokemonGoEggsGUI {
 		
 		//Creates Egg information panel
 		JPanel panelEggOptions = new JPanel();
-		panelEggOptions.setBounds(15, 241, 423, 91);
+		panelEggOptions.setBounds(15, 241, 423, 81);
 		frame.getContentPane().add(panelEggOptions);
 		panelEggOptions.setLayout(null);
 		panelEggOptions.setVisible(false);
@@ -85,12 +85,8 @@ public class PokemonGoEggsGUI {
 		panelEggOptions.add(label);
 		
 		JButton btnNextEgg = new JButton("Enter another egg");
-		btnNextEgg.setBounds(259, 28, 164, 25);
+		btnNextEgg.setBounds(259, 54, 164, 25);
 		panelEggOptions.add(btnNextEgg);
-		
-		JButton btnDisplayResults = new JButton("Display Results");
-		btnDisplayResults.setBounds(259, 66, 164, 25);
-		panelEggOptions.add(btnDisplayResults);
 		
 		JLabel lblEggType = new JLabel("Egg Type");
 		lblEggType.setHorizontalAlignment(SwingConstants.LEFT);
@@ -134,6 +130,15 @@ public class PokemonGoEggsGUI {
 		comboBoxDistanceWalkedDecimal.setBounds(207, 55, 40, 24);
 		panelEggOptions.add(comboBoxDistanceWalkedDecimal);
 		
+		//Creates text areas
+		JTextArea textAreaInstructions = new JTextArea();
+		textAreaInstructions.setBounds(12, 132, 426, 70);
+		frame.getContentPane().add(textAreaInstructions);
+		
+		JTextArea textAreaResults = new JTextArea();
+		textAreaResults.setBounds(12, 344, 426, 176);
+		frame.getContentPane().add(textAreaResults);
+		
 		//Creates main menu
 		JLabel lblMenu = new JLabel("Menu");
 		lblMenu.setHorizontalAlignment(SwingConstants.CENTER);
@@ -146,6 +151,8 @@ public class PokemonGoEggsGUI {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				panelEvent.setVisible(true);
+				textAreaInstructions.setText(displayInstructions(1));
+						
 			}
 		});
 		rdbtnDisplayTable.setBounds(22, 43, 307, 23);
@@ -158,6 +165,8 @@ public class PokemonGoEggsGUI {
 			public void actionPerformed(ActionEvent e) {
 				panelEvent.setVisible(true);
 				panelEggOptions.setVisible(true);
+				textAreaInstructions.setText(displayInstructions(2));
+						
 			}
 		});
 		rdbtnCalculateEgg.setBounds(22, 70, 307, 23);
@@ -170,19 +179,11 @@ public class PokemonGoEggsGUI {
 			public void actionPerformed(ActionEvent e) {
 				panelEvent.setVisible(true);
 				panelEggOptions.setVisible(true);
+				textAreaInstructions.setText(displayInstructions(3));
 			}
 		});
 		rdbtnCreatePlan.setBounds(22, 97, 355, 23);
 		frame.getContentPane().add(rdbtnCreatePlan);
-		
-		//Creates text areas
-		JTextArea textAreaInstructions = new JTextArea();
-		textAreaInstructions.setBounds(12, 132, 426, 70);
-		frame.getContentPane().add(textAreaInstructions);
-		
-		JTextArea textAreaResults = new JTextArea();
-		textAreaResults.setBounds(12, 344, 426, 176);
-		frame.getContentPane().add(textAreaResults);
 		
 		//Creates reset and exit buttons
 		JButton btnReset = new JButton("Reset");
@@ -195,9 +196,10 @@ public class PokemonGoEggsGUI {
 				textAreaInstructions.setText(null);
 				textAreaResults.setText(null);
 //				TODO: clear egg option fields
+				
 			}
 		});
-		btnReset.setBounds(199, 524, 117, 25);
+		btnReset.setBounds(256, 524, 85, 25);
 		frame.getContentPane().add(btnReset);
 		
 		JButton btnExit = new JButton("Exit");
@@ -207,8 +209,32 @@ public class PokemonGoEggsGUI {
 				frame.dispose();
 			}
 		});
-		btnExit.setBounds(321, 524, 117, 25);
+		btnExit.setBounds(353, 524, 85, 25);
 		frame.getContentPane().add(btnExit);
+		
+		JButton btnDisplayResults = new JButton("Display Results");
+		btnDisplayResults.setBounds(44, 524, 164, 25);
+		frame.getContentPane().add(btnDisplayResults);
+	}
+	
+	private String displayInstructions(int choice) {
+		String result = "";
+		
+		switch(choice) {
+			case 1: result = "Enter the event multiplier\nand click \"display results\"";
+					break;
+			case 2: result = "Enter the event multiplier and egg information.\n"
+						+ "If you want to enter more than one egg, click \"enter another egg\"\n"
+						+ "When you are finished, click \"display results\"";
+					break;
+			case 3: result = "Enter the event multiplier and egg information.\n" 
+								+ "If you want to enter more than one egg, click \"enter another egg\"\n"
+								+ "When you are finished, click \"display results\"";
+					break;
+			default: result = "please choose again";
+		}
+		
+		return result;
 	}
 	
 }
