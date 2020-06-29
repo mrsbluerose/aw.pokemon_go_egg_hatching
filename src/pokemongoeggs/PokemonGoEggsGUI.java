@@ -55,7 +55,7 @@ public class PokemonGoEggsGUI {
 		
 		//Create Event Panel
 //		TODO: get event types from class instead of array
-		String[] eventDistanceArray = {"no event", "1/4", "1/2"};
+		String[] eventDistanceArray = {"", "no event", "1/4", "1/2"};
 		
 		JPanel panelEvent = new JPanel();
 		panelEvent.setBounds(12, 205, 426, 24);
@@ -151,7 +151,7 @@ public class PokemonGoEggsGUI {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				panelEvent.setVisible(true);
-				textAreaInstructions.setText(displayInstructions(1));
+				textAreaInstructions.setText(getInstructions(1));
 						
 			}
 		});
@@ -165,7 +165,7 @@ public class PokemonGoEggsGUI {
 			public void actionPerformed(ActionEvent e) {
 				panelEvent.setVisible(true);
 				panelEggOptions.setVisible(true);
-				textAreaInstructions.setText(displayInstructions(2));
+				textAreaInstructions.setText(getInstructions(2));
 						
 			}
 		});
@@ -179,7 +179,7 @@ public class PokemonGoEggsGUI {
 			public void actionPerformed(ActionEvent e) {
 				panelEvent.setVisible(true);
 				panelEggOptions.setVisible(true);
-				textAreaInstructions.setText(displayInstructions(3));
+				textAreaInstructions.setText(getInstructions(3));
 			}
 		});
 		rdbtnCreatePlan.setBounds(22, 97, 355, 23);
@@ -217,7 +217,7 @@ public class PokemonGoEggsGUI {
 		frame.getContentPane().add(btnDisplayResults);
 	}
 	
-	private String displayInstructions(int choice) {
+	private String getInstructions(int choice) {
 		String result = "";
 		
 		switch(choice) {
