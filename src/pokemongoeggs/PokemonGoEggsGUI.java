@@ -1,3 +1,7 @@
+/*
+ * See README at https://github.com/mrsbluerose/aw.pokemon_go_egg_hatching
+ */
+
 package pokemongoeggs;
 
 import java.awt.EventQueue;
@@ -61,6 +65,7 @@ public class PokemonGoEggsGUI {
 		panelEvent.setBounds(12, 205, 426, 24);
 		frame.getContentPane().add(panelEvent);
 		panelEvent.setLayout(null);
+		
 		JComboBox comboBoxEventWalkingDistance = new JComboBox(eventDistanceArray);
 		comboBoxEventWalkingDistance.setBounds(336, 0, 90, 24);
 		panelEvent.add(comboBoxEventWalkingDistance);
@@ -71,7 +76,7 @@ public class PokemonGoEggsGUI {
 		lblEventWalkingDistance.setBounds(0, 0, 341, 24);
 		panelEvent.add(lblEventWalkingDistance);
 		
-		//Creates Egg information panel
+		//Create Egg information panel
 		JPanel panelEggOptions = new JPanel();
 		panelEggOptions.setBounds(15, 241, 423, 81);
 		frame.getContentPane().add(panelEggOptions);
