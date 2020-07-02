@@ -18,6 +18,8 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import java.awt.Color;
 import javax.swing.JButton;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class PokemonGoEggsGUI {
 
@@ -67,6 +69,12 @@ public class PokemonGoEggsGUI {
 		panelEvent.setLayout(null);
 		
 		JComboBox comboBoxEventWalkingDistance = new JComboBox(eventDistanceArray);
+//		TODO: determine whether to use objects and set properties or arrays to reference. Such as: egg, set distance or egg and pick distance
+		comboBoxEventWalkingDistance.addMouseListener(new MouseAdapter() {  
+			@Override
+			public void mouseClicked(MouseEvent e) {
+			}
+		});
 		comboBoxEventWalkingDistance.setBounds(336, 0, 90, 24);
 		panelEvent.add(comboBoxEventWalkingDistance);
 		comboBoxEventWalkingDistance.setBackground(Color.WHITE);

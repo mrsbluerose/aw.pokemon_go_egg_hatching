@@ -8,15 +8,10 @@ package pokemongoeggs;
  *
  */
 public abstract class Incubator {
-//	double incubatorMultiplier;
-//	int incubatorKey; // may use for table reference
-//
-//	public abstract double getIncubatorMultiplier();
 	
-	private double incubatorRegular = 1;
-	private double incubatorSuper = 0.666667;
+	double incubatorMultiplier;
+
+	public abstract double getIncubatorMultiplier();
+
 	
-	private double incubators[] = {incubatorRegular, incubatorSuper};
-
-
 }
