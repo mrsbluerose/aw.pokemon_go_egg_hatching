@@ -20,6 +20,10 @@ import java.awt.Color;
 import javax.swing.JButton;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import javax.swing.JTable;
+import javax.swing.JScrollPane;
+import java.awt.event.ItemListener;
+import java.awt.event.ItemEvent;
 
 class PokemonGoEggsGUI {
 
@@ -29,6 +33,9 @@ class PokemonGoEggsGUI {
 	double incubators[] = {1, 0.666667};
 	double events[] = {0.25, 0.5};
 	EggsNew userInventory = new EggsNew();
+	int eggType;
+	double eventMultiplier;
+	double incubatorType;
 	
 
 	/**
@@ -52,7 +59,7 @@ class PokemonGoEggsGUI {
 	 */
 	PokemonGoEggsGUI() {
 		initialize();
-		frame.setVisible(true);
+		//frame.setVisible(true);
 	}
 
 	/**
@@ -61,25 +68,39 @@ class PokemonGoEggsGUI {
 	private void initialize() {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 450, 591);
+		frame.setVisible(true);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
+
+		//Creates text areas
+		JTextArea textAreaInstructions = new JTextArea();
+		textAreaInstructions.setBounds(12, 132, 426, 70);
+		frame.getContentPane().add(textAreaInstructions);
+		
+		JTextArea textAreaResults = new JTextArea();
+		textAreaResults.setBounds(12, 344, 426, 176);
+		frame.getContentPane().add(textAreaResults);
 		
 		//Create Event Panel
 //		TODO: get event types from class instead of array
 		String[] eventDistanceArray = {"no event", "1/4", "1/2"};
-		
+
 		JPanel panelEvent = new JPanel();
 		panelEvent.setBounds(12, 205, 426, 24);
 		frame.getContentPane().add(panelEvent);
 		panelEvent.setLayout(null);
 		
 		JComboBox comboBoxEventWalkingDistance = new JComboBox(eventDistanceArray);
-//		TODO: determine whether to use objects and set properties or arrays to reference. Such as: egg, set distance or egg and pick distance
-		comboBoxEventWalkingDistance.addMouseListener(new MouseAdapter() {  
-			@Override
-			public void mouseClicked(MouseEvent e) {
+		comboBoxEventWalkingDistance.addItemListener(new ItemListener() {
+			public void itemStateChanged(ItemEvent e) {
+				if (e.getSource() == comboBoxEventWalkingDistance) {
+					//eventMultiplier = setText(comboBoxEventWalkingDistance.getSelectedItem().toString());
+				}
 			}
 		});
+
+//		TODO: determine whether to use objects and set properties or arrays to reference. Such as: egg, set distance or egg and pick distance
+
 		comboBoxEventWalkingDistance.setBounds(336, 0, 90, 24);
 		panelEvent.add(comboBoxEventWalkingDistance);
 		comboBoxEventWalkingDistance.setBackground(Color.WHITE);
@@ -148,14 +169,14 @@ class PokemonGoEggsGUI {
 		comboBoxDistanceWalkedDecimal.setBounds(207, 55, 40, 24);
 		panelEggOptions.add(comboBoxDistanceWalkedDecimal);
 		
-		//Creates text areas
-		JTextArea textAreaInstructions = new JTextArea();
-		textAreaInstructions.setBounds(12, 132, 426, 70);
-		frame.getContentPane().add(textAreaInstructions);
-		
-		JTextArea textAreaResults = new JTextArea();
-		textAreaResults.setBounds(12, 344, 426, 176);
-		frame.getContentPane().add(textAreaResults);
+//		//Creates text areas
+//		JTextArea textAreaInstructions = new JTextArea();
+//		textAreaInstructions.setBounds(12, 132, 426, 70);
+//		frame.getContentPane().add(textAreaInstructions);
+//		
+//		JTextArea textAreaResults = new JTextArea();
+//		textAreaResults.setBounds(12, 344, 426, 176);
+//		frame.getContentPane().add(textAreaResults);
 		
 		//Creates main menu
 		JLabel lblMenu = new JLabel("Menu");
@@ -233,6 +254,12 @@ class PokemonGoEggsGUI {
 		JButton btnDisplayResults = new JButton("Display Results");
 		btnDisplayResults.setBounds(44, 524, 164, 25);
 		frame.getContentPane().add(btnDisplayResults);
+		
+		JScrollPane scrollPaneHatchingTable = new JScrollPane();
+		scrollPaneHatchingTable.setBounds(12, 322, 426, 198);
+		frame.getContentPane().add(scrollPaneHatchingTable);
+		
+
 	}
 	
 	private String displayInstructions(int choice) {
@@ -255,4 +282,5 @@ class PokemonGoEggsGUI {
 		return result;
 	}
 	
+
 }
