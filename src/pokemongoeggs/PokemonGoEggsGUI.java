@@ -28,7 +28,7 @@ public class PokemonGoEggsGUI {
 	int eggs[] = {2, 5, 7, 10};
 	double incubators[] = {1, 0.666667};
 	double events[] = {0.25, 0.5};
-	Inventory userInventory = new Inventory();
+	EggsNew userInventory = new EggsNew();
 	
 
 	/**
