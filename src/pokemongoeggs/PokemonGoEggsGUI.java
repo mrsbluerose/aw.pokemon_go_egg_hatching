@@ -21,7 +21,7 @@ import javax.swing.JButton;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-public class PokemonGoEggsGUI {
+class PokemonGoEggsGUI {
 
 	private JFrame frame;
 	private final ButtonGroup buttonGroupMenu = new ButtonGroup();
@@ -50,7 +50,7 @@ public class PokemonGoEggsGUI {
 	/**
 	 * Create the application.
 	 */
-	public PokemonGoEggsGUI() {
+	PokemonGoEggsGUI() {
 		initialize();
 		frame.setVisible(true);
 	}
