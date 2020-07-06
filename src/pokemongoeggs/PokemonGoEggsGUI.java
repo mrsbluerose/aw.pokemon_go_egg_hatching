@@ -34,24 +34,25 @@ public class PokemonGoEggsGUI {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					PokemonGoEggsGUI window = new PokemonGoEggsGUI();
-					window.frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+//	public static void main(String[] args) {
+//		EventQueue.invokeLater(new Runnable() {
+//			public void run() {
+//				try {
+//					PokemonGoEggsGUI window = new PokemonGoEggsGUI();
+//					window.frame.setVisible(true);
+//				} catch (Exception e) {
+//					e.printStackTrace();
+//				}
+//			}
+//		});
+//	}
 
 	/**
 	 * Create the application.
 	 */
 	public PokemonGoEggsGUI() {
 		initialize();
+		frame.setVisible(true);
 	}
 
 	/**
