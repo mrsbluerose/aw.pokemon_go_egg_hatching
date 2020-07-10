@@ -5,7 +5,7 @@ public class MasterList {
 	private EggsNew egg5KM = new EggsNew("5KM", 5.0);
 	private EggsNew egg7KM = new EggsNew("7KM", 7.0);
 	private EggsNew egg10KM = new EggsNew("10KM", 10.0);
-	private EggsNew[] eggColection = {egg2KM, egg5KM, egg7KM, egg10KM};
+	private EggsNew[] eggCollection = {egg2KM, egg5KM, egg7KM, egg10KM};
 	
 	private IncubatorsNew incubatorRegular = new IncubatorsNew("regular", 1.0);
 	private IncubatorsNew incubatorSuper = new IncubatorsNew("super", 0.66667);
@@ -16,8 +16,8 @@ public class MasterList {
 	private EventType eventHalf = new EventType("1/2", 0.5);
 	private EventType[] eventCollection = {eventNone,eventQuarter,eventHalf};
 
-	public EggsNew[] getEggColection() {
-		return eggColection;
+	public EggsNew[] getEggCollection() {
+		return eggCollection;
 	}
 
 	public IncubatorsNew[] getIncubatorCollection() {

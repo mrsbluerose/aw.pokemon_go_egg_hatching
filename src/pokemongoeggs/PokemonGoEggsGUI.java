@@ -25,25 +25,25 @@ class PokemonGoEggsGUI {
 
 	private JFrame frame;
 	private final ButtonGroup buttonGroupMenu = new ButtonGroup();
-	private int eggs[] = {2, 5, 7, 10};
-	private double incubators[] = {1, 0.666667};
-	private double events[] = {0.25, 0.5};
+	//private int eggs[] = {2, 5, 7, 10};
+	//private double incubators[] = {1, 0.666667};
+	//private double events[] = {0.25, 0.5};
 	//int eggType;
-	private double eventMultiplier;
+	//private double eventMultiplier;
 	//double incubatorType;
-	private Egg2KM egg2KM = new Egg2KM();
-	private Egg5KM egg5KM = new Egg5KM();
-	private Egg7KM egg7KM = new Egg7KM();
-	private Egg10KM egg10KM = new Egg10KM();
+	//private Egg2KM egg2KM = new Egg2KM();
+	//private Egg5KM egg5KM = new Egg5KM();
+	//private Egg7KM egg7KM = new Egg7KM();
+	//private Egg10KM egg10KM = new Egg10KM();
 
-	private IncubatorTypeRegular incubatorRegular = new IncubatorTypeRegular();
-	private IncubatorTypeSuper incubatorSuper = new IncubatorTypeSuper();
+	//private IncubatorTypeRegular incubatorRegular = new IncubatorTypeRegular();
+	//private IncubatorTypeSuper incubatorSuper = new IncubatorTypeSuper();
 	//private String[] eggTypes = {egg2KM.getName(), egg5KM.getName(), egg7KM.getName(), egg10KM.getName()};
-	private Object[] eggTypes = {egg2KM, egg5KM, egg7KM, egg10KM};
+	//private Object[] eggTypes = {egg2KM, egg5KM, egg7KM, egg10KM};
 	private String[] distanceNumbers = {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9"};
-	private String[] eventDistanceArray = {"no event", "1/4", "1/2"};
+	//private String[] eventDistanceArray = {"no event", "1/4", "1/2"};
 	//private String[] incubatorTypes = { incubatorRegular.getName(), incubatorSuper.getName()};
-	private Object[] incubatorTypes = {incubatorRegular, incubatorSuper};
+	//private Object[] incubatorTypes = {incubatorRegular, incubatorSuper};
 	
 	MasterList masterList = new MasterList();
 
@@ -126,14 +126,14 @@ class PokemonGoEggsGUI {
 //		TODO: get egg types from class instead of array		
 //		String[] eggTypes = { " ", "2 KM", "5 KM", "7 KM", "10 KM"};
 //		String[] eggTypes = { " ", egg2KM.getName(), egg5KM.getName(), egg7KM.getName(), egg10KM.getName()};
-		JComboBox comboBoxEggType = new JComboBox();
+		JComboBox comboBoxEggType = new JComboBox(masterList.getEggCollection());
 		comboBoxEggType.setBackground(Color.WHITE);
 		comboBoxEggType.setBounds(149, 1, 98, 24);
 		panelEggOptions.add(comboBoxEggType);
 		
 //		TODO: get incubator types from class instead of array		
 //		String[] incubatorTypes = { "regular", "super"};
-		JComboBox comboBoxIncubatorType = new JComboBox(incubatorTypes);
+		JComboBox comboBoxIncubatorType = new JComboBox(masterList.getIncubatorCollection());
 		comboBoxIncubatorType.setBackground(Color.WHITE);
 		comboBoxIncubatorType.setBounds(149, 28, 98, 24);
 		panelEggOptions.add(comboBoxIncubatorType);
@@ -159,7 +159,7 @@ class PokemonGoEggsGUI {
 		frame.getContentPane().add(panelEvent);
 		panelEvent.setLayout(null);
 		
-		JComboBox comboBoxEventWalkingDistance = new JComboBox(eventDistanceArray);
+		JComboBox comboBoxEventWalkingDistance = new JComboBox(masterList.getEventCollection());
 		comboBoxEventWalkingDistance.addItemListener(new ItemListener() {
 			public void itemStateChanged(ItemEvent e) {
 				if (e.getSource() == comboBoxEventWalkingDistance) {
