@@ -11,10 +11,10 @@ public class MasterList {
 	private IncubatorsNew incubatorSuper = new IncubatorsNew("super", 0.66667);
 	private IncubatorsNew[] incubatorCollection = {incubatorRegular,incubatorSuper};
 	
-	private EventType eventNone = new EventType("no event", 1.0);
-	private EventType eventQuarter = new EventType("1/4", 0.25);
-	private EventType eventHalf = new EventType("1/2", 0.5);
-	private EventType[] eventCollection = {eventNone,eventQuarter,eventHalf};
+	private EventMultiplier eventNone = new EventMultiplier("no event", 1.0);
+	private EventMultiplier eventQuarter = new EventMultiplier("1/4", 0.25);
+	private EventMultiplier eventHalf = new EventMultiplier("1/2", 0.5);
+	private EventMultiplier[] eventCollection = {eventNone,eventQuarter,eventHalf};
 
 	public EggsNew[] getEggCollection() {
 		return eggCollection;
@@ -24,7 +24,7 @@ public class MasterList {
 		return incubatorCollection;
 	}
 
-	public EventType[] getEventCollection() {
+	public EventMultiplier[] getEventCollection() {
 		return eventCollection;
 	}
 
