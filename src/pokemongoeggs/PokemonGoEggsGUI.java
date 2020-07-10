@@ -44,6 +44,8 @@ class PokemonGoEggsGUI {
 	private String[] eventDistanceArray = {"no event", "1/4", "1/2"};
 	//private String[] incubatorTypes = { incubatorRegular.getName(), incubatorSuper.getName()};
 	private Object[] incubatorTypes = {incubatorRegular, incubatorSuper};
+	
+	MasterList masterList = new MasterList();
 
 	/**
 	 * Launch the application.
