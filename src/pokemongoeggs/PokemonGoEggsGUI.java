@@ -25,24 +25,23 @@ class PokemonGoEggsGUI {
 
 	private JFrame frame;
 	private final ButtonGroup buttonGroupMenu = new ButtonGroup();
-	int eggs[] = {2, 5, 7, 10};
-	double incubators[] = {1, 0.666667};
-	double events[] = {0.25, 0.5};
-	EggsNew userInventory = new EggsNew();
-	int eggType;
-	double eventMultiplier;
-	double incubatorType;
-	
-	private Egg10KM egg10KM;
-	private Egg7KM egg7KM;
-	private Egg5KM egg5KM;
-	private Egg2KM egg2KM;
-	private IncubatorRegular incubatorRegular;
-	private IncubatorSuper incubatorSuper;
-	String[] eggTypes = {egg2KM.getName(), egg5KM.getName(), egg7KM.getName(), egg10KM.getName()};
-	String[] distanceNumbers = { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9"};
-	String[] eventDistanceArray = {"no event", "1/4", "1/2"};
-	String[] incubatorTypes = { incubatorRegular.getName(), incubatorSuper.getName()};
+	private int eggs[] = {2, 5, 7, 10};
+	private double incubators[] = {1, 0.666667};
+	private double events[] = {0.25, 0.5};
+	//int eggType;
+	private double eventMultiplier;
+	//double incubatorType;
+	private Egg2KM egg2KM = new Egg2KM();
+	private Egg5KM egg5KM = new Egg5KM();
+	private Egg7KM egg7KM = new Egg7KM();
+	private Egg10KM egg10KM = new Egg10KM();
+
+	private IncubatorRegular incubatorRegular = new IncubatorRegular();
+	private IncubatorSuper incubatorSuper = new IncubatorSuper();
+	private String[] eggTypes = {egg2KM.getName(), egg5KM.getName(), egg7KM.getName(), egg10KM.getName()};
+	private String[] distanceNumbers = {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9"};
+	private String[] eventDistanceArray = {"no event", "1/4", "1/2"};
+	private String[] incubatorTypes = { incubatorRegular.getName(), incubatorSuper.getName()};
 
 	/**
 	 * Launch the application.
@@ -94,11 +93,11 @@ class PokemonGoEggsGUI {
 		panelEggOptions.setLayout(null);
 		panelEggOptions.setVisible(false);
 		
-		JLabel label = new JLabel(".");
-		label.setHorizontalAlignment(SwingConstants.CENTER);
-		label.setVerticalAlignment(SwingConstants.BOTTOM);
-		label.setBounds(189, 60, 18, 19);
-		panelEggOptions.add(label);
+		JLabel lblDecimal = new JLabel(".");
+		lblDecimal.setHorizontalAlignment(SwingConstants.CENTER);
+		lblDecimal.setVerticalAlignment(SwingConstants.BOTTOM);
+		lblDecimal.setBounds(189, 60, 18, 19);
+		panelEggOptions.add(lblDecimal);
 		
 		JButton btnNextEgg = new JButton("Enter another egg");
 		btnNextEgg.setBounds(259, 54, 164, 25);
