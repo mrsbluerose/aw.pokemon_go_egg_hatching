@@ -53,13 +53,4 @@ public class Egg7KM extends Egg {
 	public String getName() {
 		return NAME;
 	}
-
-	public void setName(String name) {
-		this.NAME = name;
-	}
-
-	public void setEggWalkingDistance(int eggWalkingDistance) {
-		this.EGG_WALKING_DISTANCE = eggWalkingDistance;
-	}
-
 }
