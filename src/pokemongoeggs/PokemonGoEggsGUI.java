@@ -4,7 +4,6 @@
 
 package pokemongoeggs;
 
-import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -151,12 +150,9 @@ class PokemonGoEggsGUI {
 			public void itemStateChanged(ItemEvent e) {
 				if (e.getSource() == comboBoxEventWalkingDistance) {
 					eventMultiplier = getValue(comboBoxEventWalkingDistance.getSelectedItem().toString());
-					System.out.println("The event is: " + eventMultiplier); 
 				}
 			}
 		});
-//		eventMultiplier = getValue(comboBoxEventWalkingDistance.getSelectedItem().toString());
-//		System.out.println("The event is: " + eventMultiplier);
 		
 //		TODO: determine whether to use objects and set properties or arrays to reference. Such as: egg, set distance or egg and pick distance
 
@@ -168,74 +164,6 @@ class PokemonGoEggsGUI {
 		JLabel lblEventWalkingDistance = new JLabel("What is the event walking distance multiplier?");
 		lblEventWalkingDistance.setBounds(0, 0, 341, 24);
 		panelEvent.add(lblEventWalkingDistance);
-		
-//		//Create Egg information panel
-//		JPanel panelEggOptions = new JPanel();
-//		panelEggOptions.setBounds(15, 241, 423, 81);
-//		frame.getContentPane().add(panelEggOptions);
-//		panelEggOptions.setLayout(null);
-//		panelEggOptions.setVisible(false);
-//		
-//		JLabel label = new JLabel(".");
-//		label.setHorizontalAlignment(SwingConstants.CENTER);
-//		label.setVerticalAlignment(SwingConstants.BOTTOM);
-//		label.setBounds(189, 60, 18, 19);
-//		panelEggOptions.add(label);
-//		
-//		JButton btnNextEgg = new JButton("Enter another egg");
-//		btnNextEgg.setBounds(259, 54, 164, 25);
-//		panelEggOptions.add(btnNextEgg);
-//		
-//		JLabel lblEggType = new JLabel("Egg Type");
-//		lblEggType.setHorizontalAlignment(SwingConstants.LEFT);
-//		lblEggType.setBounds(12, 0, 128, 26);
-//		panelEggOptions.add(lblEggType);
-//		
-//		JLabel lblIncubatorType = new JLabel("Incubator Type");
-//		lblIncubatorType.setHorizontalAlignment(SwingConstants.LEFT);
-//		lblIncubatorType.setBounds(12, 27, 128, 26);
-//		panelEggOptions.add(lblIncubatorType);
-//		
-//		JLabel lblDistanceWalked = new JLabel("Distance Walked");
-//		lblDistanceWalked.setHorizontalAlignment(SwingConstants.LEFT);
-//		lblDistanceWalked.setBackground(Color.WHITE);
-//		lblDistanceWalked.setBounds(12, 55, 128, 26);
-//		panelEggOptions.add(lblDistanceWalked);
-//		
-////		TODO: get egg types from class instead of array		
-//		String[] eggTypes = { " ", "2 KM", "5 KM", "7 KM", "10 KM"};
-//		JComboBox comboBoxEggType = new JComboBox(eggTypes);
-//		comboBoxEggType.setBackground(Color.WHITE);
-//		comboBoxEggType.setBounds(149, 1, 98, 24);
-//		panelEggOptions.add(comboBoxEggType);
-//		
-////		TODO: get incubator types from class instead of array		
-//		String[] incubatorTypes = { "regular", "super"};
-//		JComboBox comboBoxIncubatorType = new JComboBox(incubatorTypes);
-//		comboBoxIncubatorType.setBackground(Color.WHITE);
-//		comboBoxIncubatorType.setBounds(149, 28, 98, 24);
-//		panelEggOptions.add(comboBoxIncubatorType);
-//		
-////		TODO: get distance from class instead of array	
-//		String[] distanceNumbers = { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9"};
-//		JComboBox comboBoxDistanceWalkedNumber = new JComboBox(distanceNumbers);
-//		comboBoxDistanceWalkedNumber.setBackground(Color.WHITE);
-//		comboBoxDistanceWalkedNumber.setBounds(149, 55, 40, 24);
-//		panelEggOptions.add(comboBoxDistanceWalkedNumber);
-//		
-//		JComboBox comboBoxDistanceWalkedDecimal = new JComboBox(distanceNumbers);
-//		comboBoxDistanceWalkedDecimal.setBackground(Color.WHITE);
-//		comboBoxDistanceWalkedDecimal.setBounds(207, 55, 40, 24);
-//		panelEggOptions.add(comboBoxDistanceWalkedDecimal);
-		
-//		//Creates text areas
-//		JTextArea textAreaInstructions = new JTextArea();
-//		textAreaInstructions.setBounds(12, 132, 426, 70);
-//		frame.getContentPane().add(textAreaInstructions);
-//		
-//		JTextArea textAreaResults = new JTextArea();
-//		textAreaResults.setBounds(12, 344, 426, 176);
-//		frame.getContentPane().add(textAreaResults);
 		
 		//Creates main menu
 		JLabel lblMenu = new JLabel("Menu");
@@ -340,10 +268,7 @@ class PokemonGoEggsGUI {
 			case 3: result = "Enter the event multiplier and egg information.\n" 
 								+ "If you want to enter more than one egg, click \"enter another egg\"\n"
 								+ "When you are finished, click \"display results\"";
-					break;
-			case 4: result = "Please select an event distance multiplier";
-					break;
-			default: result = "error";
+					break;			default: result = "error";
 		}
 		
 		return result;
