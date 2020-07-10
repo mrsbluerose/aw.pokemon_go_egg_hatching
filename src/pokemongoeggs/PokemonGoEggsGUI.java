@@ -288,18 +288,5 @@ class PokemonGoEggsGUI {
 		return result;
 	}
 	
-	//Get the numeric value for a menu choice
-	private double getValue(String choice) {
-		double value = 1; //no event, regular incubator
-		
-		if (choice.contentEquals("1/4")){
-			value = 0.25;
-		}
-		else if (choice.contentEquals("1/2")){
-			value = 0.5;
-		}
-		return value;
-	}
-	
 
 }
