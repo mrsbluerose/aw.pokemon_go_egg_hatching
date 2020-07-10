@@ -256,7 +256,16 @@ class PokemonGoEggsGUI {
 		JButton btnDisplayResults = new JButton("Display Results");
 		btnDisplayResults.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				if(rdbtnDisplayTable.isSelected()) {
+					
+				}
+				else if(rdbtnCalculateEgg.isSelected()) {
+					
+					calculateEgg();
+				}
+				else {
+					
+				}
 			}
 		});
 		btnDisplayResults.setBounds(44, 524, 164, 25);
@@ -284,6 +293,12 @@ class PokemonGoEggsGUI {
 								+ "When you are finished, click \"display results\"";
 					break;			default: result = "error";
 		}
+		
+		return result;
+	}
+	
+	private double calculateEgg() {
+		double result=0;
 		
 		return result;
 	}
