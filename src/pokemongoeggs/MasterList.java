@@ -1,18 +1,34 @@
 package pokemongoeggs;
 
 public class MasterList {
-	EggsNew egg2KM = new EggsNew("2KM", 2.0);
-	EggsNew egg5KM = new EggsNew("5KM", 5.0);
-	EggsNew egg7KM = new EggsNew("7KM", 7.0);
-	EggsNew egg10KM = new EggsNew("10KM", 10.0);
-	EggsNew[] eggColection = {egg2KM, egg5KM, egg7KM, egg10KM};
+	private EggsNew egg2KM = new EggsNew("2KM", 2.0);
+	private EggsNew egg5KM = new EggsNew("5KM", 5.0);
+	private EggsNew egg7KM = new EggsNew("7KM", 7.0);
+	private EggsNew egg10KM = new EggsNew("10KM", 10.0);
+	private EggsNew[] eggColection = {egg2KM, egg5KM, egg7KM, egg10KM};
 	
-	IncubatorsNew incubatorRegular = new IncubatorsNew("regular", 1.0);
-	IncubatorsNew incubatorSuper = new IncubatorsNew("super", 0.66667);
-	IncubatorsNew[] incubatorCollection = {incubatorRegular,incubatorSuper};
+	private IncubatorsNew incubatorRegular = new IncubatorsNew("regular", 1.0);
+	private IncubatorsNew incubatorSuper = new IncubatorsNew("super", 0.66667);
+	private IncubatorsNew[] incubatorCollection = {incubatorRegular,incubatorSuper};
 	
-	EventType eventNone = new EventType("no event", 1.0);
-	EventType eventQuarter = new EventType("1/4", 0.25);
-	EventType eventHalf = new EventType("1/2", 0.5);
-	EventType[] eventCollection = {eventNone,eventQuarter,eventHalf};
+	private EventType eventNone = new EventType("no event", 1.0);
+	private EventType eventQuarter = new EventType("1/4", 0.25);
+	private EventType eventHalf = new EventType("1/2", 0.5);
+	private EventType[] eventCollection = {eventNone,eventQuarter,eventHalf};
+
+	public EggsNew[] getEggColection() {
+		return eggColection;
+	}
+
+	public IncubatorsNew[] getIncubatorCollection() {
+		return incubatorCollection;
+	}
+
+	public EventType[] getEventCollection() {
+		return eventCollection;
+	}
+
+	
+	
+	
 }

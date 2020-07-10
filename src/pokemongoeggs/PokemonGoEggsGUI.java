@@ -126,7 +126,7 @@ class PokemonGoEggsGUI {
 //		TODO: get egg types from class instead of array		
 //		String[] eggTypes = { " ", "2 KM", "5 KM", "7 KM", "10 KM"};
 //		String[] eggTypes = { " ", egg2KM.getName(), egg5KM.getName(), egg7KM.getName(), egg10KM.getName()};
-		JComboBox comboBoxEggType = new JComboBox(eggTypes);
+		JComboBox comboBoxEggType = new JComboBox();
 		comboBoxEggType.setBackground(Color.WHITE);
 		comboBoxEggType.setBounds(149, 1, 98, 24);
 		panelEggOptions.add(comboBoxEggType);
