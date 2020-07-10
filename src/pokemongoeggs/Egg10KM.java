@@ -8,15 +8,15 @@ package pokemongoeggs;
  */
 public class Egg10KM extends Egg {
 	
-	String name = "10 KM";
-	private int eggWalkingDistance = 10;
+	private final String NAME = "10 KM";
+	private final int EGG_WALKING_DISTANCE = 10;
 	private boolean isIncubating = false;
 	private double distanceWalked = 0.0;
 	private double eventMultiplier = 1;
 	private double incubatorMultiplier = 1;
 
 	public double getEggWalkingDistance() {
-		return eggWalkingDistance * eventMultiplier * incubatorMultiplier;
+		return EGG_WALKING_DISTANCE * eventMultiplier * incubatorMultiplier;
 	}
 
 	public boolean isIncubating() {
@@ -51,15 +51,6 @@ public class Egg10KM extends Egg {
 		this.incubatorMultiplier = incubatorMultiplier;
 	}
 	public String getName() {
-		return name;
+		return NAME;
 	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public void setEggWalkingDistance(int eggWalkingDistance) {
-		this.eggWalkingDistance = eggWalkingDistance;
-	}
-
 }

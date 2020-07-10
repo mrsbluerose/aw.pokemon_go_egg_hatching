@@ -284,6 +284,7 @@ class PokemonGoEggsGUI {
 		return result;
 	}
 	
+	//Get the numeric value for a menu choice
 	private double getValue(String choice) {
 		double value = 1; //no event, regular incubator
 		
@@ -293,20 +294,20 @@ class PokemonGoEggsGUI {
 		else if (choice.contentEquals("1/2")){
 			value = 0.5;
 		}
-		else if (choice.contentEquals("2 KM")) {
-			value = 2.0;
+		else if (choice.contentEquals(egg2KM.getName())) {
+			value = egg2KM.getEggWalkingDistance();
 		}
-		else if (choice.contentEquals("5 KM")) {
-			value = 5.0;
+		else if (choice.contentEquals(egg5KM.getName())) {
+			value = egg5KM.getEggWalkingDistance();
 		}
-		else if (choice.contentEquals("7 KM")) {
-			value = 7.0;
+		else if (choice.contentEquals(egg7KM.getName())) {
+			value = egg7KM.getEggWalkingDistance();
 		}
-		else if (choice.contentEquals("10 KM")) {
-			value = 10.0;
+		else if (choice.contentEquals(egg10KM.getName())) {
+			value = egg10KM.getEggWalkingDistance();
 		}
-		else if (choice.contentEquals("super")) {
-			value = 0.666667;
+		else if (choice.contentEquals(incubatorSuper.getName())) {
+			value = incubatorSuper.getIncubatorMultiplier();
 		}
 		else {
 			value = 0;

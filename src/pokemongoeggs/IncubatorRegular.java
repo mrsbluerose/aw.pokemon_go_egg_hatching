@@ -2,24 +2,15 @@ package pokemongoeggs;
 
 public class IncubatorRegular extends Incubator {
 
-	String name = "regular";
-	private double incubatorMultiplier = 1;
+	private final String NAME = "regular";
+	private final double INCUBATOR_MULTIPLIER = 1;
 	
 	@Override
 	public double getIncubatorMultiplier() {
 		// TODO Auto-generated method stub
-		return incubatorMultiplier;
+		return INCUBATOR_MULTIPLIER;
 	}
 	public String getName() {
-		return name;
+		return NAME;
 	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public void setIncubatorMultiplier(double incubatorMultiplier) {
-		this.incubatorMultiplier = incubatorMultiplier;
-	}
-
 }
