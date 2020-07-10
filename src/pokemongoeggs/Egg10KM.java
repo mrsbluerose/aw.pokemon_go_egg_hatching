@@ -7,6 +7,8 @@ package pokemongoeggs;
  *
  */
 public class Egg10KM extends Egg {
+	
+	String name = "10 KM";
 	private int eggWalkingDistance = 10;
 	private boolean isIncubating = false;
 	private double distanceWalked = 0.0;
@@ -47,6 +49,17 @@ public class Egg10KM extends Egg {
 
 	public void setIncubatorMultiplier(double incubatorMultiplier) {
 		this.incubatorMultiplier = incubatorMultiplier;
+	}
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public void setEggWalkingDistance(int eggWalkingDistance) {
+		this.eggWalkingDistance = eggWalkingDistance;
 	}
 
 }

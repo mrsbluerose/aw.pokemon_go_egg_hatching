@@ -60,33 +60,68 @@ public class EggHatchingTable {
 		return eggIncubateDistances;
 	}
 
+//	// print everything in table format
+//	public void printTable(double eventMultiplier) {
+//		double[] eggsArray = buildEggArray(eventMultiplier);
+//		double[][] eggIncubateDistances = buildDistanceArray(eggsArray);
+//
+//		if (eventMultiplier == 1) {
+//			System.out.println("****************************************************************"
+//					+ "****************************************************************");
+//			System.out.println("\t\t\t\t\t\tPOKEMON GO STANDARD EGG HATCHING TABLE\n");
+//			System.out.println(
+//					"This table helps you determine when to place eggs in incubators to have them hatch at the same time.");
+//			System.out.println("The top row refers to the eggs you have in incubators. The left column refers to the "
+//					+ "eggs you want to place.");
+//			System.out.println("****************************************************************"
+//					+ "****************************************************************");
+//		} else {
+//			System.out.println("****************************************************************"
+//					+ "****************************************************************");
+//			System.out.println("\t\t\t\t\t\tPOKEMON GO EVENT EGG HATCHING TABLE\n");
+//			System.out.println("This table helps you determine when to place eggs in incubators DURING the "
+//					+ "event to have them hatch at the same time. \nNote: most events only affect eggs placed during the event.");
+//			System.out.println("The top row refers to the eggs you have in incubators. The left column refers "
+//					+ "to the eggs you want to place.");
+//			System.out.println("****************************************************************"
+//					+ "****************************************************************");
+//		}
+//		
+//		// print header row of egg types
+//		System.out.print("\t");
+//		for (int i = 0; i < eggsArray.length; i++) {
+//			PrintFormatter.formatNumbers(eggsArray[i], true);
+//			System.out.print("\t\t");
+//		}
+//
+//		// print egg type as first entry in each row
+//		for (int i = 0; i < eggsArray.length; i++) {
+//			System.out.println("");
+//			PrintFormatter.formatNumbers(eggsArray[i], true); //uses static method in Main
+//			System.out.print("\t");
+//
+//			// print distances for each egg type in each incubator column. For "0", print
+//			// "same". For negative, print "***"
+//			for (int j = 0; j < eggsArray.length; j++) {
+//				if (eggIncubateDistances[i][j] > 0) {
+//					PrintFormatter.formatNumbers(eggIncubateDistances[i][j], false);
+//					System.out.print("\t\t");
+//				} else if (eggIncubateDistances[i][j] == 0) {
+//					System.out.print("same\t\t");
+//				} else {
+//					System.out.print("***\t\t");
+//				}
+//			}
+//		}
+//
+//	}
+	
 	// print everything in table format
-	public void printTable(double eventMultiplier) {
+	public String printTable(double eventMultiplier) {
+		String table = "";
 		double[] eggsArray = buildEggArray(eventMultiplier);
 		double[][] eggIncubateDistances = buildDistanceArray(eggsArray);
 
-		if (eventMultiplier == 1) {
-			System.out.println("****************************************************************"
-					+ "****************************************************************");
-			System.out.println("\t\t\t\t\t\tPOKEMON GO STANDARD EGG HATCHING TABLE\n");
-			System.out.println(
-					"This table helps you determine when to place eggs in incubators to have them hatch at the same time.");
-			System.out.println("The top row refers to the eggs you have in incubators. The left column refers to the "
-					+ "eggs you want to place.");
-			System.out.println("****************************************************************"
-					+ "****************************************************************");
-		} else {
-			System.out.println("****************************************************************"
-					+ "****************************************************************");
-			System.out.println("\t\t\t\t\t\tPOKEMON GO EVENT EGG HATCHING TABLE\n");
-			System.out.println("This table helps you determine when to place eggs in incubators DURING the "
-					+ "event to have them hatch at the same time. \nNote: most events only affect eggs placed during the event.");
-			System.out.println("The top row refers to the eggs you have in incubators. The left column refers "
-					+ "to the eggs you want to place.");
-			System.out.println("****************************************************************"
-					+ "****************************************************************");
-		}
-		
 		// print header row of egg types
 		System.out.print("\t");
 		for (int i = 0; i < eggsArray.length; i++) {
@@ -113,7 +148,8 @@ public class EggHatchingTable {
 				}
 			}
 		}
-
+		
+		return table;
 	}
 
 }

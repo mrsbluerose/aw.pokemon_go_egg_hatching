@@ -7,6 +7,7 @@ package pokemongoeggs;
  *
  */
 public abstract class Egg {
+	String name;
 	int eggWalkingDistance;
 	boolean isIncubating;
 	double distanceWalked;

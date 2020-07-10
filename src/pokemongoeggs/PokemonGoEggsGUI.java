@@ -33,6 +33,16 @@ class PokemonGoEggsGUI {
 	double eventMultiplier;
 	double incubatorType;
 	
+	private Egg10KM egg10KM;
+	private Egg7KM egg7KM;
+	private Egg5KM egg5KM;
+	private Egg2KM egg2KM;
+	private IncubatorRegular incubatorRegular;
+	private IncubatorSuper incubatorSuper;
+	String[] eggTypes = {egg2KM.getName(), egg5KM.getName(), egg7KM.getName(), egg10KM.getName()};
+	String[] distanceNumbers = { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9"};
+	String[] eventDistanceArray = {"no event", "1/4", "1/2"};
+	String[] incubatorTypes = { incubatorRegular.getName(), incubatorSuper.getName()};
 
 	/**
 	 * Launch the application.
@@ -111,21 +121,22 @@ class PokemonGoEggsGUI {
 		panelEggOptions.add(lblDistanceWalked);
 		
 //		TODO: get egg types from class instead of array		
-		String[] eggTypes = { " ", "2 KM", "5 KM", "7 KM", "10 KM"};
+//		String[] eggTypes = { " ", "2 KM", "5 KM", "7 KM", "10 KM"};
+//		String[] eggTypes = { " ", egg2KM.getName(), egg5KM.getName(), egg7KM.getName(), egg10KM.getName()};
 		JComboBox comboBoxEggType = new JComboBox(eggTypes);
 		comboBoxEggType.setBackground(Color.WHITE);
 		comboBoxEggType.setBounds(149, 1, 98, 24);
 		panelEggOptions.add(comboBoxEggType);
 		
 //		TODO: get incubator types from class instead of array		
-		String[] incubatorTypes = { "regular", "super"};
+//		String[] incubatorTypes = { "regular", "super"};
 		JComboBox comboBoxIncubatorType = new JComboBox(incubatorTypes);
 		comboBoxIncubatorType.setBackground(Color.WHITE);
 		comboBoxIncubatorType.setBounds(149, 28, 98, 24);
 		panelEggOptions.add(comboBoxIncubatorType);
 		
 //		TODO: get distance from class instead of array	
-		String[] distanceNumbers = { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9"};
+//		String[] distanceNumbers = { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9"};
 		JComboBox comboBoxDistanceWalkedNumber = new JComboBox(distanceNumbers);
 		comboBoxDistanceWalkedNumber.setBackground(Color.WHITE);
 		comboBoxDistanceWalkedNumber.setBounds(149, 55, 40, 24);
@@ -138,7 +149,7 @@ class PokemonGoEggsGUI {
 		
 		//Create Event Panel
 //		TODO: get event types from class instead of array
-		String[] eventDistanceArray = {"no event", "1/4", "1/2"};
+//		String[] eventDistanceArray = {"no event", "1/4", "1/2"};
 
 		JPanel panelEvent = new JPanel();
 		panelEvent.setBounds(12, 205, 426, 24);
