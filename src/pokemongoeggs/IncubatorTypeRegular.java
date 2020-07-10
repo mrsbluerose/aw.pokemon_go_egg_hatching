@@ -1,6 +1,6 @@
 package pokemongoeggs;
 
-public class IncubatorRegular extends Incubator {
+public class IncubatorTypeRegular extends Incubator {
 
 	private final String NAME = "regular";
 	private final double INCUBATOR_MULTIPLIER = 1;

@@ -36,8 +36,8 @@ class PokemonGoEggsGUI {
 	private Egg7KM egg7KM = new Egg7KM();
 	private Egg10KM egg10KM = new Egg10KM();
 
-	private IncubatorRegular incubatorRegular = new IncubatorRegular();
-	private IncubatorSuper incubatorSuper = new IncubatorSuper();
+	private IncubatorTypeRegular incubatorRegular = new IncubatorTypeRegular();
+	private IncubatorTypeSuper incubatorSuper = new IncubatorTypeSuper();
 	//private String[] eggTypes = {egg2KM.getName(), egg5KM.getName(), egg7KM.getName(), egg10KM.getName()};
 	private Object[] eggTypes = {egg2KM, egg5KM, egg7KM, egg10KM};
 	private String[] distanceNumbers = {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9"};

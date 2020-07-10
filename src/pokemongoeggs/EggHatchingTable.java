@@ -22,8 +22,8 @@ public class EggHatchingTable {
 		Egg7KM seven = new Egg7KM();
 		Egg5KM five = new Egg5KM();
 		Egg2KM two = new Egg2KM();
-		Incubator regularIncubator = new IncubatorRegular();
-		Incubator superIncubator = new IncubatorSuper();
+		Incubator regularIncubator = new IncubatorTypeRegular();
+		Incubator superIncubator = new IncubatorTypeSuper();
 
 		double regularIncubatorDistance = regularIncubator.getIncubatorMultiplier();
 		double superIncubatorDistance = superIncubator.getIncubatorMultiplier();

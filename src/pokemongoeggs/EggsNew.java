@@ -3,7 +3,7 @@ package pokemongoeggs;
 public class EggsNew {
 
 		private String name; 
-		private int eggWalkingDistance;
+		private double eggWalkingDistance;
 		private boolean isIncubating = false;
 		private double distanceWalked = 0.0;
 		private double eventMultiplier = 1;
@@ -12,7 +12,7 @@ public class EggsNew {
 		public EggsNew() {
 			
 		}
-		public EggsNew(String name, int eggWalkingDistance) {
+		public EggsNew(String name, double eggWalkingDistance) {
 			this.name = name;
 			this.eggWalkingDistance = eggWalkingDistance;
 		}
