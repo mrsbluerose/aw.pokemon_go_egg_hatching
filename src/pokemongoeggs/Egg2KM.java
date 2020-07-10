@@ -54,4 +54,8 @@ public class Egg2KM extends Egg {
 	public String getName() {
 		return NAME;
 	}
+    @Override
+    public String toString() {
+        return NAME;
+    }
 }

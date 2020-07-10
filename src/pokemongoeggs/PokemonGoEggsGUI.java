@@ -38,10 +38,12 @@ class PokemonGoEggsGUI {
 
 	private IncubatorRegular incubatorRegular = new IncubatorRegular();
 	private IncubatorSuper incubatorSuper = new IncubatorSuper();
-	private String[] eggTypes = {egg2KM.getName(), egg5KM.getName(), egg7KM.getName(), egg10KM.getName()};
+	//private String[] eggTypes = {egg2KM.getName(), egg5KM.getName(), egg7KM.getName(), egg10KM.getName()};
+	private Object[] eggTypes = {egg2KM, egg5KM, egg7KM, egg10KM};
 	private String[] distanceNumbers = {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9"};
 	private String[] eventDistanceArray = {"no event", "1/4", "1/2"};
-	private String[] incubatorTypes = { incubatorRegular.getName(), incubatorSuper.getName()};
+	//private String[] incubatorTypes = { incubatorRegular.getName(), incubatorSuper.getName()};
+	private Object[] incubatorTypes = {incubatorRegular, incubatorSuper};
 
 	/**
 	 * Launch the application.
@@ -293,24 +295,6 @@ class PokemonGoEggsGUI {
 		}
 		else if (choice.contentEquals("1/2")){
 			value = 0.5;
-		}
-		else if (choice.contentEquals(egg2KM.getName())) {
-			value = egg2KM.getEggWalkingDistance();
-		}
-		else if (choice.contentEquals(egg5KM.getName())) {
-			value = egg5KM.getEggWalkingDistance();
-		}
-		else if (choice.contentEquals(egg7KM.getName())) {
-			value = egg7KM.getEggWalkingDistance();
-		}
-		else if (choice.contentEquals(egg10KM.getName())) {
-			value = egg10KM.getEggWalkingDistance();
-		}
-		else if (choice.contentEquals(incubatorSuper.getName())) {
-			value = incubatorSuper.getIncubatorMultiplier();
-		}
-		else {
-			value = 0;
 		}
 		return value;
 	}

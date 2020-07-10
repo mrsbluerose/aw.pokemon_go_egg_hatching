@@ -13,4 +13,8 @@ public class IncubatorRegular extends Incubator {
 	public String getName() {
 		return NAME;
 	}
+    @Override
+    public String toString() {
+        return NAME;
+    }
 }
