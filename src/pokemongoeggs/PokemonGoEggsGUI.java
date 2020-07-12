@@ -236,7 +236,12 @@ class PokemonGoEggsGUI {
 				buttonGroupMenu.clearSelection();
 				textAreaInstructions.setText(null);
 				textAreaResults.setText(null);
-//				TODO: clear egg option fields
+				comboBoxEventWalkingDistance.setSelectedIndex(0);
+				comboBoxEggType.setSelectedIndex(0);
+				comboBoxIncubatorType.setSelectedIndex(0);
+				comboBoxDistanceWalkedNumber.setSelectedIndex(0);
+				comboBoxDistanceWalkedNumber.setSelectedIndex(0);
+				comboBoxDistanceWalkedDecimal.setSelectedIndex(0);
 				
 			}
 		});
@@ -259,7 +264,7 @@ class PokemonGoEggsGUI {
 				if(rdbtnDisplayTable.isSelected()) {
 					
 				}
-				//TODO: format decimal to only one place
+				//TODO: format decimal to only one place and no negatives
 				else if(rdbtnCalculateEgg.isSelected()) {
 					textAreaResults.setText("The egg will hatch in " + 
 					calculateEgg((EventMultiplier)comboBoxEventWalkingDistance.getSelectedItem(), (EggsNew)comboBoxEggType.getSelectedItem(), 
