@@ -29,7 +29,7 @@ class PokemonGoEggsGUI {
 	//private double incubators[] = {1, 0.666667};
 	//private double events[] = {0.25, 0.5};
 	//int eggType;
-	private EventMultiplier eventMultiplier;
+	//////////////////////////private EventMultiplier eventMultiplier;
 	//double incubatorType;
 	//private Egg2KM egg2KM = new Egg2KM();
 	//private Egg5KM egg5KM = new Egg5KM();
@@ -160,13 +160,13 @@ class PokemonGoEggsGUI {
 		panelEvent.setLayout(null);
 		
 		JComboBox comboBoxEventWalkingDistance = new JComboBox(masterList.getEventCollection());
-		comboBoxEventWalkingDistance.addItemListener(new ItemListener() {
-			public void itemStateChanged(ItemEvent e) {
-				if (e.getSource() == comboBoxEventWalkingDistance) {
-					eventMultiplier = (EventMultiplier) comboBoxEventWalkingDistance.getSelectedItem();
-				}
-			}
-		});
+//		comboBoxEventWalkingDistance.addItemListener(new ItemListener() {
+//			public void itemStateChanged(ItemEvent e) {
+//				if (e.getSource() == comboBoxEventWalkingDistance) {
+//					eventMultiplier = (EventMultiplier) comboBoxEventWalkingDistance.getSelectedItem();
+//				}
+//			}
+//		});
 		
 //		TODO: determine whether to use objects and set properties or arrays to reference. Such as: egg, set distance or egg and pick distance
 
