@@ -123,7 +123,7 @@ class PokemonGoEggsGUI {
 		lblDistanceWalked.setBounds(12, 55, 128, 26);
 		panelEggOptions.add(lblDistanceWalked);
 		
-//		TODO: get egg types from class instead of array		
+//		TODO: get egg types from class instead of array - DONE
 //		String[] eggTypes = { " ", "2 KM", "5 KM", "7 KM", "10 KM"};
 //		String[] eggTypes = { " ", egg2KM.getName(), egg5KM.getName(), egg7KM.getName(), egg10KM.getName()};
 		JComboBox comboBoxEggType = new JComboBox(masterList.getEggCollection());
@@ -131,14 +131,14 @@ class PokemonGoEggsGUI {
 		comboBoxEggType.setBounds(149, 1, 98, 24);
 		panelEggOptions.add(comboBoxEggType);
 		
-//		TODO: get incubator types from class instead of array		
+//		TODO: get incubator types from class instead of array - DONE		
 //		String[] incubatorTypes = { "regular", "super"};
 		JComboBox comboBoxIncubatorType = new JComboBox(masterList.getIncubatorCollection());
 		comboBoxIncubatorType.setBackground(Color.WHITE);
 		comboBoxIncubatorType.setBounds(149, 28, 98, 24);
 		panelEggOptions.add(comboBoxIncubatorType);
 		
-//		TODO: get distance from class instead of array	
+//		TODO: get distance from class instead of array - DONE
 //		String[] distanceNumbers = { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9"};
 		JComboBox comboBoxDistanceWalkedNumber = new JComboBox(distanceNumbers);
 		comboBoxDistanceWalkedNumber.setBackground(Color.WHITE);
@@ -151,7 +151,7 @@ class PokemonGoEggsGUI {
 		panelEggOptions.add(comboBoxDistanceWalkedDecimal);
 		
 		//Create Event Panel
-//		TODO: get event types from class instead of array
+//		TODO: get event types from class instead of array - DONE
 //		String[] eventDistanceArray = {"no event", "1/4", "1/2"};
 
 		JPanel panelEvent = new JPanel();
@@ -259,9 +259,14 @@ class PokemonGoEggsGUI {
 				if(rdbtnDisplayTable.isSelected()) {
 					
 				}
+				//TODO: format decimal to only one place
 				else if(rdbtnCalculateEgg.isSelected()) {
+					textAreaResults.setText("The egg will hatch in " + 
+					calculateEgg((EventMultiplier)comboBoxEventWalkingDistance.getSelectedItem(), (EggsNew)comboBoxEggType.getSelectedItem(), 
+							(IncubatorsNew)comboBoxIncubatorType.getSelectedItem(), 
+							Integer.valueOf((String)comboBoxDistanceWalkedNumber.getSelectedItem()), 
+							Integer.valueOf((String)comboBoxDistanceWalkedDecimal.getSelectedItem())) + " KM");
 					
-					calculateEgg();
 				}
 				else {
 					
@@ -297,10 +302,9 @@ class PokemonGoEggsGUI {
 		return result;
 	}
 	
-	private double calculateEgg() {
-		double result=0;
-		
-		return result;
+	private double calculateEgg(EventMultiplier event, EggsNew egg, IncubatorsNew incubator, Integer distance1, Integer distance2) {
+		double distance = (distance1 + (distance2/10));		
+		return (event.getMultiplier() * egg.getEggWalkingDistance() * incubator.getIncubatorMultiplier())- distance;
 	}
 	
 
