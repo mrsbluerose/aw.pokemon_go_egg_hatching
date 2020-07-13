@@ -230,7 +230,6 @@ class PokemonGoEggsGUI {
 				comboBoxEggType.setSelectedIndex(0);
 				comboBoxIncubatorType.setSelectedIndex(0);
 				comboBoxDistanceWalkedNumber.setSelectedIndex(0);
-				comboBoxDistanceWalkedNumber.setSelectedIndex(0);
 				comboBoxDistanceWalkedDecimal.setSelectedIndex(0);
 				
 			}
@@ -258,7 +257,7 @@ class PokemonGoEggsGUI {
 					
 					//scrollPaneResults.setViewportView(table);
 					EggHatchingTable table = new EggHatchingTable((EventMultiplier)comboBoxEventWalkingDistance.getSelectedItem(), masterList);
-					
+					String[][] tableData = BuildTable((EventMultiplier)comboBoxEventWalkingDistance.getSelectedItem(), masterList);
 					
 					
 					
@@ -321,5 +320,34 @@ class PokemonGoEggsGUI {
 		return (event.getMultiplier() * egg.getEggWalkingDistance() * incubator.getIncubatorMultiplier())- distance;
 	}
 	
-
+	/**********************************************************************
+	 * Build table arrays
+	 **********************************************************************/
+	//TODO: clean up this mess. Build array 2D to populate Jtable and eliminate the Egg Hatching table class
+	private String[][] BuildTable(EventMultiplier multiplier, MasterList list){
+		String[][] a = {};
+		int length = list.getEggCollection().length * list.getIncubatorCollection().length;
+		EggsNew[] eggs = list.getEggCollection();
+		IncubatorsNew[] incubators = list.getIncubatorCollection();
+		double[] eggsArray = new double[length];
+		for (int i=0; i<eggsArray.length;){
+			for (int j=0; j<incubators.length; j++) {
+				for (int k=0; k<eggs.length; k++) {
+					eggsArray[i] = incubators[j].getIncubatorMultiplier() * eggs[k].getEggWalkingDistance() * multiplier.getMultiplier();
+					i++;
+				}	 
+			}
+		}
+		double[][] eggIncubateDistances = new double[eggsArray.length][eggsArray.length];
+		for (int i = 0; i < eggsArray.length; i++) {
+			for (int j = 0; j < eggsArray.length; j++) {
+				// round numbers to one decimal to match the game's math
+				eggIncubateDistances[i][j] = (Math.round(eggsArray[j] * 10) / 10.0)
+						- (Math.round(eggsArray[i] * 10) / 10.0);
+			}
+		}
+		
+		
+		return a;
+	}
 }
