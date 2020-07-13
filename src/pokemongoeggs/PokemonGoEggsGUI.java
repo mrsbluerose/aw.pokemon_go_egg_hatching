@@ -15,7 +15,11 @@ import javax.swing.JComboBox;
 import javax.swing.JTextArea;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
+
+import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Dimension;
+
 import javax.swing.JButton;
 import javax.swing.JScrollPane;
 import java.awt.event.ItemListener;
@@ -86,9 +90,14 @@ class PokemonGoEggsGUI {
 		textAreaInstructions.setBounds(12, 132, 426, 70);
 		frame.getContentPane().add(textAreaInstructions);
 		
+		JScrollPane scrollPaneHatchingTable = new JScrollPane();
+		scrollPaneHatchingTable.setBounds(12, 322, 426, 198);
+		frame.getContentPane().add(scrollPaneHatchingTable);
+		
 		JTextArea textAreaResults = new JTextArea();
 		textAreaResults.setBounds(12, 344, 426, 176);
-		frame.getContentPane().add(textAreaResults);
+		scrollPaneHatchingTable.add(textAreaResults);
+		scrollPaneHatchingTable.setViewportView(textAreaResults); //research viewport and why it's needed
 		
 		//Create Egg information panel
 		JPanel panelEggOptions = new JPanel();
@@ -262,11 +271,11 @@ class PokemonGoEggsGUI {
 		btnDisplayResults.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(rdbtnDisplayTable.isSelected()) {
-					
+					//scrollPaneHatchingTable.append((String)"\t");
 				}
 				//TODO: format decimal to only one place and no negatives
 				else if(rdbtnCalculateEgg.isSelected()) {
-					textAreaResults.setText("The egg will hatch in " + 
+					textAreaResults.append("The egg will hatch in " + 
 					calculateEgg((EventMultiplier)comboBoxEventWalkingDistance.getSelectedItem(), (EggsNew)comboBoxEggType.getSelectedItem(), 
 							(IncubatorsNew)comboBoxIncubatorType.getSelectedItem(), 
 							Integer.valueOf((String)comboBoxDistanceWalkedNumber.getSelectedItem()), 
@@ -281,9 +290,7 @@ class PokemonGoEggsGUI {
 		btnDisplayResults.setBounds(44, 524, 164, 25);
 		frame.getContentPane().add(btnDisplayResults);
 		
-		JScrollPane scrollPaneHatchingTable = new JScrollPane();
-		scrollPaneHatchingTable.setBounds(12, 322, 426, 198);
-		frame.getContentPane().add(scrollPaneHatchingTable);
+
 		
 
 	}
@@ -311,6 +318,7 @@ class PokemonGoEggsGUI {
 		double distance = (distance1 + (distance2/10));		
 		return (event.getMultiplier() * egg.getEggWalkingDistance() * incubator.getIncubatorMultiplier())- distance;
 	}
+	
 	
 
 }
