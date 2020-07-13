@@ -24,6 +24,7 @@ import javax.swing.JButton;
 import javax.swing.JScrollPane;
 import java.awt.event.ItemListener;
 import java.awt.event.ItemEvent;
+import javax.swing.JTable;
 
 class PokemonGoEggsGUI {
 
@@ -90,14 +91,18 @@ class PokemonGoEggsGUI {
 		textAreaInstructions.setBounds(12, 132, 426, 70);
 		frame.getContentPane().add(textAreaInstructions);
 		
-		JScrollPane scrollPaneHatchingTable = new JScrollPane();
-		scrollPaneHatchingTable.setBounds(12, 322, 426, 198);
-		frame.getContentPane().add(scrollPaneHatchingTable);
+		JScrollPane scrollPaneResults = new JScrollPane();
+		scrollPaneResults.setBounds(12, 322, 426, 198);
+		frame.getContentPane().add(scrollPaneResults);
 		
 		JTextArea textAreaResults = new JTextArea();
 		textAreaResults.setBounds(12, 344, 426, 176);
-		scrollPaneHatchingTable.add(textAreaResults);
-		scrollPaneHatchingTable.setViewportView(textAreaResults); //research viewport and why it's needed
+		scrollPaneResults.add(textAreaResults);
+//		scrollPaneResults.setViewportView(textAreaResults); //research viewport and why it's needed
+		
+		JTable table = new JTable();
+		scrollPaneResults.add(table);
+
 		
 		//Create Egg information panel
 		JPanel panelEggOptions = new JPanel();
@@ -245,6 +250,7 @@ class PokemonGoEggsGUI {
 				buttonGroupMenu.clearSelection();
 				textAreaInstructions.setText(null);
 				textAreaResults.setText(null);
+				scrollPaneResults.setViewport(null);;
 				comboBoxEventWalkingDistance.setSelectedIndex(0);
 				comboBoxEggType.setSelectedIndex(0);
 				comboBoxIncubatorType.setSelectedIndex(0);
@@ -271,7 +277,14 @@ class PokemonGoEggsGUI {
 		btnDisplayResults.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(rdbtnDisplayTable.isSelected()) {
-
+					
+					//scrollPaneResults.setViewportView(table);
+					EggHatchingTable table = new EggHatchingTable((EventMultiplier)comboBoxEventWalkingDistance.getSelectedItem(), masterList);
+					
+					
+					
+					
+					
 //					for (int i=0;i<masterList.getEggCollection().length;i++) {
 //						for (int j=0;j<masterList.getIncubatorCollection().length;j++) {
 //							
@@ -280,6 +293,7 @@ class PokemonGoEggsGUI {
 				}
 				//TODO: format decimal to only one place and no negatives
 				else if(rdbtnCalculateEgg.isSelected()) {
+					scrollPaneResults.setViewportView(textAreaResults);
 					textAreaResults.append("The egg will hatch in " + 
 					calculateEgg((EventMultiplier)comboBoxEventWalkingDistance.getSelectedItem(), (EggsNew)comboBoxEggType.getSelectedItem(), 
 							(IncubatorsNew)comboBoxIncubatorType.getSelectedItem(), 
@@ -288,7 +302,7 @@ class PokemonGoEggsGUI {
 					
 				}
 				else {
-					
+					scrollPaneResults.setViewportView(textAreaResults);;
 				}
 			}
 		});
@@ -323,7 +337,6 @@ class PokemonGoEggsGUI {
 		double distance = (distance1 + (distance2/10));		
 		return (event.getMultiplier() * egg.getEggWalkingDistance() * incubator.getIncubatorMultiplier())- distance;
 	}
-	
 	
 
 }

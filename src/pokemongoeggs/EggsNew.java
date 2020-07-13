@@ -2,8 +2,8 @@ package pokemongoeggs;
 
 public class EggsNew {
 
-		private String name; 
-		private double eggWalkingDistance;
+		final private String NAME; 
+		final private double EGG_WALKING_DISTANCE;
 		private boolean isIncubating = false;
 		private double distanceWalked = 0.0;
 		private double eventMultiplier = 1;
@@ -13,12 +13,16 @@ public class EggsNew {
 			
 		}
 		public EggsNew(String name, double eggWalkingDistance) {
-			this.name = name;
-			this.eggWalkingDistance = eggWalkingDistance;
+			this.NAME = name;
+			this.EGG_WALKING_DISTANCE = eggWalkingDistance;
+		}
+		
+		public String getName() {
+			return NAME;
 		}
 		
 		public double getEggWalkingDistance() {
-			return eggWalkingDistance;
+			return EGG_WALKING_DISTANCE;
 		}
 
 		public boolean isIncubating() {
@@ -54,7 +58,7 @@ public class EggsNew {
 		}
 	    @Override
 	    public String toString() {
-	        return name;
+	        return NAME;
 	    }
 
 	}
