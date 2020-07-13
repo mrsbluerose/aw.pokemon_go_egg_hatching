@@ -271,7 +271,12 @@ class PokemonGoEggsGUI {
 		btnDisplayResults.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(rdbtnDisplayTable.isSelected()) {
-					//scrollPaneHatchingTable.append((String)"\t");
+
+//					for (int i=0;i<masterList.getEggCollection().length;i++) {
+//						for (int j=0;j<masterList.getIncubatorCollection().length;j++) {
+//							
+//						}
+//					}
 				}
 				//TODO: format decimal to only one place and no negatives
 				else if(rdbtnCalculateEgg.isSelected()) {
