@@ -27,10 +27,10 @@ public class EggHatchingTable {
 		event = eventMultiplier.getMultiplier();
 		length = masterList.getEggCollection().length * masterList.getIncubatorCollection().length;
 		eggArray = buildEggArray(event, masterList,length);
-		//table = buildDistanceArray(eggArray);
+		table = buildDistanceArray(eggArray);
 	}
 	
-	private double[] buildEggArray(double eventMultiplier, MasterList masterList, int length) {
+	private double[] buildEggArray(double e, MasterList masterList, int length) {
 //		Egg10KM ten = new Egg10KM();
 //		Egg7KM seven = new Egg7KM();
 //		Egg5KM five = new Egg5KM();
@@ -52,16 +52,17 @@ public class EggHatchingTable {
 		double[] eggsArray = new double[length];
 		EggsNew[] eggs = masterList.getEggCollection();
 		IncubatorsNew[] incubators = masterList.getIncubatorCollection();
-		for (int i=0; i<eggsArray.length; i++){
+		for (int i=0; i<eggsArray.length;){
 			for (int j=0; j<incubators.length; j++) {
 				for (int k=0; k<eggs.length; k++) {
-					eggsArray[i] = incubators[j].getIncubatorMultiplier() * eggs[k].getEggWalkingDistance() * eventMultiplier;
+					eggsArray[i] = incubators[j].getIncubatorMultiplier() * eggs[k].getEggWalkingDistance() * e;
+					i++;
 				}	 
 			}
 		}
-		System.out.print("The eggs array is: ");
+		System.out.print("The eggs array is: \n\t");
 		for (int i=0; i<eggsArray.length; i++) {
-			System.out.print(eggsArray[i] + "\t");
+			System.out.print(eggsArray[i] + "\t\t");
 		}
 		
 		return eggsArray;
@@ -75,6 +76,7 @@ public class EggHatchingTable {
 	 */
 	private double[][] buildDistanceArray(double[] eggsArray) {
 		double[][] eggIncubateDistances = new double[eggsArray.length][eggsArray.length];
+		
 		// loop through the array, starting with a row and then filling each column in
 		// that row
 		for (int i = 0; i < eggsArray.length; i++) {
@@ -84,6 +86,27 @@ public class EggHatchingTable {
 						- (Math.round(eggsArray[i] * 10) / 10.0);
 			}
 		}
+		
+		// print egg type as first entry in each row
+		for (int i = 0; i < eggsArray.length; i++) {
+			System.out.println("");
+			PrintFormatter.formatNumbers(eggsArray[i], true); //uses static method in Main
+			System.out.print("\t");
+
+			// print distances for each egg type in each incubator column. For "0", print
+			// "same". For negative, print "***"
+			for (int j = 0; j < eggsArray.length; j++) {
+				if (eggIncubateDistances[i][j] > 0) {
+					PrintFormatter.formatNumbers(eggIncubateDistances[i][j], false);
+					System.out.print("\t\t");
+				} else if (eggIncubateDistances[i][j] == 0) {
+					System.out.print("same\t\t");
+				} else {
+					System.out.print("***\t\t");
+				}
+			}
+		}
+		
 		return eggIncubateDistances;
 	}
 	

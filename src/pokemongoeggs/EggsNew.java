@@ -9,9 +9,6 @@ public class EggsNew {
 		private double eventMultiplier = 1;
 		private double incubatorMultiplier = 1;
 
-		public EggsNew() {
-			
-		}
 		public EggsNew(String name, double eggWalkingDistance) {
 			this.NAME = name;
 			this.EGG_WALKING_DISTANCE = eggWalkingDistance;
