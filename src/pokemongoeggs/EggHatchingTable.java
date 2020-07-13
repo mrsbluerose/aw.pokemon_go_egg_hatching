@@ -31,24 +31,7 @@ public class EggHatchingTable {
 	}
 	
 	private double[] buildEggArray(double e, MasterList masterList, int length) {
-//		Egg10KM ten = new Egg10KM();
-//		Egg7KM seven = new Egg7KM();
-//		Egg5KM five = new Egg5KM();
-//		Egg2KM two = new Egg2KM();
-//		Incubator regularIncubator = new IncubatorTypeRegular();
-//		Incubator superIncubator = new IncubatorTypeSuper();
-//
-//		double regularIncubatorDistance = regularIncubator.getIncubatorMultiplier();
-//		double superIncubatorDistance = superIncubator.getIncubatorMultiplier();
-//
-//		double[] eggsArray = { (ten.getEggWalkingDistance() * regularIncubatorDistance * eventMultiplier),
-//				(seven.getEggWalkingDistance() * regularIncubatorDistance * eventMultiplier),
-//				(five.getEggWalkingDistance() * regularIncubatorDistance * eventMultiplier),
-//				(two.getEggWalkingDistance() * regularIncubatorDistance * eventMultiplier),
-//				(ten.getEggWalkingDistance() * superIncubatorDistance * eventMultiplier),
-//				(seven.getEggWalkingDistance() * superIncubatorDistance * eventMultiplier),
-//				(five.getEggWalkingDistance() * superIncubatorDistance * eventMultiplier),
-//				(two.getEggWalkingDistance() * superIncubatorDistance * eventMultiplier) };
+
 		double[] eggsArray = new double[length];
 		EggsNew[] eggs = masterList.getEggCollection();
 		IncubatorsNew[] incubators = masterList.getIncubatorCollection();
@@ -60,6 +43,7 @@ public class EggHatchingTable {
 				}	 
 			}
 		}
+		/////test
 		System.out.print("The eggs array is: \n\t");
 		for (int i=0; i<eggsArray.length; i++) {
 			System.out.print(eggsArray[i] + "\t\t");
@@ -86,7 +70,7 @@ public class EggHatchingTable {
 						- (Math.round(eggsArray[i] * 10) / 10.0);
 			}
 		}
-		
+		///////test
 		// print egg type as first entry in each row
 		for (int i = 0; i < eggsArray.length; i++) {
 			System.out.println("");
