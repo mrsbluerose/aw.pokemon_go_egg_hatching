@@ -15,6 +15,7 @@ import javax.swing.JComboBox;
 import javax.swing.JTextArea;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
+import javax.swing.table.TableColumn;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -32,6 +33,9 @@ class PokemonGoEggsGUI {
 	private final ButtonGroup buttonGroupMenu = new ButtonGroup();
 	private String[] distanceNumbers = {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9"};
 	MasterList masterList = new MasterList();
+	private JTable tableRow;
+	private JTable tableContent;
+	private JTable tableColumn;
 
 	/**
 	 * Launch the application.
@@ -70,21 +74,44 @@ class PokemonGoEggsGUI {
 		/**********************************************************************
 		 * Create text areas and tables
 		 **********************************************************************/
+		//Instructions
 		JTextArea textAreaInstructions = new JTextArea();
 		textAreaInstructions.setBounds(12, 132, 426, 70);
 		frame.getContentPane().add(textAreaInstructions);
 		
+		//Results
 		JScrollPane scrollPaneResults = new JScrollPane();
 		scrollPaneResults.setBounds(12, 322, 426, 198);
 		frame.getContentPane().add(scrollPaneResults);
+		scrollPaneResults.setVisible(false);
 		
 		JTextArea textAreaResults = new JTextArea();
 		textAreaResults.setBounds(12, 344, 426, 176);
 		scrollPaneResults.add(textAreaResults);
+		scrollPaneResults.setViewportView(textAreaResults);
+		
+		//Table
+		JScrollPane scrollPaneTable = new JScrollPane();
+		scrollPaneTable.setBounds(12, 322, 426, 198);
+		frame.getContentPane().add(scrollPaneTable);
+		scrollPaneTable.setVisible(false);
+		
+//		tableColumn = new JTable();
+//		scrollPaneTable.setColumnHeaderView(tableColumn);
+//		tableColumn.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+//		
+//		tableRow = new JTable();
+//		scrollPaneTable.setRowHeaderView(tableRow);
+//		tableRow.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+//		
+//		tableContent = new JTable();
+//		scrollPaneTable.setViewportView(tableContent);
+//		tableContent.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+		
 //		scrollPaneResults.setViewportView(textAreaResults); //research viewport and why it's needed
 		
-		JTable table = new JTable();
-		scrollPaneResults.add(table);
+		//JTable table = new JTable();
+		///scrollPaneResults.add(table);
 
 		
 		/**********************************************************************
@@ -225,7 +252,7 @@ class PokemonGoEggsGUI {
 				buttonGroupMenu.clearSelection();
 				textAreaInstructions.setText(null);
 				textAreaResults.setText(null);
-				scrollPaneResults.setViewport(null);;
+				scrollPaneResults.setVisible(false);
 				comboBoxEventWalkingDistance.setSelectedIndex(0);
 				comboBoxEggType.setSelectedIndex(0);
 				comboBoxIncubatorType.setSelectedIndex(0);
@@ -256,20 +283,43 @@ class PokemonGoEggsGUI {
 				if(rdbtnDisplayTable.isSelected()) {
 					
 					//scrollPaneResults.setViewportView(table);
-					EggHatchingTable table = new EggHatchingTable((EventMultiplier)comboBoxEventWalkingDistance.getSelectedItem(), masterList);
+					//EggHatchingTable table = new EggHatchingTable((EventMultiplier)comboBoxEventWalkingDistance.getSelectedItem(), masterList);
+					scrollPaneTable.setVisible(true);
 					String[][] tableData = BuildTable((EventMultiplier)comboBoxEventWalkingDistance.getSelectedItem(), masterList);
-					
-					
+					String[] headers = BuildHeaders(masterList);
+					String[] header = {"Eggs"};
+					//JTable table = new JTable(tableData,headers);
+					//scrollPaneResults.add(table);
+					//table.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+				    // code credit for column width: https://www.codejava.net/java-se/swing/setting-column-width-and-row-height-for-jtable
+//					for (int i = 0; i < table.getColumnModel().getColumnCount(); i++) {
+//				        TableColumn column = table.getColumnModel().getColumn(i);
+//				        column.setPreferredWidth(90);
+//				    }
+					//scrollPaneResults.setViewportView(table);
 					
 //					for (int i=0;i<masterList.getEggCollection().length;i++) {
 //						for (int j=0;j<masterList.getIncubatorCollection().length;j++) {
 //							
 //						}
 //					}
+					
+					JTable tableColumn = new JTable();
+					scrollPaneTable.setColumnHeaderView(tableColumn);
+					tableColumn.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+					
+					JTable tableRow = new JTable();
+					scrollPaneTable.setRowHeaderView(tableRow);
+					tableRow.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+					
+					JTable tableContent = new JTable(tableData,headers);
+					scrollPaneTable.setViewportView(tableContent);
+					tableContent.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 				}
 				//TODO: format decimal to only one place and no negatives
 				else if(rdbtnCalculateEgg.isSelected()) {
-					scrollPaneResults.setViewportView(textAreaResults);
+					//scrollPaneResults.setViewportView(textAreaResults);
+					scrollPaneResults.setVisible(true);
 					textAreaResults.append("The egg will hatch in " + 
 					calculateEgg((EventMultiplier)comboBoxEventWalkingDistance.getSelectedItem(), (EggsNew)comboBoxEggType.getSelectedItem(), 
 							(IncubatorsNew)comboBoxIncubatorType.getSelectedItem(), 
@@ -325,7 +375,7 @@ class PokemonGoEggsGUI {
 	 **********************************************************************/
 	//TODO: clean up this mess. Build array 2D to populate Jtable and eliminate the Egg Hatching table class
 	private String[][] BuildTable(EventMultiplier multiplier, MasterList list){
-		String[][] a = {};
+		//String[][] a = {};
 		int length = list.getEggCollection().length * list.getIncubatorCollection().length;
 		EggsNew[] eggs = list.getEggCollection();
 		IncubatorsNew[] incubators = list.getIncubatorCollection();
@@ -338,16 +388,32 @@ class PokemonGoEggsGUI {
 				}	 
 			}
 		}
-		double[][] eggIncubateDistances = new double[eggsArray.length][eggsArray.length];
+		String[][] eggIncubateDistances = new String[eggsArray.length][eggsArray.length];
 		for (int i = 0; i < eggsArray.length; i++) {
 			for (int j = 0; j < eggsArray.length; j++) {
 				// round numbers to one decimal to match the game's math
-				eggIncubateDistances[i][j] = (Math.round(eggsArray[j] * 10) / 10.0)
-						- (Math.round(eggsArray[i] * 10) / 10.0);
+				eggIncubateDistances[i][j] = Double.toString((Math.round(eggsArray[j] * 10) / 10.0)
+						- (Math.round(eggsArray[i] * 10) / 10.0));
 			}
 		}
 		
 		
-		return a;
+		return eggIncubateDistances;
+	}
+	
+	private String[] BuildHeaders(MasterList list) {
+		EggsNew[] eggs = list.getEggCollection();
+		IncubatorsNew[] incubators = list.getIncubatorCollection();
+		int length = list.getEggCollection().length * list.getIncubatorCollection().length;
+		String[] headers = new String[length];
+		for (int i=0; i<headers.length;){
+			for (int j=0; j<incubators.length; j++) {
+				for (int k=0; k<eggs.length; k++) {
+					headers[i] = incubators[j].getName() + " " +  eggs[k].getName();
+					i++;
+				}	 
+			}
+		}
+		return headers;
 	}
 }
