@@ -24,6 +24,9 @@ import java.awt.Dimension;
 import javax.swing.JButton;
 import javax.swing.JScrollPane;
 import java.awt.event.ItemListener;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
 import java.awt.event.ItemEvent;
 import javax.swing.JTable;
 
@@ -32,10 +35,12 @@ class PokemonGoEggsGUI {
 	private JFrame frame;
 	private final ButtonGroup buttonGroupMenu = new ButtonGroup();
 	private String[] distanceNumbers = {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9"};
-	MasterList masterList = new MasterList();
+	private MasterList masterList = new MasterList();
 	private JTable tableRow;
 	private JTable tableContent;
 	private JTable tableColumn;
+	private DecimalFormat df = new DecimalFormat("#.#");
+
 
 	/**
 	 * Launch the application.
@@ -70,16 +75,16 @@ class PokemonGoEggsGUI {
 		frame.setVisible(true);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
-
+		df.setRoundingMode(RoundingMode.HALF_UP);
 		/**********************************************************************
 		 * Create text areas and tables
 		 **********************************************************************/
-		//Instructions
+		//Instructions pane
 		JTextArea textAreaInstructions = new JTextArea();
 		textAreaInstructions.setBounds(12, 132, 426, 70);
 		frame.getContentPane().add(textAreaInstructions);
 		
-		//Results
+		//Results pane
 		JScrollPane scrollPaneResults = new JScrollPane();
 		scrollPaneResults.setBounds(12, 322, 426, 198);
 		frame.getContentPane().add(scrollPaneResults);
@@ -89,8 +94,9 @@ class PokemonGoEggsGUI {
 		textAreaResults.setBounds(12, 344, 426, 176);
 		scrollPaneResults.add(textAreaResults);
 		scrollPaneResults.setViewportView(textAreaResults);
+		scrollPaneResults.setVisible(false);
 		
-		//Table
+		//Table pane
 		JScrollPane scrollPaneTable = new JScrollPane();
 		scrollPaneTable.setBounds(12, 322, 426, 198);
 		frame.getContentPane().add(scrollPaneTable);
@@ -107,11 +113,11 @@ class PokemonGoEggsGUI {
 //		tableContent = new JTable();
 //		scrollPaneTable.setViewportView(tableContent);
 //		tableContent.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
-		
+//		
 //		scrollPaneResults.setViewportView(textAreaResults); //research viewport and why it's needed
-		
-		//JTable table = new JTable();
-		///scrollPaneResults.add(table);
+//		
+//		JTable table = new JTable();
+//		scrollPaneResults.add(table);
 
 		
 		/**********************************************************************
@@ -281,41 +287,45 @@ class PokemonGoEggsGUI {
 		btnDisplayResults.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(rdbtnDisplayTable.isSelected()) {
-					
-					//scrollPaneResults.setViewportView(table);
-					//EggHatchingTable table = new EggHatchingTable((EventMultiplier)comboBoxEventWalkingDistance.getSelectedItem(), masterList);
+					//This code builds the table data and header arrays
 					scrollPaneTable.setVisible(true);
 					String[][] tableData = BuildTable((EventMultiplier)comboBoxEventWalkingDistance.getSelectedItem(), masterList);
 					String[] headers = BuildHeaders(masterList);
-					String[] header = {"Eggs"};
-					//JTable table = new JTable(tableData,headers);
-					//scrollPaneResults.add(table);
-					//table.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
-				    // code credit for column width: https://www.codejava.net/java-se/swing/setting-column-width-and-row-height-for-jtable
-//					for (int i = 0; i < table.getColumnModel().getColumnCount(); i++) {
-//				        TableColumn column = table.getColumnModel().getColumn(i);
-//				        column.setPreferredWidth(90);
-//				    }
-					//scrollPaneResults.setViewportView(table);
 					
-//					for (int i=0;i<masterList.getEggCollection().length;i++) {
-//						for (int j=0;j<masterList.getIncubatorCollection().length;j++) {
-//							
-//						}
-//					}
+					//test print
+					for (int i=0; i<tableData.length; i++) {
+						for (int j=0; j<tableData.length; j++) {
+							System.out.print(tableData[i][j] + "\t");
+						}
+						System.out.println("");
+					}
 					
-					JTable tableColumn = new JTable();
-					scrollPaneTable.setColumnHeaderView(tableColumn);
-					tableColumn.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+					JTable table = new JTable(tableData,headers);
+					scrollPaneResults.add(table);
+					table.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+					//table.setFillsViewportHeight(true);
 					
-					JTable tableRow = new JTable();
-					scrollPaneTable.setRowHeaderView(tableRow);
-					tableRow.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+				     //code credit for column width: https://www.codejava.net/java-se/swing/setting-column-width-and-row-height-for-jtable
+					for (int i = 0; i < table.getColumnModel().getColumnCount(); i++) {
+				        TableColumn column = table.getColumnModel().getColumn(i);
+				        column.setPreferredWidth(90);
+				    }
+					scrollPaneResults.setViewportView(table);
 					
-					JTable tableContent = new JTable(tableData,headers);
-					scrollPaneTable.setViewportView(tableContent);
-					tableContent.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+					
+//					JTable tableColumn = new JTable();
+//					scrollPaneTable.setColumnHeaderView(tableColumn);
+//					tableColumn.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+//					
+//					JTable tableRow = new JTable();
+//					scrollPaneTable.setRowHeaderView(tableRow);
+//					tableRow.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+//					
+//					JTable tableContent = new JTable(tableData,headers);
+//					scrollPaneTable.setViewportView(tableContent);
+//					tableContent.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 				}
+				
 				//TODO: format decimal to only one place and no negatives
 				else if(rdbtnCalculateEgg.isSelected()) {
 					//scrollPaneResults.setViewportView(textAreaResults);
@@ -373,9 +383,9 @@ class PokemonGoEggsGUI {
 	/**********************************************************************
 	 * Build table arrays
 	 **********************************************************************/
-	//TODO: clean up this mess. Build array 2D to populate Jtable and eliminate the Egg Hatching table class
+	//TODO: clean up this mess. Simplify if possible
 	private String[][] BuildTable(EventMultiplier multiplier, MasterList list){
-		//String[][] a = {};
+		double answer;
 		int length = list.getEggCollection().length * list.getIncubatorCollection().length;
 		EggsNew[] eggs = list.getEggCollection();
 		IncubatorsNew[] incubators = list.getIncubatorCollection();
@@ -388,18 +398,26 @@ class PokemonGoEggsGUI {
 				}	 
 			}
 		}
+		
 		String[][] eggIncubateDistances = new String[eggsArray.length][eggsArray.length];
 		for (int i = 0; i < eggsArray.length; i++) {
 			for (int j = 0; j < eggsArray.length; j++) {
-				// round numbers to one decimal to match the game's math
-				eggIncubateDistances[i][j] = Double.toString((Math.round(eggsArray[j] * 10) / 10.0)
-						- (Math.round(eggsArray[i] * 10) / 10.0));
+				
+				//Round the numbers before subtracting to match the game's math. 
+				answer = (Math.round(eggsArray[j] * 10) / 10.0) - (Math.round(eggsArray[i] * 10) / 10.0);
+				if (answer > 0) {
+					eggIncubateDistances[i][j] = df.format(answer).toString(); //use decimal format to return a single decimal place
+				} else if (answer == 0) {
+					eggIncubateDistances[i][j] = "same"; //indicates the eggs go in at the same time
+				} else {
+					eggIncubateDistances[i][j] = "***"; //indicates the current egg is at a shorter distance than the prospective egg
+				}
 			}
 		}
 		
 		
 		return eggIncubateDistances;
-	}
+	}	
 	
 	private String[] BuildHeaders(MasterList list) {
 		EggsNew[] eggs = list.getEggCollection();
