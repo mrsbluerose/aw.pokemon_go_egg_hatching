@@ -101,17 +101,19 @@ class PokemonGoEggsGUI {
 		
 		//Table panes
 		JPanel jPanelTable = new JPanel();
+		FlowLayout flowLayout = (FlowLayout) jPanelTable.getLayout();
+		flowLayout.setAlignment(FlowLayout.LEFT);
 		jPanelTable.setBounds(12, 322, 426, 198);
 		frame.getContentPane().add(jPanelTable);
 		jPanelTable.setVisible(false);
 		
 		JPanel jPanelRowHeaders = new JPanel();
 		jPanelRowHeaders.setBounds(5, 5, 100, 198);
-		jPanelRowHeaders.setLayout(null);
 		jPanelTable.add(jPanelRowHeaders);
+		jPanelRowHeaders.setLayout(new FlowLayout(FlowLayout.LEFT, 5, 5));
 		
 		JScrollPane scrollPaneTable = new JScrollPane();
-		scrollPaneTable.setBounds(0, 101, 320, 198);
+		scrollPaneTable.setBounds(5, 101, 320, 198);
 		jPanelTable.add(scrollPaneTable);
 		
 		
