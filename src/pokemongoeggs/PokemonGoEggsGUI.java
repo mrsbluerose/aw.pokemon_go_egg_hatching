@@ -15,11 +15,14 @@ import javax.swing.JComboBox;
 import javax.swing.JTextArea;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
+import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
+import javax.swing.table.TableColumnModel;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Point;
 
 import javax.swing.JButton;
 import javax.swing.JScrollPane;
@@ -29,6 +32,7 @@ import java.math.RoundingMode;
 import java.text.DecimalFormat;
 import java.awt.event.ItemEvent;
 import javax.swing.JTable;
+import javax.swing.JSplitPane;
 
 class PokemonGoEggsGUI {
 
@@ -36,10 +40,8 @@ class PokemonGoEggsGUI {
 	private final ButtonGroup buttonGroupMenu = new ButtonGroup();
 	private String[] distanceNumbers = {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9"};
 	private MasterList masterList = new MasterList();
-	private JTable tableRow;
-	private JTable tableContent;
-	private JTable tableColumn;
 	private DecimalFormat df = new DecimalFormat("#.#");
+	private JTable table;
 
 
 	/**
@@ -94,31 +96,18 @@ class PokemonGoEggsGUI {
 		textAreaResults.setBounds(12, 344, 426, 176);
 		scrollPaneResults.add(textAreaResults);
 		scrollPaneResults.setViewportView(textAreaResults);
-		scrollPaneResults.setVisible(false);
+		
+
 		
 		//Table pane
 		JScrollPane scrollPaneTable = new JScrollPane();
-		scrollPaneTable.setBounds(12, 322, 426, 198);
+		scrollPaneTable.setBounds(12, 333, 426, 179);
 		frame.getContentPane().add(scrollPaneTable);
 		scrollPaneTable.setVisible(false);
-		
-//		tableColumn = new JTable();
-//		scrollPaneTable.setColumnHeaderView(tableColumn);
-//		tableColumn.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
-//		
-//		tableRow = new JTable();
-//		scrollPaneTable.setRowHeaderView(tableRow);
-//		tableRow.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
-//		
-//		tableContent = new JTable();
-//		scrollPaneTable.setViewportView(tableContent);
-//		tableContent.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
-//		
-//		scrollPaneResults.setViewportView(textAreaResults); //research viewport and why it's needed
-//		
-//		JTable table = new JTable();
-//		scrollPaneResults.add(table);
 
+
+
+		
 		
 		/**********************************************************************
 		 * Create Egg information panel
@@ -287,12 +276,13 @@ class PokemonGoEggsGUI {
 		btnDisplayResults.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(rdbtnDisplayTable.isSelected()) {
+					
 					//This code builds the table data and header arrays
 					scrollPaneTable.setVisible(true);
 					String[][] tableData = BuildTable((EventMultiplier)comboBoxEventWalkingDistance.getSelectedItem(), masterList);
 					String[] headers = BuildHeaders(masterList);
 					
-					//test print
+					//test print for arrays
 					for (int i=0; i<tableData.length; i++) {
 						for (int j=0; j<tableData.length; j++) {
 							System.out.print(tableData[i][j] + "\t");
@@ -300,30 +290,21 @@ class PokemonGoEggsGUI {
 						System.out.println("");
 					}
 					
-					JTable table = new JTable(tableData,headers);
-					scrollPaneResults.add(table);
-					table.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
-					//table.setFillsViewportHeight(true);
+					//this lists the table content. same as standard table
+					JTable tableContent = new JTable(tableData,headers);
+					scrollPaneTable.add(tableContent);
+					scrollPaneTable.setViewportView(tableContent);
+					tableContent.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 					
-				     //code credit for column width: https://www.codejava.net/java-se/swing/setting-column-width-and-row-height-for-jtable
-					for (int i = 0; i < table.getColumnModel().getColumnCount(); i++) {
-				        TableColumn column = table.getColumnModel().getColumn(i);
+					//code credit for column width: https://www.codejava.net/java-se/swing/setting-column-width-and-row-height-for-jtable
+					for (int i = 0; i < tableContent.getColumnModel().getColumnCount(); i++) {
+				        TableColumn column = tableContent.getColumnModel().getColumn(i);
 				        column.setPreferredWidth(90);
 				    }
-					scrollPaneResults.setViewportView(table);
 					
+			
 					
-//					JTable tableColumn = new JTable();
-//					scrollPaneTable.setColumnHeaderView(tableColumn);
-//					tableColumn.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
-//					
-//					JTable tableRow = new JTable();
-//					scrollPaneTable.setRowHeaderView(tableRow);
-//					tableRow.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
-//					
-//					JTable tableContent = new JTable(tableData,headers);
-//					scrollPaneTable.setViewportView(tableContent);
-//					tableContent.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+
 				}
 				
 				//TODO: format decimal to only one place and no negatives
@@ -344,15 +325,13 @@ class PokemonGoEggsGUI {
 		});
 		btnDisplayResults.setBounds(44, 524, 164, 25);
 		frame.getContentPane().add(btnDisplayResults);
-		
+	
 
 		
 
 	}
 	
-	/**********************************************************************
-	 * Method to display appropriate message
-	 **********************************************************************/
+	/**************************************************/
 	private String displayInstructions(int choice) {
 		String result = "";
 		
