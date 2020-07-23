@@ -9,6 +9,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JLayeredPane;
 import javax.swing.JRadioButton;
 import javax.swing.ButtonGroup;
 import javax.swing.JComboBox;
@@ -33,6 +34,7 @@ import java.text.DecimalFormat;
 import java.awt.event.ItemEvent;
 import javax.swing.JTable;
 import javax.swing.JSplitPane;
+import java.awt.FlowLayout;
 
 class PokemonGoEggsGUI {
 
@@ -93,20 +95,24 @@ class PokemonGoEggsGUI {
 		scrollPaneResults.setVisible(false);
 		
 		JTextArea textAreaResults = new JTextArea();
-		textAreaResults.setBounds(12, 344, 426, 176);
+		textAreaResults.setBounds(12, 322, 426, 198);
 		scrollPaneResults.add(textAreaResults);
 		scrollPaneResults.setViewportView(textAreaResults);
 		
-
+		//Table panes
+		JPanel jPanelTable = new JPanel();
+		jPanelTable.setBounds(12, 322, 426, 198);
+		frame.getContentPane().add(jPanelTable);
+		jPanelTable.setVisible(false);
 		
-		//Table pane
+		JPanel jPanelRowHeaders = new JPanel();
+		jPanelRowHeaders.setBounds(5, 5, 100, 198);
+		jPanelRowHeaders.setLayout(null);
+		jPanelTable.add(jPanelRowHeaders);
+		
 		JScrollPane scrollPaneTable = new JScrollPane();
-		scrollPaneTable.setBounds(12, 333, 426, 179);
-		frame.getContentPane().add(scrollPaneTable);
-		scrollPaneTable.setVisible(false);
-
-
-
+		scrollPaneTable.setBounds(0, 101, 320, 198);
+		jPanelTable.add(scrollPaneTable);
 		
 		
 		/**********************************************************************
@@ -278,9 +284,12 @@ class PokemonGoEggsGUI {
 				if(rdbtnDisplayTable.isSelected()) {
 					
 					//This code builds the table data and header arrays
-					scrollPaneTable.setVisible(true);
+					//scrollPaneTable.setVisible(true);
+					jPanelTable.setVisible(true);
 					String[][] tableData = BuildTable((EventMultiplier)comboBoxEventWalkingDistance.getSelectedItem(), masterList);
 					String[] headers = BuildHeaders(masterList);
+					String[][] rowHeaders = BuildRowHeaders(masterList);
+					String[] columnNames = {" "};
 					
 					//test print for arrays
 					for (int i=0; i<tableData.length; i++) {
@@ -302,7 +311,10 @@ class PokemonGoEggsGUI {
 				        column.setPreferredWidth(90);
 				    }
 					
-			
+					JTable tableRowHeaders = new JTable(rowHeaders,columnNames);
+					jPanelRowHeaders.add(tableRowHeaders);
+					//jPanelTableHeaders.setViewportView(tableRowHeaders);
+					//tableRowHeaders.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 					
 
 				}
@@ -322,6 +334,8 @@ class PokemonGoEggsGUI {
 					scrollPaneResults.setViewportView(textAreaResults);;
 				}
 			}
+
+
 		});
 		btnDisplayResults.setBounds(44, 524, 164, 25);
 		frame.getContentPane().add(btnDisplayResults);
@@ -393,11 +407,10 @@ class PokemonGoEggsGUI {
 				}
 			}
 		}
-		
-		
 		return eggIncubateDistances;
 	}	
 	
+	//Headers Array
 	private String[] BuildHeaders(MasterList list) {
 		EggsNew[] eggs = list.getEggCollection();
 		IncubatorsNew[] incubators = list.getIncubatorCollection();
@@ -412,5 +425,16 @@ class PokemonGoEggsGUI {
 			}
 		}
 		return headers;
+	}
+	
+	//Row Headers array
+	private String[][] BuildRowHeaders(MasterList list) {
+		String[] headers = BuildHeaders(list);
+		String[][] rowHeaders = new String[headers.length][1];
+		
+		for (int i=0; i<rowHeaders.length;i++){
+			rowHeaders[i][0] = headers[i];
+		}
+		return rowHeaders;
 	}
 }
