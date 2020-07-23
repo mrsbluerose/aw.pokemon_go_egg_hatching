@@ -99,7 +99,7 @@ class PokemonGoEggsGUI {
 		scrollPaneResults.add(textAreaResults);
 		scrollPaneResults.setViewportView(textAreaResults);
 		
-		//Table panes
+		//Table panes //DOESN'T WORK. No adjustments make tables or Panes display side by side
 		JPanel jPanelTable = new JPanel();
 		FlowLayout flowLayout = (FlowLayout) jPanelTable.getLayout();
 		flowLayout.setAlignment(FlowLayout.LEFT);
