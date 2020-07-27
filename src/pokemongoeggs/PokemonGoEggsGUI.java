@@ -271,9 +271,8 @@ class PokemonGoEggsGUI {
 					String[] headers = BuildHeaders(masterList);
 
 					//print out table
-
 					//Column headers
-					textAreaResults.append("\t");
+					textAreaResults.append("\t\t");
 					for (int i=0; i<headers.length; i++) {
 						textAreaResults.append(headers[i] + "\t");
 					}
@@ -281,7 +280,7 @@ class PokemonGoEggsGUI {
 					
 					//Table rows with row header
 					for (int i=0; i<tableData.length; i++) {
-						textAreaResults.append(headers[i] + "\t");;
+						textAreaResults.append(headers[i] + ": place at \t");;
 						for (int j=0; j<tableData.length; j++) {
 							textAreaResults.append(tableData[i][j] + "\t");
 						}
@@ -345,12 +344,13 @@ class PokemonGoEggsGUI {
 	/**********************************************************************
 	 * Build table arrays
 	 **********************************************************************/
-	//TODO: clean up this mess. Simplify if possible
 	private String[][] BuildTable(EventMultiplier multiplier, MasterList list){
 		double answer;
-		int length = list.getEggCollection().length * list.getIncubatorCollection().length;
 		EggsNew[] eggs = list.getEggCollection();
 		IncubatorsNew[] incubators = list.getIncubatorCollection();
+		int length = eggs.length * incubators.length;
+		
+		//build array of egg walking distances in each type of incubator
 		double[] eggsArray = new double[length];
 		for (int i=0; i<eggsArray.length;){
 			for (int j=0; j<incubators.length; j++) {
@@ -361,6 +361,7 @@ class PokemonGoEggsGUI {
 			}
 		}
 		
+		//build table array with each row showing when to put that eggy type in compared to that column's egg type
 		String[][] eggIncubateDistances = new String[eggsArray.length][eggsArray.length];
 		for (int i = 0; i < eggsArray.length; i++) {
 			for (int j = 0; j < eggsArray.length; j++) {
@@ -368,11 +369,11 @@ class PokemonGoEggsGUI {
 				//Round the numbers before subtracting to match the game's math. 
 				answer = (Math.round(eggsArray[j] * 10) / 10.0) - (Math.round(eggsArray[i] * 10) / 10.0);
 				if (answer > 0) {
-					eggIncubateDistances[i][j] = df.format(answer).toString(); //use decimal format to return a single decimal place
+					eggIncubateDistances[i][j] = df.format(answer).toString() + " KM"; //use decimal format to return a single decimal place
 				} else if (answer == 0) {
-					eggIncubateDistances[i][j] = "same"; //indicates the eggs go in at the same time
+					eggIncubateDistances[i][j] = "same time"; //indicates the eggs go in at the same time
 				} else {
-					eggIncubateDistances[i][j] = "***"; //indicates the current egg is at a shorter distance than the prospective egg
+					eggIncubateDistances[i][j] = "********"; //indicates the current egg is at a shorter distance than the prospective egg
 				}
 			}
 		}
@@ -384,6 +385,8 @@ class PokemonGoEggsGUI {
 		EggsNew[] eggs = list.getEggCollection();
 		IncubatorsNew[] incubators = list.getIncubatorCollection();
 		int length = list.getEggCollection().length * list.getIncubatorCollection().length;
+		
+		//Build an array of egg names for each type of incubator
 		String[] headers = new String[length];
 		for (int i=0; i<headers.length;){
 			for (int j=0; j<incubators.length; j++) {
