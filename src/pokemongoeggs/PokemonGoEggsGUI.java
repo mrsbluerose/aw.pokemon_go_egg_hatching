@@ -265,6 +265,7 @@ class PokemonGoEggsGUI {
 		btnDisplayResults.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(rdbtnDisplayTable.isSelected()) {
+					textAreaResults.setText(null);
 					
 					//This code builds the table data and header arrays
 					String[][] tableData = BuildTable((EventMultiplier)comboBoxEventWalkingDistance.getSelectedItem(), masterList);
@@ -289,13 +290,15 @@ class PokemonGoEggsGUI {
 					
 				}
 				
-				//TODO: format decimal to only one place and no negatives
+				//TODO: decide how to prevent negatives (only allow correct distances?)
 				else if(rdbtnCalculateEgg.isSelected()) {
-					textAreaResults.setText("The egg will hatch in " + 
-					calculateEgg((EventMultiplier)comboBoxEventWalkingDistance.getSelectedItem(), (EggsNew)comboBoxEggType.getSelectedItem(), 
+					textAreaResults.setText(null);
+					textAreaResults.append("The " + (EggsNew)comboBoxEggType.getSelectedItem() + " egg will hatch in " + 
+							df.format(calculateEgg((EventMultiplier)comboBoxEventWalkingDistance.getSelectedItem(), 
+							(EggsNew)comboBoxEggType.getSelectedItem(), 
 							(IncubatorsNew)comboBoxIncubatorType.getSelectedItem(), 
 							Integer.valueOf((String)comboBoxDistanceWalkedNumber.getSelectedItem()), 
-							Integer.valueOf((String)comboBoxDistanceWalkedDecimal.getSelectedItem())) + " KM");
+							Integer.valueOf((String)comboBoxDistanceWalkedDecimal.getSelectedItem()))) + " KM");
 					
 				}
 				else {
@@ -344,6 +347,7 @@ class PokemonGoEggsGUI {
 	/**********************************************************************
 	 * Build table arrays
 	 **********************************************************************/
+	
 	private String[][] BuildTable(EventMultiplier multiplier, MasterList list){
 		double answer;
 		EggsNew[] eggs = list.getEggCollection();
