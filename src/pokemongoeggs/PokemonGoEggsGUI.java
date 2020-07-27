@@ -192,7 +192,7 @@ class PokemonGoEggsGUI {
 				panelEvent.setVisible(true);
 				panelEggOptions.setVisible(false);
 				textAreaInstructions.setText(displayInstructions(1));
-						
+				textAreaResults.setText(null);		
 			}
 		});
 		rdbtnDisplayTable.setBounds(22, 43, 307, 23);
@@ -206,7 +206,7 @@ class PokemonGoEggsGUI {
 				panelEvent.setVisible(true);
 				panelEggOptions.setVisible(true);
 				textAreaInstructions.setText(displayInstructions(2));
-						
+				textAreaResults.setText(null);		
 			}
 		});
 		rdbtnCalculateEgg.setBounds(22, 70, 307, 23);
@@ -220,6 +220,7 @@ class PokemonGoEggsGUI {
 				panelEvent.setVisible(true);
 				panelEggOptions.setVisible(true);
 				textAreaInstructions.setText(displayInstructions(3));
+				textAreaResults.setText(null);
 			}
 		});
 		rdbtnCreatePlan.setBounds(22, 97, 355, 23);
@@ -265,7 +266,6 @@ class PokemonGoEggsGUI {
 		btnDisplayResults.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(rdbtnDisplayTable.isSelected()) {
-					textAreaResults.setText(null);
 					
 					//This code builds the table data and header arrays
 					String[][] tableData = BuildTable((EventMultiplier)comboBoxEventWalkingDistance.getSelectedItem(), masterList);
@@ -287,19 +287,16 @@ class PokemonGoEggsGUI {
 						}
 						textAreaResults.append("\n");
 					}
-					
 				}
 				
 				//TODO: decide how to prevent negatives (only allow correct distances?)
 				else if(rdbtnCalculateEgg.isSelected()) {
-					textAreaResults.setText(null);
 					textAreaResults.append("The " + (EggsNew)comboBoxEggType.getSelectedItem() + " egg will hatch in " + 
 							df.format(calculateEgg((EventMultiplier)comboBoxEventWalkingDistance.getSelectedItem(), 
 							(EggsNew)comboBoxEggType.getSelectedItem(), 
 							(IncubatorsNew)comboBoxIncubatorType.getSelectedItem(), 
 							Integer.valueOf((String)comboBoxDistanceWalkedNumber.getSelectedItem()), 
-							Integer.valueOf((String)comboBoxDistanceWalkedDecimal.getSelectedItem()))) + " KM");
-					
+							Integer.valueOf((String)comboBoxDistanceWalkedDecimal.getSelectedItem()))) + " KM\n");
 				}
 				else {
 					
