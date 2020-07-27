@@ -92,29 +92,11 @@ class PokemonGoEggsGUI {
 		JScrollPane scrollPaneResults = new JScrollPane();
 		scrollPaneResults.setBounds(12, 322, 426, 198);
 		frame.getContentPane().add(scrollPaneResults);
-		scrollPaneResults.setVisible(false);
 		
 		JTextArea textAreaResults = new JTextArea();
 		textAreaResults.setBounds(12, 322, 426, 198);
 		scrollPaneResults.add(textAreaResults);
 		scrollPaneResults.setViewportView(textAreaResults);
-		
-		//Table panes //DOESN'T WORK. No adjustments make tables or Panes display side by side
-		JPanel jPanelTable = new JPanel();
-		FlowLayout flowLayout = (FlowLayout) jPanelTable.getLayout();
-		flowLayout.setAlignment(FlowLayout.LEFT);
-		jPanelTable.setBounds(12, 322, 426, 198);
-		frame.getContentPane().add(jPanelTable);
-		jPanelTable.setVisible(false);
-		
-		JPanel jPanelRowHeaders = new JPanel();
-		jPanelRowHeaders.setBounds(5, 5, 100, 198);
-		jPanelTable.add(jPanelRowHeaders);
-		jPanelRowHeaders.setLayout(new FlowLayout(FlowLayout.LEFT, 5, 5));
-		
-		JScrollPane scrollPaneTable = new JScrollPane();
-		scrollPaneTable.setBounds(5, 101, 320, 198);
-		jPanelTable.add(scrollPaneTable);
 		
 		
 		/**********************************************************************
@@ -255,7 +237,6 @@ class PokemonGoEggsGUI {
 				buttonGroupMenu.clearSelection();
 				textAreaInstructions.setText(null);
 				textAreaResults.setText(null);
-				scrollPaneResults.setVisible(false);
 				comboBoxEventWalkingDistance.setSelectedIndex(0);
 				comboBoxEggType.setSelectedIndex(0);
 				comboBoxIncubatorType.setSelectedIndex(0);
@@ -286,46 +267,32 @@ class PokemonGoEggsGUI {
 				if(rdbtnDisplayTable.isSelected()) {
 					
 					//This code builds the table data and header arrays
-					//scrollPaneTable.setVisible(true);
-					jPanelTable.setVisible(true);
 					String[][] tableData = BuildTable((EventMultiplier)comboBoxEventWalkingDistance.getSelectedItem(), masterList);
 					String[] headers = BuildHeaders(masterList);
-					String[][] rowHeaders = BuildRowHeaders(masterList);
-					String[] columnNames = {" "};
+
+					//print out table
+
+					//Column headers
+					textAreaResults.append("\t");
+					for (int i=0; i<headers.length; i++) {
+						textAreaResults.append(headers[i] + "\t");
+					}
+					textAreaResults.append("\n");
 					
-					//test print for arrays
+					//Table rows with row header
 					for (int i=0; i<tableData.length; i++) {
+						textAreaResults.append(headers[i] + "\t");;
 						for (int j=0; j<tableData.length; j++) {
-							System.out.print(tableData[i][j] + "\t");
+							textAreaResults.append(tableData[i][j] + "\t");
 						}
-						System.out.println("");
+						textAreaResults.append("\n");
 					}
 					
-					//this lists the table content. same as standard table
-					JTable tableContent = new JTable(tableData,headers);
-					scrollPaneTable.add(tableContent);
-					scrollPaneTable.setViewportView(tableContent);
-					tableContent.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
-					
-					//code credit for column width: https://www.codejava.net/java-se/swing/setting-column-width-and-row-height-for-jtable
-					for (int i = 0; i < tableContent.getColumnModel().getColumnCount(); i++) {
-				        TableColumn column = tableContent.getColumnModel().getColumn(i);
-				        column.setPreferredWidth(90);
-				    }
-					
-					JTable tableRowHeaders = new JTable(rowHeaders,columnNames);
-					jPanelRowHeaders.add(tableRowHeaders);
-					//jPanelTableHeaders.setViewportView(tableRowHeaders);
-					//tableRowHeaders.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
-					
-
 				}
 				
 				//TODO: format decimal to only one place and no negatives
 				else if(rdbtnCalculateEgg.isSelected()) {
-					//scrollPaneResults.setViewportView(textAreaResults);
-					scrollPaneResults.setVisible(true);
-					textAreaResults.append("The egg will hatch in " + 
+					textAreaResults.setText("The egg will hatch in " + 
 					calculateEgg((EventMultiplier)comboBoxEventWalkingDistance.getSelectedItem(), (EggsNew)comboBoxEggType.getSelectedItem(), 
 							(IncubatorsNew)comboBoxIncubatorType.getSelectedItem(), 
 							Integer.valueOf((String)comboBoxDistanceWalkedNumber.getSelectedItem()), 
@@ -333,7 +300,7 @@ class PokemonGoEggsGUI {
 					
 				}
 				else {
-					scrollPaneResults.setViewportView(textAreaResults);;
+					
 				}
 			}
 
@@ -371,7 +338,7 @@ class PokemonGoEggsGUI {
 	 * Calculate when an egg will hatch
 	 **********************************************************************/
 	private double calculateEgg(EventMultiplier event, EggsNew egg, IncubatorsNew incubator, Integer distance1, Integer distance2) {
-		double distance = (distance1 + (distance2/10));		
+		double distance = (distance1 + (distance2/10));			
 		return (event.getMultiplier() * egg.getEggWalkingDistance() * incubator.getIncubatorMultiplier())- distance;
 	}
 	
@@ -429,14 +396,4 @@ class PokemonGoEggsGUI {
 		return headers;
 	}
 	
-	//Row Headers array
-	private String[][] BuildRowHeaders(MasterList list) {
-		String[] headers = BuildHeaders(list);
-		String[][] rowHeaders = new String[headers.length][1];
-		
-		for (int i=0; i<rowHeaders.length;i++){
-			rowHeaders[i][0] = headers[i];
-		}
-		return rowHeaders;
-	}
 }
