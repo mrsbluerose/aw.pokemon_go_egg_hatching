@@ -323,6 +323,8 @@ class PokemonGoEggsGUI {
 							Integer.valueOf((String)comboBoxDistanceWalkedNumber.getSelectedItem()), 
 							Integer.valueOf((String)comboBoxDistanceWalkedDecimal.getSelectedItem()))) + " KM\n");
 				}
+				
+				//TODO: work through storing eggs and then calculating them. Decide whether to print out each egg as it's chosen
 				else if (rdbtnCreatePlan.isSelected()){
 					for (String line: textAreaResults.getText().split("\\n")) {
 						System.out.println(line);
