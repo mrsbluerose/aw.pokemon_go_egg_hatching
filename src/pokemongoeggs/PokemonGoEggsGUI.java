@@ -80,6 +80,7 @@ class PokemonGoEggsGUI {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		df.setRoundingMode(RoundingMode.HALF_UP);
+		
 		/**********************************************************************
 		 * Create text areas and tables
 		 **********************************************************************/
@@ -90,7 +91,7 @@ class PokemonGoEggsGUI {
 		
 		//Results pane
 		JScrollPane scrollPaneResults = new JScrollPane();
-		scrollPaneResults.setBounds(12, 322, 426, 198);
+		scrollPaneResults.setBounds(12, 340, 426, 180);
 		frame.getContentPane().add(scrollPaneResults);
 		
 		JTextArea textAreaResults = new JTextArea();
@@ -98,12 +99,20 @@ class PokemonGoEggsGUI {
 		scrollPaneResults.add(textAreaResults);
 		scrollPaneResults.setViewportView(textAreaResults);
 		
+		/**********************************************************************
+		 * Creates button to add another egg
+		 **********************************************************************/
+		JButton btnAddEgg = new JButton("Add another egg");
+		btnAddEgg.setVisible(false);
+		btnAddEgg.setBounds(42, 304, 159, 25);
+		frame.getContentPane().add(btnAddEgg);
+		
 		
 		/**********************************************************************
 		 * Create Egg information panel
 		 **********************************************************************/
 		JPanel panelEggOptions = new JPanel();
-		panelEggOptions.setBounds(15, 241, 423, 81);
+		panelEggOptions.setBounds(15, 241, 423, 55);
 		frame.getContentPane().add(panelEggOptions);
 		panelEggOptions.setLayout(null);
 		panelEggOptions.setVisible(false);
@@ -115,7 +124,17 @@ class PokemonGoEggsGUI {
 		panelEggOptions.add(lblEggType);
 		
 		JComboBox comboBoxEggType = new JComboBox(masterList.getEggCollection());
+		comboBoxEggType.insertItemAt("", 0);
+		comboBoxEggType.setSelectedIndex(0);
 		comboBoxEggType.setBackground(Color.WHITE);
+		comboBoxEggType.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if (comboBoxEggType.getSelectedItem() != null) {
+					btnAddEgg.setVisible(true);
+				}
+			}
+		});
 		comboBoxEggType.setBounds(149, 1, 98, 24);
 		panelEggOptions.add(comboBoxEggType);
 		
@@ -134,29 +153,37 @@ class PokemonGoEggsGUI {
 		JLabel lblDistanceWalked = new JLabel("Distance Walked");
 		lblDistanceWalked.setHorizontalAlignment(SwingConstants.LEFT);
 		lblDistanceWalked.setBackground(Color.WHITE);
-		lblDistanceWalked.setBounds(12, 55, 128, 26);
+		lblDistanceWalked.setBounds(283, 0, 128, 26);
 		panelEggOptions.add(lblDistanceWalked);
 		
 		JLabel lblDecimal = new JLabel(".");
 		lblDecimal.setHorizontalAlignment(SwingConstants.CENTER);
 		lblDecimal.setVerticalAlignment(SwingConstants.BOTTOM);
-		lblDecimal.setBounds(189, 60, 18, 19);
+		lblDecimal.setBounds(334, 29, 18, 19);
 		panelEggOptions.add(lblDecimal);
 
 		JComboBox comboBoxDistanceWalkedNumber = new JComboBox(distanceNumbers);
 		comboBoxDistanceWalkedNumber.setBackground(Color.WHITE);
-		comboBoxDistanceWalkedNumber.setBounds(149, 55, 40, 24);
+		comboBoxDistanceWalkedNumber.setBounds(283, 28, 40, 24);
 		panelEggOptions.add(comboBoxDistanceWalkedNumber);
 		
 		JComboBox comboBoxDistanceWalkedDecimal = new JComboBox(distanceNumbers);
 		comboBoxDistanceWalkedDecimal.setBackground(Color.WHITE);
-		comboBoxDistanceWalkedDecimal.setBounds(207, 55, 40, 24);
+		comboBoxDistanceWalkedDecimal.setBounds(356, 28, 40, 24);
 		panelEggOptions.add(comboBoxDistanceWalkedDecimal);
 		
-		//TODO: make this work
-		JButton btnNextEgg = new JButton("Enter another egg");
-		btnNextEgg.setBounds(259, 54, 164, 25);
-		panelEggOptions.add(btnNextEgg);
+		//creates action for add egg button
+		btnAddEgg.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				textAreaResults.append(comboBoxEggType.getSelectedItem() + "\t" + comboBoxIncubatorType.getSelectedItem() + 
+						"\t" + comboBoxDistanceWalkedNumber.getSelectedItem() + "." + comboBoxDistanceWalkedDecimal.getSelectedItem() + "\n");
+				comboBoxEggType.setSelectedItem(0);
+				comboBoxIncubatorType.setSelectedItem(0);
+				comboBoxDistanceWalkedNumber.setSelectedItem(0);
+				comboBoxDistanceWalkedDecimal.setSelectedItem(0);
+			}
+		});
 		
 		/**********************************************************************
 		 * Create Event Panel
@@ -235,6 +262,7 @@ class PokemonGoEggsGUI {
 			public void actionPerformed(ActionEvent e) {
 				panelEvent.setVisible(false);
 				panelEggOptions.setVisible(false);
+				btnAddEgg.setVisible(false);				
 				buttonGroupMenu.clearSelection();
 				textAreaInstructions.setText(null);
 				textAreaResults.setText(null);
@@ -243,7 +271,7 @@ class PokemonGoEggsGUI {
 				comboBoxIncubatorType.setSelectedIndex(0);
 				comboBoxDistanceWalkedNumber.setSelectedIndex(0);
 				comboBoxDistanceWalkedDecimal.setSelectedIndex(0);
-				
+
 			}
 		});
 		btnReset.setBounds(256, 524, 85, 25);
@@ -265,6 +293,7 @@ class PokemonGoEggsGUI {
 		JButton btnDisplayResults = new JButton("Display Results");
 		btnDisplayResults.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				btnAddEgg.setVisible(false);
 				if(rdbtnDisplayTable.isSelected()) {
 					
 					//This code builds the table data and header arrays
@@ -305,7 +334,7 @@ class PokemonGoEggsGUI {
 
 
 		});
-		btnDisplayResults.setBounds(44, 524, 164, 25);
+		btnDisplayResults.setBounds(224, 304, 164, 25);
 		frame.getContentPane().add(btnDisplayResults);
 	
 
@@ -399,5 +428,4 @@ class PokemonGoEggsGUI {
 		}
 		return headers;
 	}
-	
 }
