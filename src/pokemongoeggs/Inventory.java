@@ -22,13 +22,14 @@ public class Inventory {
 	private Egg egg7;
 	private Egg egg8;	
 	private Egg egg9;
+	private Egg eggInventory[] = {egg1,egg2,egg3,egg4,egg5,egg6,egg7,egg8,egg9};
 
-	private int egg10KMQty;
-	private int egg7KMQty;
-	private int egg5KMQty;
-	private int egg2KMQty;
-	private int incubatorRegularQty;
-	private int incubatorSuperQty;
+//	private int egg10KMQty;
+//	private int egg7KMQty;
+//	private int egg5KMQty;
+//	private int egg2KMQty;
+//	private int incubatorRegularQty;
+//	private int incubatorSuperQty;
 	
 	public Egg getEgg1() {
 		return egg1;
@@ -84,17 +85,23 @@ public class Inventory {
 	public void setEgg9(Egg egg9) {
 		this.egg9 = egg9;
 	}
-	public int getIncubatorRegularQty() {
-		return incubatorRegularQty;
+//	public int getIncubatorRegularQty() {
+//		return incubatorRegularQty;
+//	}
+//	public void setIncubatorRegularQty(int incubatorRegularQty) {
+//		this.incubatorRegularQty = incubatorRegularQty;
+//	}
+//	public int getIncubatorSuperQty() {
+//		return incubatorSuperQty;
+//	}
+//	public void setIncubatorSuperQty(int incubatorSuperQty) {
+//		this.incubatorSuperQty = incubatorSuperQty;
+//	}
+	public Egg[] getEggInventory() {
+		return eggInventory;
 	}
-	public void setIncubatorRegularQty(int incubatorRegularQty) {
-		this.incubatorRegularQty = incubatorRegularQty;
-	}
-	public int getIncubatorSuperQty() {
-		return incubatorSuperQty;
-	}
-	public void setIncubatorSuperQty(int incubatorSuperQty) {
-		this.incubatorSuperQty = incubatorSuperQty;
+	public void setEggInventory(Egg eggInventory[]) {
+		this.eggInventory = eggInventory;
 	}
 
 }

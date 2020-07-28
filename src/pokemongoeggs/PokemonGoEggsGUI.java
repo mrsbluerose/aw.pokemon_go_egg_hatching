@@ -90,7 +90,7 @@ class PokemonGoEggsGUI {
 		
 		//Results pane
 		JScrollPane scrollPaneResults = new JScrollPane();
-		scrollPaneResults.setBounds(12, 260, 426, 180);
+		scrollPaneResults.setBounds(11, 281, 426, 170);
 		frame.getContentPane().add(scrollPaneResults);
 		
 		JTextArea textAreaResults = new JTextArea();
@@ -102,7 +102,7 @@ class PokemonGoEggsGUI {
 		 * Create Egg information panel
 		 **********************************************************************/
 		JPanel panelEggOptions = new JPanel();
-		panelEggOptions.setBounds(12, 161, 423, 55);
+		panelEggOptions.setBounds(12, 161, 423, 82);
 		frame.getContentPane().add(panelEggOptions);
 		panelEggOptions.setLayout(null);
 		panelEggOptions.setVisible(false);
@@ -110,59 +110,58 @@ class PokemonGoEggsGUI {
 		//Egg Type
 		JLabel lblEggType = new JLabel("Egg Type");
 		lblEggType.setHorizontalAlignment(SwingConstants.LEFT);
-		lblEggType.setBounds(12, 0, 128, 26);
+		lblEggType.setBounds(0, -1, 117, 26);
 		panelEggOptions.add(lblEggType);
 		
 		JComboBox comboBoxEggType = new JComboBox(masterList.getEggCollection());
-		comboBoxEggType.insertItemAt("", 0);
-		comboBoxEggType.setSelectedIndex(0);
+//		comboBoxEggType.insertItemAt("", 0);
+//		comboBoxEggType.setSelectedIndex(0);
 		comboBoxEggType.setBackground(Color.WHITE);
-		comboBoxEggType.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				if (comboBoxEggType.getSelectedItem() != null) {
-					btnAddEgg.setVisible(true);
-				}
-			}
-		});
-		comboBoxEggType.setBounds(149, 1, 98, 24);
+//		comboBoxEggType.addActionListener(new ActionListener() {
+//			@Override
+//			public void actionPerformed(ActionEvent e) {
+//				if (comboBoxEggType.getSelectedItem() != null) {
+//					btnAddEgg.setVisible(true);
+//				}
+//			}
+//		});
+		comboBoxEggType.setBounds(131, 1, 98, 24);
 		panelEggOptions.add(comboBoxEggType);
 		
 		//Incubator Type
 		JLabel lblIncubatorType = new JLabel("Incubator Type");
 		lblIncubatorType.setHorizontalAlignment(SwingConstants.LEFT);
-		lblIncubatorType.setBounds(12, 27, 128, 26);
+		lblIncubatorType.setBounds(0, 26, 117, 26);
 		panelEggOptions.add(lblIncubatorType);
 		
 		JComboBox comboBoxIncubatorType = new JComboBox(masterList.getIncubatorCollection());
 		comboBoxIncubatorType.setBackground(Color.WHITE);
-		comboBoxIncubatorType.setBounds(149, 28, 98, 24);
+		comboBoxIncubatorType.setBounds(131, 28, 98, 24);
 		panelEggOptions.add(comboBoxIncubatorType);
 		
 		//Distance walked
 		JLabel lblDistanceWalked = new JLabel("Distance Walked");
 		lblDistanceWalked.setHorizontalAlignment(SwingConstants.LEFT);
 		lblDistanceWalked.setBackground(Color.WHITE);
-		lblDistanceWalked.setBounds(283, 0, 128, 26);
+		lblDistanceWalked.setBounds(0, 54, 128, 26);
 		panelEggOptions.add(lblDistanceWalked);
 		
 		JLabel lblDecimal = new JLabel(".");
 		lblDecimal.setHorizontalAlignment(SwingConstants.CENTER);
 		lblDecimal.setVerticalAlignment(SwingConstants.BOTTOM);
-		lblDecimal.setBounds(334, 29, 18, 19);
+		lblDecimal.setBounds(174, 61, 12, 19);
 		panelEggOptions.add(lblDecimal);
 
 		JComboBox comboBoxDistanceWalkedNumber = new JComboBox(distanceNumbers);
 		comboBoxDistanceWalkedNumber.setBackground(Color.WHITE);
-		comboBoxDistanceWalkedNumber.setBounds(283, 28, 40, 24);
+		comboBoxDistanceWalkedNumber.setBounds(131, 56, 40, 24);
 		panelEggOptions.add(comboBoxDistanceWalkedNumber);
 		
 		JComboBox comboBoxDistanceWalkedDecimal = new JComboBox(distanceNumbers);
 		comboBoxDistanceWalkedDecimal.setBackground(Color.WHITE);
-		comboBoxDistanceWalkedDecimal.setBounds(356, 28, 40, 24);
+		comboBoxDistanceWalkedDecimal.setBounds(189, 56, 40, 24);
 		panelEggOptions.add(comboBoxDistanceWalkedDecimal);
-		
-		
+	
 		
 		/**********************************************************************
 		 * Create Event Panel
@@ -181,6 +180,22 @@ class PokemonGoEggsGUI {
 		JLabel lblEventWalkingDistance = new JLabel("What is the event walking distance multiplier?");
 		lblEventWalkingDistance.setBounds(0, 0, 341, 24);
 		panelEvent.add(lblEventWalkingDistance);
+		
+		JButton btnAddEgg = new JButton("Add another");
+		btnAddEgg.setBounds(272, 27, 122, 25);
+		panelEggOptions.add(btnAddEgg);
+		//creates action for add egg button
+		btnAddEgg.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				textAreaResults.append(comboBoxEggType.getSelectedItem() + "\t" + comboBoxIncubatorType.getSelectedItem() + 
+						"\t" + comboBoxDistanceWalkedNumber.getSelectedItem() + "." + comboBoxDistanceWalkedDecimal.getSelectedItem() + "\n");
+				comboBoxEggType.setSelectedItem(0);
+				comboBoxIncubatorType.setSelectedItem(0);
+				comboBoxDistanceWalkedNumber.setSelectedItem(0);
+				comboBoxDistanceWalkedDecimal.setSelectedItem(0);
+			}
+		});
 		
 		/**********************************************************************
 		 * Creates main menu
@@ -252,7 +267,7 @@ class PokemonGoEggsGUI {
 
 			}
 		});
-		btnReset.setBounds(255, 450, 85, 25);
+		btnReset.setBounds(255, 454, 85, 25);
 		frame.getContentPane().add(btnReset);
 		
 		JButton btnExit = new JButton("Exit");
@@ -262,28 +277,12 @@ class PokemonGoEggsGUI {
 				frame.dispose();
 			}
 		});
-		btnExit.setBounds(352, 450, 85, 25);
+		btnExit.setBounds(352, 454, 85, 25);
 		frame.getContentPane().add(btnExit);
 		
 		/**********************************************************************
 		 * Creates button to add another egg
 		 **********************************************************************/
-		JButton btnAddEgg = new JButton("Add another egg");
-		btnAddEgg.setVisible(false);
-		//creates action for add egg button
-				btnAddEgg.addActionListener(new ActionListener() {
-					@Override
-					public void actionPerformed(ActionEvent e) {
-						textAreaResults.append(comboBoxEggType.getSelectedItem() + "\t" + comboBoxIncubatorType.getSelectedItem() + 
-								"\t" + comboBoxDistanceWalkedNumber.getSelectedItem() + "." + comboBoxDistanceWalkedDecimal.getSelectedItem() + "\n");
-						comboBoxEggType.setSelectedItem(0);
-						comboBoxIncubatorType.setSelectedItem(0);
-						comboBoxDistanceWalkedNumber.setSelectedItem(0);
-						comboBoxDistanceWalkedDecimal.setSelectedItem(0);
-					}
-				});
-		btnAddEgg.setBounds(55, 223, 159, 25);
-		frame.getContentPane().add(btnAddEgg);
 		
 		/**********************************************************************
 		 * Create Display result button and perform actions based on selections
@@ -291,7 +290,6 @@ class PokemonGoEggsGUI {
 		JButton btnDisplayResults = new JButton("Display Results");
 		btnDisplayResults.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				btnAddEgg.setVisible(false);
 				if(rdbtnDisplayTable.isSelected()) {
 					
 					//This code builds the table data and header arrays
@@ -325,14 +323,16 @@ class PokemonGoEggsGUI {
 							Integer.valueOf((String)comboBoxDistanceWalkedNumber.getSelectedItem()), 
 							Integer.valueOf((String)comboBoxDistanceWalkedDecimal.getSelectedItem()))) + " KM\n");
 				}
-				else {
-					
+				else if (rdbtnCreatePlan.isSelected()){
+					for (String line: textAreaResults.getText().split("\\n")) {
+						System.out.println(line);
+					}
 				}
 			}
 
 
 		});
-		btnDisplayResults.setBounds(226, 223, 164, 25);
+		btnDisplayResults.setBounds(140, 251, 164, 25);
 		frame.getContentPane().add(btnDisplayResults);
 		
 
