@@ -42,9 +42,8 @@ class PokemonGoEggsGUI {
 	private final ButtonGroup buttonGroupMenu = new ButtonGroup();
 	private String[] distanceNumbers = {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9"};
 	private MasterList masterList = new MasterList();
+	private Inventory inventory = new Inventory();
 	private DecimalFormat df = new DecimalFormat("#.#");
-	private JTable table;
-
 
 	/**
 	 * Launch the application.
@@ -75,7 +74,7 @@ class PokemonGoEggsGUI {
 	 **********************************************************************/
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 450, 591);
+		frame.setBounds(100, 100, 450, 517);
 		frame.setVisible(true);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
@@ -86,33 +85,24 @@ class PokemonGoEggsGUI {
 		 **********************************************************************/
 		//Instructions pane
 		JTextArea textAreaInstructions = new JTextArea();
-		textAreaInstructions.setBounds(12, 132, 426, 70);
+		textAreaInstructions.setBounds(273, 43, 164, 70);
 		frame.getContentPane().add(textAreaInstructions);
 		
 		//Results pane
 		JScrollPane scrollPaneResults = new JScrollPane();
-		scrollPaneResults.setBounds(12, 340, 426, 180);
+		scrollPaneResults.setBounds(12, 260, 426, 180);
 		frame.getContentPane().add(scrollPaneResults);
 		
 		JTextArea textAreaResults = new JTextArea();
 		textAreaResults.setBounds(12, 322, 426, 198);
 		scrollPaneResults.add(textAreaResults);
 		scrollPaneResults.setViewportView(textAreaResults);
-		
-		/**********************************************************************
-		 * Creates button to add another egg
-		 **********************************************************************/
-		JButton btnAddEgg = new JButton("Add another egg");
-		btnAddEgg.setVisible(false);
-		btnAddEgg.setBounds(42, 304, 159, 25);
-		frame.getContentPane().add(btnAddEgg);
-		
-		
+				
 		/**********************************************************************
 		 * Create Egg information panel
 		 **********************************************************************/
 		JPanel panelEggOptions = new JPanel();
-		panelEggOptions.setBounds(15, 241, 423, 55);
+		panelEggOptions.setBounds(12, 161, 423, 55);
 		frame.getContentPane().add(panelEggOptions);
 		panelEggOptions.setLayout(null);
 		panelEggOptions.setVisible(false);
@@ -172,24 +162,13 @@ class PokemonGoEggsGUI {
 		comboBoxDistanceWalkedDecimal.setBounds(356, 28, 40, 24);
 		panelEggOptions.add(comboBoxDistanceWalkedDecimal);
 		
-		//creates action for add egg button
-		btnAddEgg.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				textAreaResults.append(comboBoxEggType.getSelectedItem() + "\t" + comboBoxIncubatorType.getSelectedItem() + 
-						"\t" + comboBoxDistanceWalkedNumber.getSelectedItem() + "." + comboBoxDistanceWalkedDecimal.getSelectedItem() + "\n");
-				comboBoxEggType.setSelectedItem(0);
-				comboBoxIncubatorType.setSelectedItem(0);
-				comboBoxDistanceWalkedNumber.setSelectedItem(0);
-				comboBoxDistanceWalkedDecimal.setSelectedItem(0);
-			}
-		});
+		
 		
 		/**********************************************************************
 		 * Create Event Panel
 		 **********************************************************************/
 		JPanel panelEvent = new JPanel();
-		panelEvent.setBounds(12, 205, 426, 24);
+		panelEvent.setBounds(12, 135, 426, 24);
 		frame.getContentPane().add(panelEvent);
 		panelEvent.setLayout(null);
 		
@@ -211,7 +190,7 @@ class PokemonGoEggsGUI {
 		lblMenu.setBounds(12, 12, 426, 23);
 		frame.getContentPane().add(lblMenu);
 		
-		JRadioButton rdbtnDisplayTable = new JRadioButton("Display egg hatching reference table");
+		JRadioButton rdbtnDisplayTable = new JRadioButton("Display egg table");
 		buttonGroupMenu.add(rdbtnDisplayTable);
 		rdbtnDisplayTable.addActionListener(new ActionListener() {
 			@Override
@@ -222,10 +201,10 @@ class PokemonGoEggsGUI {
 				textAreaResults.setText(null);		
 			}
 		});
-		rdbtnDisplayTable.setBounds(22, 43, 307, 23);
+		rdbtnDisplayTable.setBounds(22, 43, 243, 23);
 		frame.getContentPane().add(rdbtnDisplayTable);
 		
-		JRadioButton rdbtnCalculateEgg = new JRadioButton("Calculate when an egg will hatch");
+		JRadioButton rdbtnCalculateEgg = new JRadioButton("Calculate egg hatching");
 		buttonGroupMenu.add(rdbtnCalculateEgg);
 		rdbtnCalculateEgg.addActionListener(new ActionListener() {
 			@Override
@@ -236,10 +215,10 @@ class PokemonGoEggsGUI {
 				textAreaResults.setText(null);		
 			}
 		});
-		rdbtnCalculateEgg.setBounds(22, 70, 307, 23);
+		rdbtnCalculateEgg.setBounds(22, 70, 243, 23);
 		frame.getContentPane().add(rdbtnCalculateEgg);
 		
-		JRadioButton rdbtnCreatePlan = new JRadioButton("Create a plan for up to 9 eggs and incubators");
+		JRadioButton rdbtnCreatePlan = new JRadioButton("Create a plan for up to 9 eggs");
 		buttonGroupMenu.add(rdbtnCreatePlan);
 		rdbtnCreatePlan.addActionListener(new ActionListener() {
 			@Override
@@ -250,7 +229,7 @@ class PokemonGoEggsGUI {
 				textAreaResults.setText(null);
 			}
 		});
-		rdbtnCreatePlan.setBounds(22, 97, 355, 23);
+		rdbtnCreatePlan.setBounds(22, 97, 243, 23);
 		frame.getContentPane().add(rdbtnCreatePlan);
 		
 		/**********************************************************************
@@ -261,8 +240,7 @@ class PokemonGoEggsGUI {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				panelEvent.setVisible(false);
-				panelEggOptions.setVisible(false);
-				btnAddEgg.setVisible(false);				
+				panelEggOptions.setVisible(false);				
 				buttonGroupMenu.clearSelection();
 				textAreaInstructions.setText(null);
 				textAreaResults.setText(null);
@@ -274,7 +252,7 @@ class PokemonGoEggsGUI {
 
 			}
 		});
-		btnReset.setBounds(256, 524, 85, 25);
+		btnReset.setBounds(255, 450, 85, 25);
 		frame.getContentPane().add(btnReset);
 		
 		JButton btnExit = new JButton("Exit");
@@ -284,8 +262,28 @@ class PokemonGoEggsGUI {
 				frame.dispose();
 			}
 		});
-		btnExit.setBounds(353, 524, 85, 25);
+		btnExit.setBounds(352, 450, 85, 25);
 		frame.getContentPane().add(btnExit);
+		
+		/**********************************************************************
+		 * Creates button to add another egg
+		 **********************************************************************/
+		JButton btnAddEgg = new JButton("Add another egg");
+		btnAddEgg.setVisible(false);
+		//creates action for add egg button
+				btnAddEgg.addActionListener(new ActionListener() {
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						textAreaResults.append(comboBoxEggType.getSelectedItem() + "\t" + comboBoxIncubatorType.getSelectedItem() + 
+								"\t" + comboBoxDistanceWalkedNumber.getSelectedItem() + "." + comboBoxDistanceWalkedDecimal.getSelectedItem() + "\n");
+						comboBoxEggType.setSelectedItem(0);
+						comboBoxIncubatorType.setSelectedItem(0);
+						comboBoxDistanceWalkedNumber.setSelectedItem(0);
+						comboBoxDistanceWalkedDecimal.setSelectedItem(0);
+					}
+				});
+		btnAddEgg.setBounds(55, 223, 159, 25);
+		frame.getContentPane().add(btnAddEgg);
 		
 		/**********************************************************************
 		 * Create Display result button and perform actions based on selections
@@ -334,15 +332,21 @@ class PokemonGoEggsGUI {
 
 
 		});
-		btnDisplayResults.setBounds(224, 304, 164, 25);
+		btnDisplayResults.setBounds(226, 223, 164, 25);
 		frame.getContentPane().add(btnDisplayResults);
-	
-
 		
 
 	}
 	
-	/**************************************************/
+	/**********************************************************************
+	 * 
+	 * Pokemon Go Eggs GUI methods
+	 * 
+	 **********************************************************************/
+	
+	/**********************************************************************
+	 * Holds instruction strings
+	 **********************************************************************/
 	private String displayInstructions(int choice) {
 		String result = "";
 		
