@@ -13,7 +13,7 @@ public class Egg2KM extends Egg {
 	private boolean isIncubating = false;
 	private double distanceWalked = 0.0;
 	private double eventMultiplier = 1;
-	private double incubatorMultiplier = 1;
+	private double incubatingDistance = EGG_WALKING_DISTANCE;
 
 	public double getEggWalkingDistance() {
 		return EGG_WALKING_DISTANCE * eventMultiplier * incubatorMultiplier;
@@ -43,18 +43,19 @@ public class Egg2KM extends Egg {
 		this.eventMultiplier = eventMultiplier;
 	}
 
-	public double getIncubatorMultiplier() {
-		return incubatorMultiplier;
-	}
-
-	public void setIncubatorMultiplier(double incubatorMultiplier) {
-		this.incubatorMultiplier = incubatorMultiplier;
-	}
-
 	public String getName() {
 		return NAME;
 	}
-    @Override
+	
+    public double getIncubatingDistance() {
+		return incubatingDistance;
+	}
+
+	public void setIncubatingDistance(double incubatingDistance) {
+		this.incubatingDistance = incubatingDistance;
+	}
+
+	@Override
     public String toString() {
         return NAME;
     }

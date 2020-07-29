@@ -43,7 +43,7 @@ class PokemonGoEggsGUI {
 	private String[] distanceNumbers = {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9"};
 	private MasterList masterList = new MasterList();
 	//private Inventory inventory = new Inventory();
-	private Object[] eggList;// = new Object[masterList.getMaxEggAllowed()];
+	private Object[] eggList = new Object[masterList.getMaxEggAllowed()];
 	private int eggCount = 1;
 	private DecimalFormat df = new DecimalFormat("#.#");
 
@@ -189,15 +189,36 @@ class PokemonGoEggsGUI {
 		//creates action for add egg button
 		btnAddEgg.addActionListener(new ActionListener() {
 			@Override
+			
+			//TODO: figure out how to set an array of various egg objects. May need to create super class Egg, with methods
+			//and have each type extend ??
 			public void actionPerformed(ActionEvent e) {
-				textAreaResults.append(comboBoxEggType.getSelectedItem() + "\t" + comboBoxIncubatorType.getSelectedItem() + 
-						"\t" + (Double.valueOf((String)comboBoxDistanceWalkedNumber.getSelectedItem())+
-								(Double.valueOf((String)comboBoxDistanceWalkedDecimal.getSelectedItem()))*.1) + "\n");
-				comboBoxEggType.setSelectedIndex(0);
-				comboBoxIncubatorType.setSelectedIndex(0);
-				comboBoxDistanceWalkedNumber.setSelectedIndex(0);
-				comboBoxDistanceWalkedDecimal.setSelectedIndex(0);
-				//eggCount ++;
+				if (eggCount<9) {
+					eggList[eggCount]= SetEggAttributes((EventMultiplier)comboBoxEventWalkingDistance.getSelectedItem(),
+							comboBoxEggType.getSelectedItem(),
+							comboBoxIncubatorType.getSelectedItem(),
+							(Double.valueOf((String)comboBoxDistanceWalkedNumber.getSelectedItem())+
+							(Double.valueOf((String)comboBoxDistanceWalkedDecimal.getSelectedItem()))*.1));
+					
+					textAreaResults.append(comboBoxEggType.getSelectedItem() + "\t" + comboBoxIncubatorType.getSelectedItem() + 
+							"\t" + (Double.valueOf((String)comboBoxDistanceWalkedNumber.getSelectedItem())+
+									(Double.valueOf((String)comboBoxDistanceWalkedDecimal.getSelectedItem()))*.1) + "\n");
+					comboBoxEggType.setSelectedIndex(0);
+					comboBoxIncubatorType.setSelectedIndex(0);
+					comboBoxDistanceWalkedNumber.setSelectedIndex(0);
+					comboBoxDistanceWalkedDecimal.setSelectedIndex(0);
+					eggCount ++;
+				}
+				else if (eggCount == 9){
+					textAreaResults.append(comboBoxEggType.getSelectedItem() + "\t" + comboBoxIncubatorType.getSelectedItem() + 
+							"\t" + (Double.valueOf((String)comboBoxDistanceWalkedNumber.getSelectedItem())+
+									(Double.valueOf((String)comboBoxDistanceWalkedDecimal.getSelectedItem()))*.1) + "\n");
+					comboBoxEggType.setSelectedIndex(0);
+					comboBoxIncubatorType.setSelectedIndex(0);
+					comboBoxDistanceWalkedNumber.setSelectedIndex(0);
+					comboBoxDistanceWalkedDecimal.setSelectedIndex(0);
+					btnAddEgg.setVisible(false);
+				}
 			}
 		});
 		
@@ -263,6 +284,7 @@ class PokemonGoEggsGUI {
 				buttonGroupMenu.clearSelection();
 				textAreaInstructions.setText(null);
 				textAreaResults.setText(null);
+				eggCount = 0;
 				comboBoxEventWalkingDistance.setSelectedIndex(0);
 				comboBoxEggType.setSelectedIndex(0);
 				comboBoxIncubatorType.setSelectedIndex(0);
@@ -327,9 +349,11 @@ class PokemonGoEggsGUI {
 				
 				//TODO: work through storing eggs and then calculating them. Decide whether to print out each egg as it's chosen
 				else if (rdbtnCreatePlan.isSelected()){
-					for (String line: textAreaResults.getText().split("\\n")) {
-						System.out.println(line);
-					}
+//					for (String line: textAreaResults.getText().split("\\n")) {
+//						int i = 0;
+//						eggList[i] = createEgg(line);
+//						i++;
+//					}
 					
 //					if(eggCount<9) {
 //					
@@ -381,6 +405,7 @@ class PokemonGoEggsGUI {
 		
 
 	}
+
 
 	/**********************************************************************
 	 * 
@@ -478,12 +503,11 @@ class PokemonGoEggsGUI {
 	}
 	
 	/**********************************************************************
-	 * create egg object based on input
+	 * set egg attributes based on input
 	 **********************************************************************/
-	
-	private Egg CreateEgg(EventMultiplier event, EggsNew egg, IncubatorsNew incubator, Integer distanceNumber, Integer distanceDecimal) {
-		// TODO Auto-generated method stub
+	protected Object SetEggAttributes(EventMultiplier selectedItem, Object egg, Object incubator, double distance) {
+
 		return null;
-		
 	}
+
 }
