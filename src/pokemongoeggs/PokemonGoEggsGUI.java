@@ -42,7 +42,9 @@ class PokemonGoEggsGUI {
 	private final ButtonGroup buttonGroupMenu = new ButtonGroup();
 	private String[] distanceNumbers = {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9"};
 	private MasterList masterList = new MasterList();
-	private Inventory inventory = new Inventory();
+	//private Inventory inventory = new Inventory();
+	private Object[] eggList = new Object[masterList.getMaxEggAllowed()];
+	private int eggCount = 0;
 	private DecimalFormat df = new DecimalFormat("#.#");
 
 	/**
@@ -194,6 +196,7 @@ class PokemonGoEggsGUI {
 				comboBoxIncubatorType.setSelectedItem(0);
 				comboBoxDistanceWalkedNumber.setSelectedItem(0);
 				comboBoxDistanceWalkedDecimal.setSelectedItem(0);
+				eggCount ++;
 			}
 		});
 		
@@ -279,10 +282,7 @@ class PokemonGoEggsGUI {
 		});
 		btnExit.setBounds(352, 454, 85, 25);
 		frame.getContentPane().add(btnExit);
-		
-		/**********************************************************************
-		 * Creates button to add another egg
-		 **********************************************************************/
+
 		
 		/**********************************************************************
 		 * Create Display result button and perform actions based on selections
@@ -326,20 +326,61 @@ class PokemonGoEggsGUI {
 				
 				//TODO: work through storing eggs and then calculating them. Decide whether to print out each egg as it's chosen
 				else if (rdbtnCreatePlan.isSelected()){
-					for (String line: textAreaResults.getText().split("\\n")) {
-						System.out.println(line);
-					}
+//					for (String line: textAreaResults.getText().split("\\n")) {
+//						System.out.println(line);
+//					}
+					
+//					if(eggCount<9) {
+//					
+//						switch (eggCount){
+//							case 0:
+//								inventory.setEgg8(CreateEgg((EventMultiplier)comboBoxEventWalkingDistance.getSelectedItem(),(EggsNew)comboBoxEggType.getSelectedItem(),
+//										(IncubatorsNew)comboBoxIncubatorType.getSelectedItem(),
+//										Integer.valueOf((String)comboBoxDistanceWalkedNumber.getSelectedItem()),
+//										Integer.valueOf((String)comboBoxDistanceWalkedDecimal.getSelectedItem())));
+//								break;
+//							case 1:
+//								
+//								break;
+//							case 2:
+//								
+//								break;
+//							case 3:
+//								
+//								break;
+//							case 4:
+//								
+//								break;
+//							case 5:
+//								
+//								break;
+//							case 6:
+//								
+//								break;
+//							case 7:
+//								inventory.setEgg8(CreateEgg((EventMultiplier)comboBoxEventWalkingDistance.getSelectedItem(),(EggsNew)comboBoxEggType.getSelectedItem(),
+//										(IncubatorsNew)comboBoxIncubatorType.getSelectedItem(),
+//										Integer.valueOf((String)comboBoxDistanceWalkedNumber.getSelectedItem()),
+//										Integer.valueOf((String)comboBoxDistanceWalkedDecimal.getSelectedItem())));
+//								break;
+//							case 8:
+//								inventory.setEgg9(CreateEgg((EventMultiplier)comboBoxEventWalkingDistance.getSelectedItem(),(EggsNew)comboBoxEggType.getSelectedItem(),
+//										(IncubatorsNew)comboBoxIncubatorType.getSelectedItem(),
+//										Integer.valueOf((String)comboBoxDistanceWalkedNumber.getSelectedItem()),
+//										Integer.valueOf((String)comboBoxDistanceWalkedDecimal.getSelectedItem())));
+//								break;
+//						}
+//					}
+					
 				}
 			}
-
-
 		});
 		btnDisplayResults.setBounds(140, 251, 164, 25);
 		frame.getContentPane().add(btnDisplayResults);
 		
 
 	}
-	
+
 	/**********************************************************************
 	 * 
 	 * Pokemon Go Eggs GUI methods
@@ -433,5 +474,15 @@ class PokemonGoEggsGUI {
 			}
 		}
 		return headers;
+	}
+	
+	/**********************************************************************
+	 * create egg object based on input
+	 **********************************************************************/
+	
+	private Egg CreateEgg(EventMultiplier event, EggsNew egg, IncubatorsNew incubator, Integer distanceNumber, Integer distanceDecimal) {
+		// TODO Auto-generated method stub
+		return null;
+		
 	}
 }

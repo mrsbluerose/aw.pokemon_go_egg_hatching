@@ -15,6 +15,8 @@ public class MasterList {
 	private EventMultiplier eventQuarter = new EventMultiplier("1/4", 0.25);
 	private EventMultiplier eventHalf = new EventMultiplier("1/2", 0.5);
 	private EventMultiplier[] eventCollection = {eventNone,eventQuarter,eventHalf};
+	
+	private int maxEggAllowed = 9;
 
 	public EggsNew[] getEggCollection() {
 		return eggCollection;
@@ -28,6 +30,9 @@ public class MasterList {
 		return eventCollection;
 	}
 
+	public int getMaxEggAllowed() {
+		return maxEggAllowed;
+	}
 	
 	
 	

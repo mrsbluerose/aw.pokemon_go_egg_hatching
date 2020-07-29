@@ -100,8 +100,10 @@ public class Inventory {
 	public Egg[] getEggInventory() {
 		return eggInventory;
 	}
-	public void setEggInventory(Egg eggInventory[]) {
-		this.eggInventory = eggInventory;
+
+	@Override
+	public String toString(){
+		return "Egg 1: " + egg1 + " " + egg1.get;
 	}
 
 }
