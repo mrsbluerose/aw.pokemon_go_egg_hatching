@@ -43,8 +43,8 @@ class PokemonGoEggsGUI {
 	private String[] distanceNumbers = {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9"};
 	private MasterList masterList = new MasterList();
 	//private Inventory inventory = new Inventory();
-	private Object[] eggList = new Object[masterList.getMaxEggAllowed()];
-	private int eggCount = 0;
+	private Object[] eggList;// = new Object[masterList.getMaxEggAllowed()];
+	private int eggCount = 1;
 	private DecimalFormat df = new DecimalFormat("#.#");
 
 	/**
@@ -191,12 +191,13 @@ class PokemonGoEggsGUI {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				textAreaResults.append(comboBoxEggType.getSelectedItem() + "\t" + comboBoxIncubatorType.getSelectedItem() + 
-						"\t" + comboBoxDistanceWalkedNumber.getSelectedItem() + "." + comboBoxDistanceWalkedDecimal.getSelectedItem() + "\n");
-				comboBoxEggType.setSelectedItem(0);
-				comboBoxIncubatorType.setSelectedItem(0);
-				comboBoxDistanceWalkedNumber.setSelectedItem(0);
-				comboBoxDistanceWalkedDecimal.setSelectedItem(0);
-				eggCount ++;
+						"\t" + (Double.valueOf((String)comboBoxDistanceWalkedNumber.getSelectedItem())+
+								(Double.valueOf((String)comboBoxDistanceWalkedDecimal.getSelectedItem()))*.1) + "\n");
+				comboBoxEggType.setSelectedIndex(0);
+				comboBoxIncubatorType.setSelectedIndex(0);
+				comboBoxDistanceWalkedNumber.setSelectedIndex(0);
+				comboBoxDistanceWalkedDecimal.setSelectedIndex(0);
+				//eggCount ++;
 			}
 		});
 		
@@ -326,9 +327,9 @@ class PokemonGoEggsGUI {
 				
 				//TODO: work through storing eggs and then calculating them. Decide whether to print out each egg as it's chosen
 				else if (rdbtnCreatePlan.isSelected()){
-//					for (String line: textAreaResults.getText().split("\\n")) {
-//						System.out.println(line);
-//					}
+					for (String line: textAreaResults.getText().split("\\n")) {
+						System.out.println(line);
+					}
 					
 //					if(eggCount<9) {
 //					
