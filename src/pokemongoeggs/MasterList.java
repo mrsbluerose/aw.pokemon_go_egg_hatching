@@ -16,7 +16,10 @@ public class MasterList {
 	private EventMultiplier eventHalf = new EventMultiplier("1/2", 0.5);
 	private EventMultiplier[] eventCollection = {eventNone,eventQuarter,eventHalf};
 	
+	private String[] possibleEggDistanceWholeNumbers = {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9"};
+	private String[] possibleEggDistanceDecimals = {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9"};
 	private int maxEggAllowed = 9;
+	private String[] maxEggsAllowedNumbers = {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9"};
 
 	public EggsNew[] getEggCollection() {
 		return eggCollection;
@@ -32,6 +35,18 @@ public class MasterList {
 
 	public int getMaxEggAllowed() {
 		return maxEggAllowed;
+	}
+
+	public String[] getPossibleEggDistanceWholeNumbers() {
+		return possibleEggDistanceWholeNumbers;
+	}
+
+	public String[] getPossibleEggDistanceDecimals() {
+		return possibleEggDistanceDecimals;
+	}
+
+	public String[] getMaxEggsAllowedNumbers() {
+		return maxEggsAllowedNumbers;
 	}
 	
 	
