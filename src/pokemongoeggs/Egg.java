@@ -11,9 +11,10 @@ public class Egg {
 		private int eggCount;
 		private double distanceRemaining;
 
-		public Egg(String name, double eggWalkingDistance) {
+		public Egg(String name, double eggWalkingDistance, double distanceRemaining) {
 			this.NAME = name;
 			this.EGG_WALKING_DISTANCE = eggWalkingDistance;
+			this.distanceRemaining = distanceRemaining;
 		}
 		
 		public String getName() {

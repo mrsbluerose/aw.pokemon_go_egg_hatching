@@ -139,6 +139,11 @@ class PokemonGoEggsGUI {
 		comboBoxEggCount.setBounds(336,0, 36, 24);
 		panelEggCount.add(comboBoxEggCount);
 		comboBoxEggCount.setBackground(Color.WHITE);
+		comboBoxEggCount.addActionListener (new ActionListener () {
+		    public void actionPerformed(ActionEvent e) {
+		    	eggList = new Egg[Integer.parseInt((String)(comboBoxEggCount.getSelectedItem()))];
+		    }
+		});
 		
 		/**********************************************************************
 		 * Create Egg information panel
@@ -258,6 +263,7 @@ class PokemonGoEggsGUI {
 				panelEggCount.setVisible(true);
 				textAreaInstructions.setText(displayInstructions(3));
 				textAreaResults.setText(null);
+				//eggList = new Egg[Integer.parseInt((String)(comboBoxEggCount.getSelectedItem()))];
 				
 				JButton btnEnterEgg = new JButton("Enter");
 				btnEnterEgg.setBounds(294, 203, 122, 25);
@@ -268,7 +274,7 @@ class PokemonGoEggsGUI {
 					
 					//TODO: clean this up!!
 					public void actionPerformed(ActionEvent e) {
-						eggList = new Egg[Integer.parseInt((String)(comboBoxEggCount.getSelectedItem()))];
+						//eggList = new Egg[Integer.parseInt((String)(comboBoxEggCount.getSelectedItem()))];
 						if (eggCount < eggList.length) {
 							//egg count starts at 1. use eggCount-1 to reference array positions
 							eggList[eggCount-1]= SetEggAttributes(eggCount,
@@ -305,6 +311,9 @@ class PokemonGoEggsGUI {
 							comboBoxDistanceWalkedDecimal.setSelectedIndex(0);
 							btnEnterEgg.setVisible(false);
 							btnDisplayResults.setVisible(true);
+							for (Egg eggObj: eggList) {  //test print to see if array was built
+								System.out.println(eggObj.toString());
+							}
 						}
 					}
 				});
@@ -406,6 +415,9 @@ class PokemonGoEggsGUI {
 					//attributes and then displays them in order of what to place when.
 					//Returning error - fix
 					else {
+						for (Egg eggObj: eggList) {  //test print to see if array was built
+						System.out.println("display " + eggObj.toString());
+					}
 							textAreaResults.append(buildEggPlan(eggList));
 					}
 					
@@ -503,13 +515,21 @@ class PokemonGoEggsGUI {
 	 * Calculate when eggs will hatch, based on egg array
 	 **********************************************************************/
 	private String buildEggPlan(Egg[] eggs) {
+		
+		for (Egg eggObj: eggs) {  //test print to see if array was built
+			System.out.println("in method" + eggObj.toString());
+		}
+		
+		int length = eggs.length;
 		StringBuilder results = new StringBuilder();
 		//eggs = sortEggs(eggs);
-		Egg[] eggOrder = new Egg[eggs.length];
+		Egg[] eggOrder = new Egg[length];
 		Egg maxEgg = eggs[0];
 		
-		for (int i=0; i<eggOrder.length; i++) {
-			for(int j=0; j<eggs.length; j++) {
+		System.out.println("the max egg: " + maxEgg.toString());
+		
+		for (int i=0; i<length; i++) {
+			for(int j=0; j<length; j++) {
 				if (eggs[j].getDistanceRemaining() > maxEgg.getDistanceRemaining()){
 					maxEgg = eggs[j];
 				}

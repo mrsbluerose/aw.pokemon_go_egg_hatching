@@ -1,10 +1,10 @@
 package pokemongoeggs;
 
 public class MasterList {
-	private Egg egg2KM = new Egg("2KM", 2.0);
-	private Egg egg5KM = new Egg("5KM", 5.0);
-	private Egg egg7KM = new Egg("7KM", 7.0);
-	private Egg egg10KM = new Egg("10KM", 10.0);
+	private Egg egg2KM = new Egg("2KM", 2.0, 2.0);
+	private Egg egg5KM = new Egg("5KM", 5.0, 5.0);
+	private Egg egg7KM = new Egg("7KM", 7.0, 7.0);
+	private Egg egg10KM = new Egg("10KM", 10.0, 10.0);
 	private Egg[] eggCollection = {egg2KM, egg5KM, egg7KM, egg10KM};
 	
 	private Incubator incubatorRegular = new Incubator("regular", 1.0);
