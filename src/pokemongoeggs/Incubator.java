@@ -1,15 +1,15 @@
 package pokemongoeggs;
 
-public class IncubatorsNew {
+public class Incubator {
 
 	private String name;
 	private double incubatorMultiplier;
 	
-	public IncubatorsNew() {
+	public Incubator() {
 		
 	}
 	
-    public IncubatorsNew(String name, double incubatorMultiplier) {
+    public Incubator(String name, double incubatorMultiplier) {
 		super();
 		this.name = name;
 		this.incubatorMultiplier = incubatorMultiplier;

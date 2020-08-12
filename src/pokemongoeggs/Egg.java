@@ -1,6 +1,6 @@
 package pokemongoeggs;
 
-public class EggsNew {
+public class Egg {
 
 		final private String NAME; 
 		final private double EGG_WALKING_DISTANCE;
@@ -11,7 +11,7 @@ public class EggsNew {
 		private int eggCount;
 		private double distanceRemaining;
 
-		public EggsNew(String name, double eggWalkingDistance) {
+		public Egg(String name, double eggWalkingDistance) {
 			this.NAME = name;
 			this.EGG_WALKING_DISTANCE = eggWalkingDistance;
 		}

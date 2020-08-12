@@ -33,8 +33,8 @@ public class EggHatchingTable {
 	private double[] buildEggArray(double e, MasterList masterList, int length) {
 
 		double[] eggsArray = new double[length];
-		EggsNew[] eggs = masterList.getEggCollection();
-		IncubatorsNew[] incubators = masterList.getIncubatorCollection();
+		Egg[] eggs = masterList.getEggCollection();
+		Incubator[] incubators = masterList.getIncubatorCollection();
 		for (int i=0; i<eggsArray.length;){
 			for (int j=0; j<incubators.length; j++) {
 				for (int k=0; k<eggs.length; k++) {
