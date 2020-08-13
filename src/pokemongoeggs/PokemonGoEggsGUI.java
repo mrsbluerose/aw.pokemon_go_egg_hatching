@@ -304,16 +304,16 @@ class PokemonGoEggsGUI {
 							
 							textAreaResults.append("Egg " + (eggCount) + ": " + comboBoxEggType.getSelectedItem() + "\t" + comboBoxIncubatorType.getSelectedItem() + 
 									"\t" + (Double.valueOf((String)comboBoxDistanceWalkedNumber.getSelectedItem())+
-											(Double.valueOf((String)comboBoxDistanceWalkedDecimal.getSelectedItem()))*.1) + "\n");
+											(Double.valueOf((String)comboBoxDistanceWalkedDecimal.getSelectedItem()))*.1) + "\n\n");
 							comboBoxEggType.setSelectedIndex(0);
 							comboBoxIncubatorType.setSelectedIndex(0);
 							comboBoxDistanceWalkedNumber.setSelectedIndex(0);
 							comboBoxDistanceWalkedDecimal.setSelectedIndex(0);
 							btnEnterEgg.setVisible(false);
 							btnDisplayResults.setVisible(true);
-							for (Egg eggObj: eggList) {  //test print to see if array was built
-								System.out.println(eggObj.toString() + " " + eggObj.getDistanceRemaining());
-							}
+//							for (Egg eggObj: eggList) {  //test print to see if array was built
+//								System.out.println(eggObj.toString() + " " + eggObj.getDistanceRemaining());
+//							}
 						}
 					}
 				});
@@ -415,9 +415,9 @@ class PokemonGoEggsGUI {
 					//any eggs with more distance than those already incubating cannot be walked
 					//add range to still consider (within 1-2 KM)
 					else {
-						for (Egg eggObj: eggList) {  //test print to see if array was built
-						System.out.println("display " + eggObj.toString() + " " + eggObj.getDistanceRemaining());
-					}
+//						for (Egg eggObj: eggList) {  //test print to see if array was built
+//						System.out.println("display " + eggObj.toString() + " " + eggObj.getDistanceRemaining());
+//					}
 							textAreaResults.append(buildEggPlan(eggList));
 					}
 					
@@ -516,39 +516,26 @@ class PokemonGoEggsGUI {
 	 **********************************************************************/
 	private String buildEggPlan(Egg[] eggs) {
 		
-		for (Egg eggObj: eggs) {  //test print to see if array was built
-			System.out.println("in method" + eggObj.toString() + " " + eggObj.getDistanceRemaining());
-		}
+//		for (Egg eggObj: eggs) {  //test print to see if array was built
+//			System.out.println("in method" + eggObj.toString() + " " + eggObj.getDistanceRemaining());
+//		}
 		
 		int length = eggs.length;
 		StringBuilder results = new StringBuilder();
 		//eggs = sortEggs(eggs);
 		Egg[] eggOrder = Sort.bubbleSort(eggs, length);
 		
-		for (Egg eggObj: eggOrder) {  //test print to see if array was sorted
-			System.out.println("sorted " + eggObj.toString() + " " + eggObj.getDistanceRemaining());
-		}
-		
+//		for (Egg eggObj: eggOrder) {  //test print to see if array was sorted
+//			System.out.println("sorted " + eggObj.toString() + " " + eggObj.getDistanceRemaining());
+//		}
+		results.append("Egg to Place\t\tWhen Egg " + eggOrder[0].getEggCount() + " is at:\n");
 		for (int i=0; i<eggs.length;i++) {
-			results.append("Egg " + eggOrder[i].getEggCount() + " at " + (eggOrder[0].getDistanceRemaining()-eggOrder[i].getDistanceRemaining()) + "\n");
+			results.append("Egg " + eggOrder[i].getEggCount() + "\t\t\t" + 
+					(eggOrder[0].getDistanceRemaining()-eggOrder[i].getDistanceRemaining()) + "\n");
 		}
 		
 		return results.toString();
 	}
-	
-//	private EggsNew[] sortEggs(EggsNew[] eggs) {
-//		EggsNew[] eggOrder = new EggsNew[eggs.length];
-//		EggsNew maxEgg = eggs[0];
-//		for (int i=0; i<eggOrder.length; i++) {
-//			for(int j=0; j<eggs.length; j++) {
-//				if (eggs[j].getDistanceRemaining() > maxEgg.getDistanceRemaining()){
-//					maxEgg = eggs[j];
-//				}
-//			eggOrder[i] = maxEgg;
-//			}
-//		}
-//		return eggOrder;
-//	}
 	
 	
 	/**********************************************************************
