@@ -202,6 +202,7 @@ class PokemonGoEggsGUI {
 		/**********************************************************************
 		 * Creates main menu
 		 **********************************************************************/
+		//creates button. Actions created later.
 		JButton btnDisplayResults = new JButton("Display Results");
 		btnDisplayResults.setVisible(false);
 		
@@ -497,7 +498,7 @@ class PokemonGoEggsGUI {
 			}
 		}
 		
-		//build table array with each row showing when to put that eggy type in compared to that column's egg type
+		//build table array with each row showing when to put that egg type in compared to that column's egg type
 		String[][] eggIncubateDistances = new String[eggsArray.length][eggsArray.length];
 		for (int i = 0; i < eggsArray.length; i++) {
 			for (int j = 0; j < eggsArray.length; j++) {
