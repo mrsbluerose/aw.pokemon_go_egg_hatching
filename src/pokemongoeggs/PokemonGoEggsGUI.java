@@ -76,7 +76,7 @@ class PokemonGoEggsGUI {
 	 **********************************************************************/
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 450, 537);
+		frame.setBounds(100, 100, 460, 537);
 		frame.setVisible(true);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
@@ -104,7 +104,7 @@ class PokemonGoEggsGUI {
 		 * Create Event Panel
 		 **********************************************************************/
 		JPanel panelEvent = new JPanel();
-		panelEvent.setBounds(11, 109, 426, 24);
+		panelEvent.setBounds(14, 109, 434, 24);
 		frame.getContentPane().add(panelEvent);
 		panelEvent.setLayout(null);
 		panelEvent.setVisible(false);
@@ -123,13 +123,13 @@ class PokemonGoEggsGUI {
 		 **********************************************************************/
 		
 		JPanel panelEggCount = new JPanel();
-		panelEggCount.setBounds(14, 141, 423, 24);
+		panelEggCount.setBounds(14, 141, 434, 24);
 		frame.getContentPane().add(panelEggCount);
 		panelEggCount.setLayout(null);
 		panelEggCount.setVisible(false);
 		
 		JLabel lblEggcount = new JLabel("How many eggs will there be total?");
-		lblEggcount.setBounds(5, 9, 250, 15);
+		lblEggcount.setBounds(0, 0, 250, 24);
 		panelEggCount.add(lblEggcount);
 		lblEggcount.setHorizontalAlignment(SwingConstants.LEFT);
 		
@@ -144,59 +144,65 @@ class PokemonGoEggsGUI {
 		});
 		
 		/**********************************************************************
-		 * Create Egg information panel
+		 * Create Egg information panels
 		 **********************************************************************/
+		JPanel panelEggType = new JPanel();
+		panelEggType.setBounds(14, 171, 233, 24);
+		frame.getContentPane().add(panelEggType);
+		panelEggType.setLayout(null);
+		panelEggType.setVisible(false);
+		
+		//Egg Type
+		JLabel lblEggType = new JLabel("Egg Type");
+		lblEggType.setBounds(0, 1, 117, 26);
+		panelEggType.add(lblEggType);
+		lblEggType.setHorizontalAlignment(SwingConstants.LEFT);
+		
+		JComboBox comboBoxEggType = new JComboBox(masterList.getEggCollection());
+		comboBoxEggType.setBounds(131, 1, 98, 24);
+		panelEggType.add(comboBoxEggType);
+		//		comboBoxEggType.insertItemAt("", 0);
+		//		comboBoxEggType.setSelectedIndex(0);
+				comboBoxEggType.setBackground(Color.WHITE);
+
 		JPanel panelEggOptions = new JPanel();
-		panelEggOptions.setBounds(14, 177, 249, 82);
+		panelEggOptions.setBounds(14, 200, 233, 53);
 		frame.getContentPane().add(panelEggOptions);
 		panelEggOptions.setLayout(null);
 		panelEggOptions.setVisible(false);
 		
-		//Egg Type
-		JLabel lblEggType = new JLabel("Egg Type");
-		lblEggType.setHorizontalAlignment(SwingConstants.LEFT);
-		lblEggType.setBounds(0, -1, 117, 26);
-		panelEggOptions.add(lblEggType);
-		
-		JComboBox comboBoxEggType = new JComboBox(masterList.getEggCollection());
-//		comboBoxEggType.insertItemAt("", 0);
-//		comboBoxEggType.setSelectedIndex(0);
-		comboBoxEggType.setBackground(Color.WHITE);
-		comboBoxEggType.setBounds(131, 1, 98, 24);
-		panelEggOptions.add(comboBoxEggType);
-		
 		//Incubator Type
 		JLabel lblIncubatorType = new JLabel("Incubator Type");
-		lblIncubatorType.setHorizontalAlignment(SwingConstants.LEFT);
-		lblIncubatorType.setBounds(0, 26, 117, 26);
+		lblIncubatorType.setBounds(0, 1, 106, 24);
 		panelEggOptions.add(lblIncubatorType);
+		lblIncubatorType.setHorizontalAlignment(SwingConstants.LEFT);
 		
 		JComboBox comboBoxIncubatorType = new JComboBox(masterList.getIncubatorCollection());
 		comboBoxIncubatorType.setBackground(Color.WHITE);
-		comboBoxIncubatorType.setBounds(131, 28, 98, 24);
+		comboBoxIncubatorType.setBounds(131, 1, 98, 24);
 		panelEggOptions.add(comboBoxIncubatorType);
 		
 		//Distance walked
 		JLabel lblDistanceWalked = new JLabel("Distance Walked");
 		lblDistanceWalked.setHorizontalAlignment(SwingConstants.LEFT);
 		lblDistanceWalked.setBackground(Color.WHITE);
-		lblDistanceWalked.setBounds(0, 54, 128, 26);
+		lblDistanceWalked.setBounds(0, 28, 128, 26);
 		panelEggOptions.add(lblDistanceWalked);
 		
 		JLabel lblDecimal = new JLabel(".");
 		lblDecimal.setHorizontalAlignment(SwingConstants.CENTER);
 		lblDecimal.setVerticalAlignment(SwingConstants.BOTTOM);
-		lblDecimal.setBounds(174, 61, 12, 19);
+		lblDecimal.setBounds(174, 32, 12, 19);
 		panelEggOptions.add(lblDecimal);
 
 		JComboBox comboBoxDistanceWalkedNumber = new JComboBox(masterList.getPossibleEggDistanceWholeNumbers());
 		comboBoxDistanceWalkedNumber.setBackground(Color.WHITE);
-		comboBoxDistanceWalkedNumber.setBounds(131, 56, 40, 24);
+		comboBoxDistanceWalkedNumber.setBounds(131, 28, 40, 24);
 		panelEggOptions.add(comboBoxDistanceWalkedNumber);
 		
 		JComboBox comboBoxDistanceWalkedDecimal = new JComboBox(masterList.getPossibleEggDistanceDecimals());
 		comboBoxDistanceWalkedDecimal.setBackground(Color.WHITE);
-		comboBoxDistanceWalkedDecimal.setBounds(189, 56, 40, 24);
+		comboBoxDistanceWalkedDecimal.setBounds(189, 28, 40, 24);
 		panelEggOptions.add(comboBoxDistanceWalkedDecimal);
 		
 		/**********************************************************************
@@ -205,18 +211,19 @@ class PokemonGoEggsGUI {
 		//creates button. Actions created later.
 		JButton btnDisplayResults = new JButton("Display Results");
 		btnDisplayResults.setVisible(false);
-		
+
 		JLabel lblMenu = new JLabel("Menu");
 		lblMenu.setHorizontalAlignment(SwingConstants.CENTER);
 		lblMenu.setBounds(11, 0, 426, 23);
 		frame.getContentPane().add(lblMenu);
 		
-		JRadioButton rdbtnDisplayTable = new JRadioButton("Display egg table");
+		JRadioButton rdbtnDisplayTable = new JRadioButton("Display egg table");	
 		buttonGroupMenu.add(rdbtnDisplayTable);
 		rdbtnDisplayTable.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				panelEvent.setVisible(true);
+				panelEggType.setVisible(false);
 				panelEggOptions.setVisible(false);
 				panelEggCount.setVisible(false);
 				btnDisplayResults.setVisible(true);
@@ -233,6 +240,7 @@ class PokemonGoEggsGUI {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				panelEvent.setVisible(true);
+				panelEggType.setVisible(true);
 				panelEggOptions.setVisible(true);
 				panelEggCount.setVisible(false);
 				btnDisplayResults.setVisible(true);
@@ -249,13 +257,15 @@ class PokemonGoEggsGUI {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				panelEvent.setVisible(true);
-				panelEggOptions.setVisible(true);
+				panelEggType.setVisible(true);
+				panelEggOptions.setVisible(false);
+				btnDisplayResults.setVisible(false);
 				panelEggCount.setVisible(true);
 				textAreaInstructions.setText(displayInstructions(3));
 				textAreaResults.setText(null);
 				
 				JButton btnEnterEgg = new JButton("Enter");
-				btnEnterEgg.setBounds(294, 203, 122, 25);
+				btnEnterEgg.setBounds(294, 171, 122, 25);
 				frame.getContentPane().add(btnEnterEgg);
 				//creates action for enter egg button
 				btnEnterEgg.addActionListener(new ActionListener() {
@@ -318,6 +328,7 @@ class PokemonGoEggsGUI {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				panelEvent.setVisible(false);
+				panelEggType.setVisible(false);
 				panelEggOptions.setVisible(false);
 				panelEggCount.setVisible(false);
 				btnDisplayResults.setVisible(false);
@@ -413,15 +424,7 @@ class PokemonGoEggsGUI {
 		});
 		btnDisplayResults.setBounds(140, 265, 164, 25);
 		frame.getContentPane().add(btnDisplayResults);
-		
-	}
-
-
-	/**********************************************************************
-	 * 
-	 * Pokemon Go Eggs GUI methods
-	 * 
-	 **********************************************************************/
+}
 	
 	/**********************************************************************
 	 * Holds instruction strings
@@ -467,8 +470,8 @@ class PokemonGoEggsGUI {
 //		for (Egg eggObj: eggOrder) {  //test print to see if array was sorted
 //			System.out.println("sorted " + eggObj.toString() + " " + eggObj.getDistanceRemaining());
 //		}
-		results.append("Place Egg " + eggOrder[0].getEggCount() + " in an incubator/n");
-		for (int i=1; i<eggs.length;i++) {
+		results.append("Egg to Place\t\tWhen Egg " + eggOrder[0].getEggCount() + " is at:\n");
+		for (int i=0; i<eggs.length;i++) {
 			results.append("Egg " + eggOrder[i].getEggCount() + "\t\t\t" + 
 					(eggOrder[0].getDistanceRemaining()-eggOrder[i].getDistanceRemaining()) + "\n");
 		}
