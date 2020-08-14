@@ -467,8 +467,8 @@ class PokemonGoEggsGUI {
 //		for (Egg eggObj: eggOrder) {  //test print to see if array was sorted
 //			System.out.println("sorted " + eggObj.toString() + " " + eggObj.getDistanceRemaining());
 //		}
-		results.append("Egg to Place\t\tWhen Egg " + eggOrder[0].getEggCount() + " is at:\n");
-		for (int i=0; i<eggs.length;i++) {
+		results.append("Place Egg " + eggOrder[0].getEggCount() + " in an incubator/n");
+		for (int i=1; i<eggs.length;i++) {
 			results.append("Egg " + eggOrder[i].getEggCount() + "\t\t\t" + 
 					(eggOrder[0].getDistanceRemaining()-eggOrder[i].getDistanceRemaining()) + "\n");
 		}
