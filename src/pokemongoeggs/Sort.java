@@ -9,7 +9,7 @@ package pokemongoeggs;
 public class Sort {
 
 	// An optimized version of Bubble Sort 
-    static Egg[] bubbleSort(Egg arr[], int n) //changed to Egg[] type
+    static Egg[] bubbleSortDistanceRemaining(Egg arr[], int n) //changed to Egg[] type
     { 
         int i, j;
         Egg temp; //changed to Egg object

@@ -465,7 +465,7 @@ class PokemonGoEggsGUI {
 		
 		int length = eggs.length;
 		StringBuilder results = new StringBuilder();
-		Egg[] eggOrder = Sort.bubbleSort(eggs, length);
+		Egg[] eggOrder = Sort.bubbleSortDistanceRemaining(eggs, length);
 		
 //		for (Egg eggObj: eggOrder) {  //test print to see if array was sorted
 //			System.out.println("sorted " + eggObj.toString() + " " + eggObj.getDistanceRemaining());
