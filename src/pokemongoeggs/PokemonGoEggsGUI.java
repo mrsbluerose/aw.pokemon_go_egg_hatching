@@ -43,7 +43,7 @@ class PokemonGoEggsGUI {
 	private JFrame frame;
 	private final ButtonGroup buttonGroupMenu = new ButtonGroup();
 	private MasterList masterList = new MasterList();
-	private Egg[] eggList;
+	private Egg[] eggList = {};
 	private int eggCount = 1;
 	private DecimalFormat df = new DecimalFormat("#.#");
 
@@ -88,6 +88,8 @@ class PokemonGoEggsGUI {
 		//Instructions pane
 		JTextArea textAreaInstructions = new JTextArea();
 		textAreaInstructions.setBounds(273, 27, 164, 70);
+		textAreaInstructions.setWrapStyleWord(true);
+		textAreaInstructions.setLineWrap(true);
 		frame.getContentPane().add(textAreaInstructions);
 		
 		//Results pane
@@ -121,7 +123,6 @@ class PokemonGoEggsGUI {
 		/**********************************************************************
 		 * Create Egg Count Panel
 		 **********************************************************************/
-		
 		JPanel panelEggCount = new JPanel();
 		panelEggCount.setBounds(14, 141, 434, 24);
 		frame.getContentPane().add(panelEggCount);
@@ -137,6 +138,7 @@ class PokemonGoEggsGUI {
 		comboBoxEggCount.setBounds(336,0, 36, 24);
 		panelEggCount.add(comboBoxEggCount);
 		comboBoxEggCount.setBackground(Color.WHITE);
+		//Assign new Egg array with counter length
 		comboBoxEggCount.addActionListener (new ActionListener () {
 		    public void actionPerformed(ActionEvent e) {
 		    	eggList = new Egg[Integer.parseInt((String)(comboBoxEggCount.getSelectedItem()))];
@@ -146,6 +148,7 @@ class PokemonGoEggsGUI {
 		/**********************************************************************
 		 * Create Egg information panels
 		 **********************************************************************/
+		//Egg Type panel
 		JPanel panelEggType = new JPanel();
 		panelEggType.setBounds(14, 171, 233, 24);
 		frame.getContentPane().add(panelEggType);
@@ -164,7 +167,8 @@ class PokemonGoEggsGUI {
 		//		comboBoxEggType.insertItemAt("", 0);
 		//		comboBoxEggType.setSelectedIndex(0);
 				comboBoxEggType.setBackground(Color.WHITE);
-
+				
+		//Egg Options Panel
 		JPanel panelEggOptions = new JPanel();
 		panelEggOptions.setBounds(14, 200, 233, 53);
 		frame.getContentPane().add(panelEggOptions);
@@ -208,14 +212,14 @@ class PokemonGoEggsGUI {
 		/**********************************************************************
 		 * Creates main menu
 		 **********************************************************************/
-		//creates button. Actions created later.
-		JButton btnDisplayResults = new JButton("Display Results");
-		btnDisplayResults.setVisible(false);
-
 		JLabel lblMenu = new JLabel("Menu");
 		lblMenu.setHorizontalAlignment(SwingConstants.CENTER);
 		lblMenu.setBounds(11, 0, 426, 23);
 		frame.getContentPane().add(lblMenu);
+		
+		//Creates Display Results button. Actions created later.
+		JButton btnDisplayResults = new JButton("Display Results");
+		btnDisplayResults.setVisible(false);
 		
 		JRadioButton rdbtnDisplayTable = new JRadioButton("Display egg table");	
 		buttonGroupMenu.add(rdbtnDisplayTable);
@@ -273,6 +277,14 @@ class PokemonGoEggsGUI {
 					
 					//TODO: clean this up!!
 					public void actionPerformed(ActionEvent e) {
+//						eggList[eggCount-1]= SetEggAttributes(eggCount,
+//								(EventMultiplier)comboBoxEventWalkingDistance.getSelectedItem(),
+//								(Egg)comboBoxEggType.getSelectedItem(),
+//								(Incubator)comboBoxIncubatorType.getSelectedItem(),
+//								(Double.valueOf((String)comboBoxDistanceWalkedNumber.getSelectedItem())+
+//								(Double.valueOf((String)comboBoxDistanceWalkedDecimal.getSelectedItem()))*.1));
+//						
+//						textAreaResults.append(displayResultsEggInput(eggList[eggCount-1]));
 						if (eggCount < eggList.length) {
 							//egg count starts at 1. use eggCount-1 to reference array positions
 							eggList[eggCount-1]= SetEggAttributes(eggCount,
@@ -282,13 +294,7 @@ class PokemonGoEggsGUI {
 									(Double.valueOf((String)comboBoxDistanceWalkedNumber.getSelectedItem())+
 									(Double.valueOf((String)comboBoxDistanceWalkedDecimal.getSelectedItem()))*.1));
 							
-							textAreaResults.append("Egg " + (eggCount) + ": " + comboBoxEggType.getSelectedItem() + "\t" + comboBoxIncubatorType.getSelectedItem() + 
-									"\t" + (Double.valueOf((String)comboBoxDistanceWalkedNumber.getSelectedItem())+
-											(Double.valueOf((String)comboBoxDistanceWalkedDecimal.getSelectedItem()))*.1) + "\n");
-							comboBoxEggType.setSelectedIndex(0);
-							comboBoxIncubatorType.setSelectedIndex(0);
-							comboBoxDistanceWalkedNumber.setSelectedIndex(0);
-							comboBoxDistanceWalkedDecimal.setSelectedIndex(0);
+							textAreaResults.append(displayResultsEggInput(eggList[eggCount-1]));
 							eggCount ++;
 						}
 						//Once the egg count amount is reached, hide the "enter" button
@@ -299,20 +305,17 @@ class PokemonGoEggsGUI {
 									(Incubator)comboBoxIncubatorType.getSelectedItem(),
 									(Double.valueOf((String)comboBoxDistanceWalkedNumber.getSelectedItem())+
 									(Double.valueOf((String)comboBoxDistanceWalkedDecimal.getSelectedItem()))*.1));
-							
-							textAreaResults.append("Egg " + (eggCount) + ": " + comboBoxEggType.getSelectedItem() + "\t" + comboBoxIncubatorType.getSelectedItem() + 
-									"\t" + (Double.valueOf((String)comboBoxDistanceWalkedNumber.getSelectedItem())+
-											(Double.valueOf((String)comboBoxDistanceWalkedDecimal.getSelectedItem()))*.1) + "\n\n");
-							comboBoxEggType.setSelectedIndex(0);
-							comboBoxIncubatorType.setSelectedIndex(0);
-							comboBoxDistanceWalkedNumber.setSelectedIndex(0);
-							comboBoxDistanceWalkedDecimal.setSelectedIndex(0);
+							textAreaResults.append(displayResultsEggInput(eggList[eggCount-1]));
 							btnEnterEgg.setVisible(false);
 							btnDisplayResults.setVisible(true);
 //							for (Egg eggObj: eggList) {  //test print to see if array was built
 //								System.out.println(eggObj.toString() + " " + eggObj.getDistanceRemaining());
 //							}
 						}
+						comboBoxEggType.setSelectedIndex(0);
+						comboBoxIncubatorType.setSelectedIndex(0);
+						comboBoxDistanceWalkedNumber.setSelectedIndex(0);
+						comboBoxDistanceWalkedDecimal.setSelectedIndex(0);
 					}
 				});
 			}
@@ -409,9 +412,12 @@ class PokemonGoEggsGUI {
 								(Double.valueOf((String)comboBoxDistanceWalkedNumber.getSelectedItem())+
 										(Double.valueOf((String)comboBoxDistanceWalkedDecimal.getSelectedItem()))*.1))) + " KM\n");
 					}
-					//TODO: add functionality to recognize that eggs already incubating must be counted first.
+					//TODO: add functionality to choose incubator (regular or super) and calculate the fastest hatching
+					//with only the highest distances being in super incubators
+					//TODO: add functionality to recognize eggs already incubating and how that affects the plan.
 					//any eggs with more distance than those already incubating cannot be walked
-					//add range to still consider (within 1-2 KM)
+					//TODO: add range to consider (within 1-2 KM -- no greater than 5KM, since the fastest you can go
+					//during hatching is 10.5 KM/hr.)
 					else {
 //						for (Egg eggObj: eggList) {  //test print to see if array was built
 //						System.out.println("display " + eggObj.toString() + " " + eggObj.getDistanceRemaining());
@@ -429,22 +435,34 @@ class PokemonGoEggsGUI {
 	/**********************************************************************
 	 * Holds instruction strings
 	 **********************************************************************/
+	//separate method to hold strings to help keep instruction language consistent
 	private String displayInstructions(int choice) {
 		String result = "";
 		
 		switch(choice) {
-			case 1: result = "Enter the event multiplier\nand click \"display results\"";
+			case 1: result = "Enter the event and click \"display results\"";
 					break;
-			case 2: result = "Enter the event multiplier and egg information.\n"
-						+ "and click \"display results\"";
+			case 2: result = "Enter the event and egg information and click \"display results\"";
 					break;
-			case 3: result = "Enter the event multiplier, egg count and egg information.\n" 
-								+ "click \"enter\" after entering each egg's information\n"
-								+ "When finished, click \"display results\"";
-					break;			default: result = "error";
+			case 3: result = "Enter the event, egg count and type and click \"enter\". "
+					+ "When finished, click \"display results\"";
+					break;
+					default: result = "error"; //message to help with testing
 		}
 		
 		return result;
+	}
+	
+	/**********************************************************************
+	 * Display text for egg entry
+	 **********************************************************************/
+	private String displayResultsEggInput(Egg eggEntered) {
+		StringBuilder results = new StringBuilder();
+		
+		results.append("Egg " + eggEntered.getEggCount() + ": " + eggEntered.getName() + "\t" + 
+				eggEntered.getIncubatorMultiplier() + "\t" + eggEntered.getDistanceWalked() + "\n");
+
+		return results.toString();
 	}
 	
 	/**********************************************************************
@@ -485,9 +503,10 @@ class PokemonGoEggsGUI {
 	 **********************************************************************/
 	
 	private String[][] BuildTable(EventMultiplier multiplier, MasterList list){
-		double answer;
+
 		Egg[] eggs = list.getEggCollection();
 		Incubator[] incubators = list.getIncubatorCollection();
+		double answer;
 		int length = eggs.length * incubators.length;
 		
 		//build array of egg walking distances in each type of incubator
@@ -495,7 +514,8 @@ class PokemonGoEggsGUI {
 		for (int i=0; i<eggsArray.length;){
 			for (int j=0; j<incubators.length; j++) {
 				for (int k=0; k<eggs.length; k++) {
-					eggsArray[i] = incubators[j].getIncubatorMultiplier() * eggs[k].getEggWalkingDistance() * multiplier.getMultiplier();
+					eggsArray[i] = incubators[j].getIncubatorMultiplier() * eggs[k].getEggWalkingDistance() * 
+							multiplier.getMultiplier();
 					i++;
 				}	 
 			}
@@ -509,11 +529,14 @@ class PokemonGoEggsGUI {
 				//Round the numbers before subtracting to match the game's math. 
 				answer = (Math.round(eggsArray[j] * 10) / 10.0) - (Math.round(eggsArray[i] * 10) / 10.0);
 				if (answer > 0) {
-					eggIncubateDistances[i][j] = df.format(answer).toString() + " KM"; //use decimal format to return a single decimal place
+					//use decimal format to return a single decimal place
+					eggIncubateDistances[i][j] = df.format(answer).toString() + " KM"; 
 				} else if (answer == 0) {
-					eggIncubateDistances[i][j] = "same time"; //indicates the eggs go in at the same time
+					//indicates the eggs go in at the same time
+					eggIncubateDistances[i][j] = "same time"; 
 				} else {
-					eggIncubateDistances[i][j] = "********"; //indicates the current egg is at a shorter distance than the prospective egg
+					//indicates the current egg is at a shorter distance than the prospective egg
+					eggIncubateDistances[i][j] = "********"; 
 				}
 			}
 		}
@@ -525,6 +548,7 @@ class PokemonGoEggsGUI {
 		Egg[] eggs = list.getEggCollection();
 		Incubator[] incubators = list.getIncubatorCollection();
 		int length = list.getEggCollection().length * list.getIncubatorCollection().length;
+
 		
 		//Build an array of egg names for each type of incubator
 		String[] headers = new String[length];
