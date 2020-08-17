@@ -352,12 +352,9 @@ class PokemonGoEggsGUI {
 		/**********************************************************************
 		 * Create Display result button and perform actions based on selections
 		 **********************************************************************/
-//		JButton btnDisplayResults = new JButton("Display Results");
 		btnDisplayResults.addActionListener(new ActionListener() {
+			
 			public void actionPerformed(ActionEvent e) {
-				for (Egg egg: eggList) { //test print
-					System.out.print("Display button before anything: Egg " + egg.getEggCount() + "\n ");
-				}
 				if(rdbtnDisplayTable.isSelected()) {
 					
 					//This code builds the table data and header arrays
@@ -382,7 +379,7 @@ class PokemonGoEggsGUI {
 					}
 				}
 				
-				//TODO: decide how to prevent negatives (only allow correct distances?)
+				//TODO: when incorporating incubators, decide how to prevent negatives
 				else if(rdbtnCalculateEgg.isSelected()) {
 					textAreaResults.append("The " + (Egg)comboBoxEggType.getSelectedItem() + " egg will hatch in " + 
 							df.format(calculateEgg((EventMultiplier)comboBoxEventWalkingDistance.getSelectedItem(), 
@@ -407,18 +404,9 @@ class PokemonGoEggsGUI {
 					//TODO: add functionality to recognize eggs already incubating and how that affects the plan.
 					//any eggs with more distance than those already incubating cannot be walked
 					//TODO: add range to consider (within 1-2 KM -- no greater than 5KM, since the fastest you can go
-					//during hatching is 10.5 KM/hr.)
+					//during hatching is 10.5 KM/hr)
 					else {
-//						for (Egg eggObj: eggList) {  //test print to see if array was built
-//						System.out.println("display " + eggObj.toString() + " " + eggObj.getDistanceRemaining());
-//					}
-						for (Egg egg: eggList) { //test print
-							System.out.print("Enter button pushed: Egg " + egg.getEggCount() + "\n ");
-						}
 							textAreaResults.append(buildEggPlan(eggList));
-							for (Egg egg: eggList) { //test print
-								System.out.print("Egg " + egg.getEggCount() + ", ");
-							}
 					}
 					
 				}
@@ -473,22 +461,10 @@ class PokemonGoEggsGUI {
 	 **********************************************************************/
 	private String buildEggPlan(Egg[] eggs) {
 		
-//		for (Egg eggObj: eggs) {  //test print to see if array was built
-//			System.out.println("in method" + eggObj.toString() + " " + eggObj.getDistanceRemaining());
-//		}
-		
 		int length = eggs.length;
-		System.out.println(""); //test spacer
-		for (Egg eggObj: eggs) {  //test print to see if array was sorted
-			System.out.println("not sorted " + eggObj.getEggCount() + " " + eggObj.toString() + " " + eggObj.getDistanceRemaining());
-		}
 		StringBuilder results = new StringBuilder();
 		Egg[] eggOrder = Sort.bubbleSortDistanceRemaining(eggs, length);
 		
-		System.out.println(""); //test spacer
-		for (Egg eggObj: eggOrder) {  //test print to see if array was sorted
-			System.out.println("sorted " + eggObj.getEggCount() + " " + eggObj.toString() + " " + eggObj.getDistanceRemaining());
-		}
 		results.append("Egg to Place\t\tWhen Egg " + eggOrder[0].getEggCount() + " is at:\n");
 		for (int i=1; i<length;i++) {
 			results.append("Egg " + eggOrder[i].getEggCount() + "\t\t\t" + 
