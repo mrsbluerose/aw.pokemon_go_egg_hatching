@@ -287,7 +287,6 @@ class PokemonGoEggsGUI {
 								(Double.valueOf((String)comboBoxDistanceWalkedDecimal.getSelectedItem()))*.1));
 						
 						textAreaResults.append(displayResultsEggInput(eggList[eggCount-1]));
-						System.out.println("Egg count before choice: " + eggCount);
 						if (eggCount < eggList.length) {
 							eggCount ++;
 						}
@@ -295,9 +294,6 @@ class PokemonGoEggsGUI {
 						else if (eggCount == eggList.length){
 							btnEnterEgg.setVisible(false);
 							btnDisplayResults.setVisible(true);
-							for (Egg egg: eggList) { //test print
-								System.out.print("Still in enter button funcion: Egg " + egg.getEggCount() + "\n ");
-							}
 						}
 						//reset combo boxes
 						comboBoxEggType.setSelectedIndex(0);
