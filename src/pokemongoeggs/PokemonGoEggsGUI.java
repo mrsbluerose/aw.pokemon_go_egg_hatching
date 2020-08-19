@@ -1,5 +1,7 @@
 /*
  * See README at https://github.com/mrsbluerose/aw.pokemon_go_egg_hatching
+ * See UML at https://app.lucidchart.com/invitations/accept/1236fad5-06f4-4839-bb05-db0348440089
+ * See DEMO Video at 
  */
 
 package pokemongoeggs;
