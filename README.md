@@ -29,7 +29,7 @@ No prerequisites other than having an IDE set for Java
 2. Import the src/pokemongoeggs file 
 
 ## Running Tests
-No incorporated testing at this time (other than print statements)
+No incorporated testing at this time (other than print statements).
 Most data validation handled by pre-determined choices in menus (no user input)
 
 ## Contributing
