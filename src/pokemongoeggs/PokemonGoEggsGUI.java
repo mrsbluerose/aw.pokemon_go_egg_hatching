@@ -101,7 +101,7 @@ class PokemonGoEggsGUI {
 		lblEventMultiplier.setBounds(0, 0, 341, 24);
 		panelEvent.add(lblEventMultiplier);
 		
-		JComboBox<Event> comboBoxEventMultiplier = new JComboBox<Event>(masterList.getEventCollection());
+		JComboBox comboBoxEventMultiplier = new JComboBox(masterList.getEventCollection());
 		comboBoxEventMultiplier.setBounds(336, 0, 90, 24);
 		panelEvent.add(comboBoxEventMultiplier);
 		comboBoxEventMultiplier.setBackground(Color.WHITE);
@@ -120,7 +120,7 @@ class PokemonGoEggsGUI {
 		panelEggCount.add(lblEggcount);
 		lblEggcount.setHorizontalAlignment(SwingConstants.LEFT);
 		
-		JComboBox<String> comboBoxEggCount = new JComboBox<String>(masterList.getMaxEggsAllowedNumbers());
+		JComboBox comboBoxEggCount = new JComboBox(masterList.getMaxEggsAllowedNumbers());
 		comboBoxEggCount.setBounds(336,0, 36, 24);
 		panelEggCount.add(comboBoxEggCount);
 		comboBoxEggCount.setBackground(Color.WHITE);
@@ -146,7 +146,7 @@ class PokemonGoEggsGUI {
 		panelEggType.add(lblEggType);
 		lblEggType.setHorizontalAlignment(SwingConstants.LEFT);
 		
-		JComboBox<Egg> comboBoxEggType = new JComboBox<Egg>(masterList.getEggCollection());
+		JComboBox comboBoxEggType = new JComboBox(masterList.getEggCollection());
 		comboBoxEggType.setBounds(131, 1, 98, 24);
 		panelEggType.add(comboBoxEggType);
 		comboBoxEggType.setBackground(Color.WHITE);
@@ -163,7 +163,7 @@ class PokemonGoEggsGUI {
 		panelEggOptions.add(lblIncubatorType);
 		lblIncubatorType.setHorizontalAlignment(SwingConstants.LEFT);
 		
-		JComboBox<Incubator> comboBoxIncubatorType = new JComboBox<Incubator>(masterList.getIncubatorCollection());
+		JComboBox comboBoxIncubatorType = new JComboBox(masterList.getIncubatorCollection());
 		comboBoxIncubatorType.setBackground(Color.WHITE);
 		comboBoxIncubatorType.setBounds(131, 1, 98, 24);
 		panelEggOptions.add(comboBoxIncubatorType);
@@ -174,7 +174,7 @@ class PokemonGoEggsGUI {
 		lblDistanceWalked.setBounds(0, 28, 128, 26);
 		panelEggOptions.add(lblDistanceWalked);
 
-		JComboBox<String> comboBoxDistanceWalkedNumber = new JComboBox<String>(masterList.getPossibleEggDistanceWholeNumbers());
+		JComboBox comboBoxDistanceWalkedNumber = new JComboBox(masterList.getPossibleEggDistanceWholeNumbers());
 		comboBoxDistanceWalkedNumber.setBackground(Color.WHITE);
 		comboBoxDistanceWalkedNumber.setBounds(131, 28, 40, 24);
 		panelEggOptions.add(comboBoxDistanceWalkedNumber);
@@ -185,7 +185,7 @@ class PokemonGoEggsGUI {
 		lblDecimal.setBounds(174, 32, 12, 19);
 		panelEggOptions.add(lblDecimal);
 		
-		JComboBox<String> comboBoxDistanceWalkedDecimal = new JComboBox<String>(masterList.getPossibleEggDistanceDecimals());
+		JComboBox comboBoxDistanceWalkedDecimal = new JComboBox(masterList.getPossibleEggDistanceDecimals());
 		comboBoxDistanceWalkedDecimal.setBackground(Color.WHITE);
 		comboBoxDistanceWalkedDecimal.setBounds(189, 28, 40, 24);
 		panelEggOptions.add(comboBoxDistanceWalkedDecimal);
