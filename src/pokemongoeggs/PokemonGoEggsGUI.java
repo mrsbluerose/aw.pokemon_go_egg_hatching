@@ -9,34 +9,17 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JLayeredPane;
 import javax.swing.JRadioButton;
 import javax.swing.ButtonGroup;
 import javax.swing.JComboBox;
 import javax.swing.JTextArea;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
-import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableColumn;
-import javax.swing.table.TableColumnModel;
-
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Point;
-
 import javax.swing.JButton;
 import javax.swing.JScrollPane;
-import java.awt.event.ItemListener;
-import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.text.DecimalFormat;
-import java.util.Arrays;
-import java.util.Comparator;
-import java.awt.event.ItemEvent;
-import javax.swing.JTable;
-import javax.swing.JSplitPane;
-import java.awt.FlowLayout;
+import java.awt.Color;
 
 class PokemonGoEggsGUI {
 
@@ -118,14 +101,14 @@ class PokemonGoEggsGUI {
 		panelEvent.setLayout(null);
 		panelEvent.setVisible(false);
 		
-		JLabel lblEventWalkingDistance = new JLabel("What is the event walking distance multiplier?");
-		lblEventWalkingDistance.setBounds(0, 0, 341, 24);
-		panelEvent.add(lblEventWalkingDistance);
+		JLabel lblEventMultiplier = new JLabel("What is the event walking distance multiplier?");
+		lblEventMultiplier.setBounds(0, 0, 341, 24);
+		panelEvent.add(lblEventMultiplier);
 		
-		JComboBox comboBoxEventWalkingDistance = new JComboBox(masterList.getEventCollection());
-		comboBoxEventWalkingDistance.setBounds(336, 0, 90, 24);
-		panelEvent.add(comboBoxEventWalkingDistance);
-		comboBoxEventWalkingDistance.setBackground(Color.WHITE);
+		JComboBox<Event> comboBoxEventMultiplier = new JComboBox<Event>(masterList.getEventCollection());
+		comboBoxEventMultiplier.setBounds(336, 0, 90, 24);
+		panelEvent.add(comboBoxEventMultiplier);
+		comboBoxEventMultiplier.setBackground(Color.WHITE);
 		
 		/**********************************************************************
 		 * Create Egg Count Panel
@@ -141,7 +124,7 @@ class PokemonGoEggsGUI {
 		panelEggCount.add(lblEggcount);
 		lblEggcount.setHorizontalAlignment(SwingConstants.LEFT);
 		
-		JComboBox comboBoxEggCount = new JComboBox(masterList.getMaxEggsAllowedNumbers());
+		JComboBox<String> comboBoxEggCount = new JComboBox<String>(masterList.getMaxEggsAllowedNumbers());
 		comboBoxEggCount.setBounds(336,0, 36, 24);
 		panelEggCount.add(comboBoxEggCount);
 		comboBoxEggCount.setBackground(Color.WHITE);
@@ -167,7 +150,7 @@ class PokemonGoEggsGUI {
 		panelEggType.add(lblEggType);
 		lblEggType.setHorizontalAlignment(SwingConstants.LEFT);
 		
-		JComboBox comboBoxEggType = new JComboBox(masterList.getEggCollection());
+		JComboBox<Egg> comboBoxEggType = new JComboBox<Egg>(masterList.getEggCollection());
 		comboBoxEggType.setBounds(131, 1, 98, 24);
 		panelEggType.add(comboBoxEggType);
 		comboBoxEggType.setBackground(Color.WHITE);
@@ -184,7 +167,7 @@ class PokemonGoEggsGUI {
 		panelEggOptions.add(lblIncubatorType);
 		lblIncubatorType.setHorizontalAlignment(SwingConstants.LEFT);
 		
-		JComboBox comboBoxIncubatorType = new JComboBox(masterList.getIncubatorCollection());
+		JComboBox<Incubator> comboBoxIncubatorType = new JComboBox<Incubator>(masterList.getIncubatorCollection());
 		comboBoxIncubatorType.setBackground(Color.WHITE);
 		comboBoxIncubatorType.setBounds(131, 1, 98, 24);
 		panelEggOptions.add(comboBoxIncubatorType);
@@ -195,7 +178,7 @@ class PokemonGoEggsGUI {
 		lblDistanceWalked.setBounds(0, 28, 128, 26);
 		panelEggOptions.add(lblDistanceWalked);
 
-		JComboBox comboBoxDistanceWalkedNumber = new JComboBox(masterList.getPossibleEggDistanceWholeNumbers());
+		JComboBox<String> comboBoxDistanceWalkedNumber = new JComboBox<String>(masterList.getPossibleEggDistanceWholeNumbers());
 		comboBoxDistanceWalkedNumber.setBackground(Color.WHITE);
 		comboBoxDistanceWalkedNumber.setBounds(131, 28, 40, 24);
 		panelEggOptions.add(comboBoxDistanceWalkedNumber);
@@ -206,7 +189,7 @@ class PokemonGoEggsGUI {
 		lblDecimal.setBounds(174, 32, 12, 19);
 		panelEggOptions.add(lblDecimal);
 		
-		JComboBox comboBoxDistanceWalkedDecimal = new JComboBox(masterList.getPossibleEggDistanceDecimals());
+		JComboBox<String> comboBoxDistanceWalkedDecimal = new JComboBox<String>(masterList.getPossibleEggDistanceDecimals());
 		comboBoxDistanceWalkedDecimal.setBackground(Color.WHITE);
 		comboBoxDistanceWalkedDecimal.setBounds(189, 28, 40, 24);
 		panelEggOptions.add(comboBoxDistanceWalkedDecimal);
@@ -279,7 +262,7 @@ class PokemonGoEggsGUI {
 					public void actionPerformed(ActionEvent e) {
 						//egg count starts at 1. use eggCount-1 to reference array positions
 						eggInventoryArray[eggInventoryCount-1]= SetEggAttributes(eggInventoryCount,
-								(EventMultiplier)comboBoxEventWalkingDistance.getSelectedItem(),
+								(Event)comboBoxEventMultiplier.getSelectedItem(),
 								(Egg)comboBoxEggType.getSelectedItem(),
 								(Incubator)comboBoxIncubatorType.getSelectedItem(),
 								(Double.valueOf((String)comboBoxDistanceWalkedNumber.getSelectedItem())+
@@ -322,7 +305,7 @@ class PokemonGoEggsGUI {
 				textAreaInstructions.setText(null);
 				textAreaResults.setText(null);
 				eggInventoryCount = 1;
-				comboBoxEventWalkingDistance.setSelectedIndex(0);
+				comboBoxEventMultiplier.setSelectedIndex(0);
 				comboBoxEggCount.setSelectedIndex(0);
 				comboBoxEggType.setSelectedIndex(0);
 				comboBoxIncubatorType.setSelectedIndex(0);
@@ -354,7 +337,7 @@ class PokemonGoEggsGUI {
 				if(rdbtnDisplayTable.isSelected()) {
 					
 					//This code builds the table data and header arrays
-					String[][] tableData = BuildTable((EventMultiplier)comboBoxEventWalkingDistance.getSelectedItem(), masterList);
+					String[][] tableData = BuildTable((Event)comboBoxEventMultiplier.getSelectedItem(), masterList);
 					String[] headers = BuildHeaders(masterList);
 
 					//print out table
@@ -378,7 +361,7 @@ class PokemonGoEggsGUI {
 				//TODO: when incorporating incubators, decide how to prevent negatives
 				else if(rdbtnCalculateEgg.isSelected()) {
 					textAreaResults.append("The " + (Egg)comboBoxEggType.getSelectedItem() + " egg will hatch in " + 
-							df.format(calculateEgg((EventMultiplier)comboBoxEventWalkingDistance.getSelectedItem(), 
+							df.format(calculateEgg((Event)comboBoxEventMultiplier.getSelectedItem(), 
 							(Egg)comboBoxEggType.getSelectedItem(), 
 							(Incubator)comboBoxIncubatorType.getSelectedItem(), 
 							(Double.valueOf((String)comboBoxDistanceWalkedNumber.getSelectedItem())+
@@ -427,7 +410,7 @@ class PokemonGoEggsGUI {
 	/**********************************************************************
 	 * set egg attributes based on input
 	 **********************************************************************/
-	protected Egg SetEggAttributes(int count, EventMultiplier event, Egg egg, Incubator incubator, double distance) {
+	protected Egg SetEggAttributes(int count, Event event, Egg egg, Incubator incubator, double distance) {
 		Egg newEgg = new Egg(egg.getName(), egg.getEggWalkingDistance(),calculateEgg(event,egg,incubator,distance));
 		newEgg.setEggCount(count);
 		newEgg.setEventMultiplier(event.getMultiplier());	
@@ -451,7 +434,7 @@ class PokemonGoEggsGUI {
 	/**********************************************************************
 	 * Build table arrays
 	 **********************************************************************/
-	private String[][] BuildTable(EventMultiplier multiplier, MasterList list){
+	private String[][] BuildTable(Event multiplier, MasterList list){
 
 		Egg[] eggs = list.getEggCollection();
 		Incubator[] incubators = list.getIncubatorCollection();
@@ -515,7 +498,7 @@ class PokemonGoEggsGUI {
 	/**********************************************************************
 	 * Calculate when one egg will hatch, based on entered values
 	 **********************************************************************/
-	private double calculateEgg(EventMultiplier event, Egg egg, Incubator incubator, double distance) {		
+	private double calculateEgg(Event event, Egg egg, Incubator incubator, double distance) {		
 		return (event.getMultiplier() * egg.getEggWalkingDistance() * incubator.getIncubatorMultiplier())- distance;
 	}
 	

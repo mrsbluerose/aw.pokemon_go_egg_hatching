@@ -1,15 +1,15 @@
 package pokemongoeggs;
 
-public class EventMultiplier {
+public class Event {
 	
 	private String name;
 	private double multiplier;
 	
-	public EventMultiplier() {
+	public Event() {
 		
 	}
 	
-	public EventMultiplier(String name, double multiplier) {
+	public Event(String name, double multiplier) {
 		super();
 		this.name = name;
 		this.multiplier = multiplier;

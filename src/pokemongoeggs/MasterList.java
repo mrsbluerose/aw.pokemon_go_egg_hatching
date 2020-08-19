@@ -11,10 +11,10 @@ public class MasterList {
 	private Incubator incubatorSuper = new Incubator("super", 0.66667);
 	private Incubator[] incubatorCollection = {incubatorRegular,incubatorSuper};
 	
-	private EventMultiplier eventNone = new EventMultiplier("no event", 1.0);
-	private EventMultiplier eventQuarter = new EventMultiplier("1/4", 0.25);
-	private EventMultiplier eventHalf = new EventMultiplier("1/2", 0.5);
-	private EventMultiplier[] eventCollection = {eventNone,eventQuarter,eventHalf};
+	private Event eventNone = new Event("no event", 1.0);
+	private Event eventQuarter = new Event("1/4", 0.25);
+	private Event eventHalf = new Event("1/2", 0.5);
+	private Event[] eventCollection = {eventNone,eventQuarter,eventHalf};
 	
 	private String[] possibleEggDistanceWholeNumbers = {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9"};
 	private String[] possibleEggDistanceDecimals = {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9"};
@@ -29,7 +29,7 @@ public class MasterList {
 		return incubatorCollection;
 	}
 
-	public EventMultiplier[] getEventCollection() {
+	public Event[] getEventCollection() {
 		return eventCollection;
 	}
 
