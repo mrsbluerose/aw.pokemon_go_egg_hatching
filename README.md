@@ -4,7 +4,7 @@ This app helps a user determine when to place their Pokemon Go eggs in incubator
 Currently, this project is meant for personal use and is serving as a demonstration of my coding.
 
 ## UML
-See the UML in Lucid Charts: https://app.lucidchart.com/invitations/accept/1236fad5-06f4-4839-bb05-db0348440089
+See the UML in Lucid Charts: https://app.lucidchart.com/documents/view/def855a9-35b9-4e39-be51-bd205437b060/0_0
 
 ## Status
 First iteration complete. Basic functionality.

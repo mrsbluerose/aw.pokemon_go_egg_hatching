@@ -1,6 +1,6 @@
 /*
  * See README at https://github.com/mrsbluerose/aw.pokemon_go_egg_hatching
- * See UML at https://app.lucidchart.com/invitations/accept/1236fad5-06f4-4839-bb05-db0348440089
+ * See UML at https://app.lucidchart.com/documents/view/def855a9-35b9-4e39-be51-bd205437b060/0_0
  * See DEMO Video at 
  */
 
