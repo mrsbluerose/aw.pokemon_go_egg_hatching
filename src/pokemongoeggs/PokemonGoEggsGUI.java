@@ -333,8 +333,8 @@ class PokemonGoEggsGUI {
 				if(rdbtnDisplayTable.isSelected()) {
 					
 					//This code builds the table data and header arrays
-					String[][] tableData = BuildTable((Event)comboBoxEventMultiplier.getSelectedItem(), masterList);
-					String[] headers = BuildHeaders(masterList);
+					String[][] tableData = buildTable((Event)comboBoxEventMultiplier.getSelectedItem(), masterList);
+					String[] headers = buildHeaders(masterList);
 
 					//print out table
 					textAreaResults.append("\t\t");
@@ -430,7 +430,7 @@ class PokemonGoEggsGUI {
 	/**********************************************************************
 	 * Build table arrays
 	 **********************************************************************/
-	private String[][] BuildTable(Event multiplier, MasterList list){
+	private String[][] buildTable(Event multiplier, MasterList list){
 
 		Egg[] eggs = list.getEggCollection();
 		Incubator[] incubators = list.getIncubatorCollection();
@@ -472,7 +472,7 @@ class PokemonGoEggsGUI {
 	}	
 	
 	//Headers Array
-	private String[] BuildHeaders(MasterList list) {
+	private String[] buildHeaders(MasterList list) {
 		Egg[] eggs = list.getEggCollection();
 		Incubator[] incubators = list.getIncubatorCollection();
 		int length = list.getEggCollection().length * list.getIncubatorCollection().length;
