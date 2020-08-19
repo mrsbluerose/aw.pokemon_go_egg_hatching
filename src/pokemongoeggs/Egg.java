@@ -4,7 +4,6 @@ public class Egg {
 
 		final private String NAME; 
 		final private double EGG_WALKING_DISTANCE;
-		//private boolean isIncubating = false;
 		private double distanceWalked = 0.0;
 		private double eventMultiplier = 1;
 		private double incubatorMultiplier = 1;
@@ -24,14 +23,6 @@ public class Egg {
 		public double getEggWalkingDistance() {
 			return EGG_WALKING_DISTANCE;
 		}
-
-//		public boolean isIncubating() {
-//			return isIncubating;
-//		}
-
-//		public void setIncubating(boolean isIncubating) {
-//			this.isIncubating = isIncubating;
-//		}
 
 		public double getDistanceWalked() {
 			return distanceWalked;
