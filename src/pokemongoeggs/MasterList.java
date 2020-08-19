@@ -18,7 +18,7 @@ public class MasterList {
 	
 	private String[] possibleEggDistanceWholeNumbers = {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9"};
 	private String[] possibleEggDistanceDecimals = {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9"};
-	private int maxEggAllowed = 9;
+	private int maxEggsAllowed = 9;
 	private String[] maxEggsAllowedNumbers = {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9"};
 
 	public Egg[] getEggCollection() {
@@ -34,7 +34,7 @@ public class MasterList {
 	}
 
 	public int getMaxEggAllowed() {
-		return maxEggAllowed;
+		return maxEggsAllowed;
 	}
 
 	public String[] getPossibleEggDistanceWholeNumbers() {
