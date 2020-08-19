@@ -23,10 +23,6 @@ import java.awt.Color;
 
 class PokemonGoEggsGUI {
 
-	
-	//TODO: finalize instructions and results
-	//remove unused elements (incubator assignment, etc_
-	//update and finalize readme with notes for future expansion
 	private JFrame frame;
 	private final ButtonGroup buttonGroupMainMenu = new ButtonGroup();
 	private MasterList masterList = new MasterList();
