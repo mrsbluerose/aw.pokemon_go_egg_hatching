@@ -2,8 +2,8 @@ package pokemongoeggs;
 
 public class Event {
 	
-	private String name;
-	private double multiplier;
+	private String eventName;
+	private double eventMultiplier;
 	
 	public Event() {
 		
@@ -11,28 +11,28 @@ public class Event {
 	
 	public Event(String name, double multiplier) {
 		super();
-		this.name = name;
-		this.multiplier = multiplier;
+		this.eventName = name;
+		this.eventMultiplier = multiplier;
 	}
 
 	public String getName() {
-		return name;
+		return eventName;
 	}
 
 	public void setName(String name) {
-		this.name = name;
+		this.eventName = name;
 	}
 
 	public double getMultiplier() {
-		return multiplier;
+		return eventMultiplier;
 	}
 
 	public void setMultiplier(double multiplier) {
-		this.multiplier = multiplier;
+		this.eventMultiplier = multiplier;
 	}
 	
     @Override
     public String toString() {
-        return name;
+        return eventName;
     }
 }

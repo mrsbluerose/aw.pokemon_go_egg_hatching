@@ -2,7 +2,7 @@ package pokemongoeggs;
 
 public class Incubator {
 
-	private String name;
+	private String incubatorName;
 	private double incubatorMultiplier;
 	
 	public Incubator() {
@@ -11,17 +11,17 @@ public class Incubator {
 	
     public Incubator(String name, double incubatorMultiplier) {
 		super();
-		this.name = name;
+		this.incubatorName = name;
 		this.incubatorMultiplier = incubatorMultiplier;
 	}
 
 	public String getName() {
-		return name;
+		return incubatorName;
 	}
 
 
 	public void setName(String name) {
-		this.name = name;
+		this.incubatorName = name;
 	}
 
 
@@ -36,7 +36,7 @@ public class Incubator {
 
 	@Override
     public String toString() {
-        return name;
+        return incubatorName;
     }
 	
 }
