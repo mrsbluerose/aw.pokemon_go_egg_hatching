@@ -30,9 +30,9 @@ class PokemonGoEggsGUI {
 	private int eggInventoryCount = 1;
 	private DecimalFormat df = new DecimalFormat("#.#");
 
-	/**
+	/************************************************************************
 	 * Launch the application.
-	 */
+	 **********************************************************************/
 	//default code from Design editor. Keeping for reference, in case any auto generated code breaks the program
 //	public static void main(String[] args) {
 //		EventQueue.invokeLater(new Runnable() {
