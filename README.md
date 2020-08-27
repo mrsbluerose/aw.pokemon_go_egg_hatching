@@ -19,7 +19,7 @@ Expand the Create Plan feature to include the choice of incubators, eggs that ar
 * add functionality to choose incubator (regular or super) and calculate the fastest hatching with only the highest distances being in super incubators
 * add functionality to recognize eggs already incubating and how that affects the plan. Any eggs with more distance than those already incubating AND outside the maximum range cannot be walked 
 * add range to consider (within 1-2 KM -- no greater than 5KM, since the fastest you can go during hatching is 10.5 KM/hr)
-* decide where to require at least 2 eggs for creating a plan (here or in enter button)
+* decide where in the code to require at least 2 eggs for creating a plan
 * update instructions once new functionality is in place
 
 ## Getting Started
