@@ -1,4 +1,10 @@
 /*
+ * See README at https://github.com/mrsbluerose/aw.pokemon_go_egg_hatching
+ * See UML at https://app.lucidchart.com/documents/view/def855a9-35b9-4e39-be51-bd205437b060/0_0
+ * See DEMO Video at https://youtu.be/N5VraCcRUu4
+ */
+
+/*
  * CODE CREDIT:
  * Nikita Tiwari
  * Geeks for Geeks website (Java version) https://www.geeksforgeeks.org/bubble-sort/
