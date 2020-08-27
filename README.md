@@ -40,6 +40,7 @@ Most data validation handled by pre-determined choices in menus (no user input)
 No outside contributing at this time.
 
 ## Versioning
+1.0 - IDE System print out with user input
 2.0 - GUI-based application
 
 ## Authors 
