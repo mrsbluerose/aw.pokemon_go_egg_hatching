@@ -5,7 +5,7 @@ Currently, this project is meant for personal use and is serving as a demonstrat
 
 ## UML & 70 Second Demo Video
 ### UML (Lucid Charts): 
-https://app.lucidchart.com/documents/view/def855a9-35b9-4e39-be51-bd205437b060/0_0
+https://lucid.app/lucidchart/invitations/accept/eb355742-50ba-4669-96c2-bd05b83e711f
 
 ### 70 second demo video (YouTube):
 https://youtu.be/N5VraCcRUu4
